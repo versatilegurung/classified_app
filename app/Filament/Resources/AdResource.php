@@ -68,6 +68,10 @@ class AdResource extends Resource
     {
         return $table
             ->columns([
+<<<<<<< HEAD
+=======
+                Tables\Columns\ImageColumn::make('images'),                   
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
                 // Tables\Columns\TextColumn::make('user_id')
                 //     ->numeric()
                 //     ->sortable(),
@@ -79,8 +83,8 @@ class AdResource extends Resource
                 //     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('location')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('location')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),

@@ -16,7 +16,11 @@ class AdResource extends JsonResource
     {
         // return parent::toArray($request);
 
+<<<<<<< HEAD
         return [
+=======
+        return[
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
@@ -30,6 +34,10 @@ class AdResource extends JsonResource
             'images' => $this->images,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+<<<<<<< HEAD
+=======
+            // Add other attributes as needed
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
         ];
     }
 }

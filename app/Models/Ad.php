@@ -33,10 +33,24 @@ class Ad extends Model
     ];
 
 
+<<<<<<< HEAD
     protected static function boot()
     {
         parent::boot();
     }
+=======
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::saving(function ($model) {
+    //         // Check if the name attribute is set and if the slug should be updated.
+    //         if ($model->isDirty('images')) {
+    //             $model->user_id = Auth::user()->id;
+    //         }
+    //     });
+    // }
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
 
     // Define relationships
     public function user()

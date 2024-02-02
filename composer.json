@@ -9,12 +9,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "butschster/meta-tags": "^2.3",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+<<<<<<< HEAD
         "livewire/livewire": "^3.4"
+=======
+        "livewire/livewire": "^3.4",
+        "robsontenorio/mary": "^1.20"
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -7,6 +7,11 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+<<<<<<< HEAD
+=======
+        'reference' => 'b49a8ed790a92c3bb5be2848df23b7fac44c8298',
+        'name' => 'laravel/laravel',
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
         'dev' => true,
     ),
     'versions' => array(
@@ -44,6 +49,15 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/math',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'butschster/meta-tags' => array(
+            'pretty_version' => 'v2.3.2',
+            'version' => '2.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../butschster/meta-tags',
+            'aliases' => array(),
+            'reference' => '7decc9edd8ac6386594d2a78534453e3663b89ea',
             'dev_requirement' => false,
         ),
         'carbonphp/carbon-doctrine-types' => array(
@@ -517,6 +531,42 @@
                 0 => 'v10.43.0',
             ),
         ),
+        'jfcherng/php-color-output' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jfcherng/php-color-output',
+            'aliases' => array(),
+            'reference' => '6c7bf16686cc6a291647fcb87491640a2d5edd20',
+            'dev_requirement' => false,
+        ),
+        'jfcherng/php-diff' => array(
+            'pretty_version' => '6.15.3',
+            'version' => '6.15.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jfcherng/php-diff',
+            'aliases' => array(),
+            'reference' => '39be09756f8eda115299add3f34dc64b4bc32b66',
+            'dev_requirement' => false,
+        ),
+        'jfcherng/php-mb-string' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jfcherng/php-mb-string',
+            'aliases' => array(),
+            'reference' => '8407bfefde47849c9e7c9594e6de2ac85a0f845d',
+            'dev_requirement' => false,
+        ),
+        'jfcherng/php-sequence-matcher' => array(
+            'pretty_version' => '4.0.3',
+            'version' => '4.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jfcherng/php-sequence-matcher',
+            'aliases' => array(),
+            'reference' => 'd2038ac29627340a7458609072a8ba355e80ec5b',
+            'dev_requirement' => false,
+        ),
         'kirschbaum-development/eloquent-power-joins' => array(
             'pretty_version' => '3.4.0',
             'version' => '3.4.0.0',
@@ -548,6 +598,10 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+<<<<<<< HEAD
+=======
+            'reference' => 'b49a8ed790a92c3bb5be2848df23b7fac44c8298',
+>>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(
@@ -1042,6 +1096,15 @@
             'replaced' => array(
                 0 => '4.7.5',
             ),
+        ),
+        'robsontenorio/mary' => array(
+            'pretty_version' => '1.20.1',
+            'version' => '1.20.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../robsontenorio/mary',
+            'aliases' => array(),
+            'reference' => '815688579d824ad3cf6fce26f25ac83928070dd2',
+            'dev_requirement' => false,
         ),
         'ryangjchandler/blade-capture-directive' => array(
             'pretty_version' => 'v0.3.0',
