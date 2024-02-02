@@ -20,3 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('/ads', App\Http\Controllers\Api\AdController::class)->only(['index', 'show']);
+
+// Route::resource('/ads', App\Http\Controllers\Api\AdController::class);
+

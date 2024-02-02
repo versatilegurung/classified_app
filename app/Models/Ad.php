@@ -33,16 +33,16 @@ class Ad extends Model
     ];
 
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::saving(function ($model) {
-            // Check if the name attribute is set and if the slug should be updated.
-            if ($model->isDirty('images')) {
-                $model->user_id = Auth::user()->id;
-            }
-        });
-    }
+    //     static::saving(function ($model) {
+    //         // Check if the name attribute is set and if the slug should be updated.
+    //         if ($model->isDirty('images')) {
+    //             $model->user_id = Auth::user()->id;
+    //         }
+    //     });
+    // }
 
 }

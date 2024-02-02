@@ -23,11 +23,13 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('parent_id')
-                    ->numeric(),
+              
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+
+                // Forms\Components\Select::make('parent_id')
+                //     ->relationship('categories', 'name'),
             ]);
     }
 
@@ -35,9 +37,9 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('parent_id')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('parent_id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -2,78 +2,47 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Filament\Resources\AdResource;
 use App\Models\Ad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AdCollection;
+use App\Http\Resources\AdResource;
 
 class AdController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-        return new AdCollection(Ad::all());
-    }
+   // Show a list of ads
+   public function index()
+   {
+       $ads = Ad::paginate(10); // You can adjust the pagination as needed
+       return AdResource::collection($ads);
+   }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
-    {
-        //
-        // $ad = Ad::create($request->all());
-        // return response()->json($ad, 201);
-    }
+   // Show a single ad
+   public function show(Ad $ad)
+   {
+       return new AdResource($ad);
+   }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   // Store a new ad
+   public function store(Request $request)
+   {
+       $ad = Ad::create($request->all());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request,Ad $ad)
-    {
-        //
-        // return new AdResource($ad);
-        return new AdResource($ad);
-    }
+       return new AdResource($ad);
+   }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+   // Update an ad
+   public function update(Request $request, Ad $ad)
+   {
+       $ad->update($request->all());
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $ad)
-    {
-        //
-        // $ad = Ad::findOrFail($ad);
-        // $ad->update($request->all());
-        // return response()->json($ad, 200);
-    }
+       return new AdResource($ad);
+   }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $ad)
-    {
-    //     //.
-    //     Ad::findOrFail($ad)->delete();
-    // return response()->json(null, 204);
+   // Delete an ad
+   public function destroy(Ad $ad)
+   {
+       $ad->delete();
 
-    }
+       return response()->json(['message' => 'Ad deleted successfully']);
+   }
 }
