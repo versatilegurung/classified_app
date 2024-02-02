@@ -22,7 +22,7 @@ class Ad extends Model
         'images'
     ];
 
-    protected $hidden =[
+    protected $hidden = [
         'updated_at',
         'created_at',
         'deleted_at'
@@ -36,13 +36,16 @@ class Ad extends Model
     protected static function boot()
     {
         parent::boot();
-
-        static::saving(function ($model) {
-            // Check if the name attribute is set and if the slug should be updated.
-            if ($model->isDirty('images')) {
-                $model->user_id = Auth::user()->id;
-            }
-        });
     }
 
+    // Define relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

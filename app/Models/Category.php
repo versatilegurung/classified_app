@@ -13,6 +13,10 @@ class Category extends Model
         'name',
         'parent_id'
     ];
-      
 
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\CategoryFactory::new();
+    }
 }

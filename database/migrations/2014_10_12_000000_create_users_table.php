@@ -21,12 +21,9 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('avatar')->nullable();
             $table->text('bio')->nullable();
-            $table->unsignedBigInteger('role_id');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('role_id')->references('id')->on('roles');
-
         });
     }
 

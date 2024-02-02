@@ -23,60 +23,60 @@ class AdResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Forms\Components\TextInput::make('title')
-                ->required()
-                ->maxLength(255)
-                ->columnSpanFull(),
+            ->schema([
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\RichEditor::make('description')
-                ->required()               
-                ->maxLength(65535)
-                ->columnSpanFull(),
+                    ->required()
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
 
-            Forms\Components\TextInput::make('user_id')
-                ->hidden()
-                ->numeric(),
-            
-            Forms\Components\Select::make('category_id')
-                ->label('Category')
-                ->options(Category::all()->pluck('name', 'id'))         
-                ->required(),
+                Forms\Components\TextInput::make('user_id')
+                    ->hidden()
+                    ->numeric(),
 
-            Forms\Components\TextInput::make('sub_category_id')
-                ->label('Sub-Category')
-                ->numeric(),
-            
-            Forms\Components\TextInput::make('price')
-                ->numeric()
-                ->prefix('$'),
-            Forms\Components\Toggle::make('negotiable')
-                ->required(),
-            Forms\Components\TextInput::make('condition')
-                ->required()
-                ->maxLength(255),
-            Forms\Components\TextInput::make('location')
-            ->required()
-            ->maxLength(255),
-            Forms\Components\FileUpload::make('images')
-                ->directory('ad_images')
-                ->image()
-                ->required(),
-        ]);
+                Forms\Components\Select::make('category_id')
+                    ->label('Category')
+                    ->options(Category::all()->pluck('name', 'id'))
+                    ->required(),
+
+                Forms\Components\TextInput::make('sub_category_id')
+                    ->label('Sub-Category')
+                    ->numeric(),
+
+                Forms\Components\TextInput::make('price')
+                    ->numeric()
+                    ->prefix('$'),
+                Forms\Components\Toggle::make('negotiable')
+                    ->required(),
+                Forms\Components\TextInput::make('condition')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('location')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\FileUpload::make('images')
+                    ->directory('ad_images')
+                    ->image()
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('sub_category_id')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('user_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('category_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('sub_category_id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('location')
@@ -86,7 +86,7 @@ class AdResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('negotiable')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('condition')
+         Tables\Columns\TextColumn::make('condition')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -95,7 +95,7 @@ class AdResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),   
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
@@ -121,7 +121,7 @@ class AdResource extends Resource
         ];
     }
 
-    
+
     public static function getPages(): array
     {
         return [
