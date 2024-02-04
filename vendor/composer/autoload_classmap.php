@@ -41,13 +41,13 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Resources\\AdCollection' => $baseDir . '/app/Http/Resources/AdCollection.php',
     'App\\Http\\Resources\\AdResource' => $baseDir . '/app/Http/Resources/AdResource.php',
-<<<<<<< HEAD
-=======
     'App\\Livewire\\Frontend\\Home' => $baseDir . '/app/Livewire/Frontend/Home.php',
     'App\\Livewire\\Frontend\\Inc\\Footer' => $baseDir . '/app/Livewire/Frontend/Inc/Footer.php',
     'App\\Livewire\\Frontend\\Inc\\Header' => $baseDir . '/app/Livewire/Frontend/Inc/Header.php',
     'App\\Livewire\\Frontend\\ResponsiveMenu' => $baseDir . '/app/Livewire/Frontend/ResponsiveMenu.php',
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+    'App\\Livewire\\Frontpage\\HomePage' => $baseDir . '/app/Livewire/Frontpage/HomePage.php',
+    'App\\Livewire\\Frontpage\\Inc\\Footer' => $baseDir . '/app/Livewire/Frontpage/Inc/Footer.php',
+    'App\\Livewire\\Frontpage\\Inc\\Header' => $baseDir . '/app/Livewire/Frontpage/Inc/Header.php',
     'App\\Models\\Ad' => $baseDir . '/app/Models/Ad.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
@@ -57,10 +57,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\Filament\\BackendPanelProvider' => $baseDir . '/app/Providers/Filament/BackendPanelProvider.php',
-<<<<<<< HEAD
-=======
     'App\\Providers\\MetaTagsServiceProvider' => $baseDir . '/app/Providers/MetaTagsServiceProvider.php',
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'BladeUI\\Heroicons\\BladeHeroiconsServiceProvider' => $vendorDir . '/blade-ui-kit/blade-heroicons/src/BladeHeroiconsServiceProvider.php',
@@ -246,8 +243,6 @@ return array(
     'DanHarrin\\DateFormatConverter\\Converter' => $vendorDir . '/danharrin/date-format-converter/src/Converter.php',
     'DanHarrin\\LivewireRateLimiting\\Exceptions\\TooManyRequestsException' => $vendorDir . '/danharrin/livewire-rate-limiting/src/Exceptions/TooManyRequestsException.php',
     'DanHarrin\\LivewireRateLimiting\\WithRateLimiting' => $vendorDir . '/danharrin/livewire-rate-limiting/src/WithRateLimiting.php',
-    'Database\\Factories\\AdFactory' => $baseDir . '/database/factories/AdFactory.php',
-    'Database\\Factories\\CategoryFactory' => $baseDir . '/database/factories/CategoryFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

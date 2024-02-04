@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AdResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AdResource\RelationManagers;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class AdResource extends Resource
 {
@@ -60,7 +61,12 @@ class AdResource extends Resource
                 Forms\Components\FileUpload::make('images')
                     ->directory('ad_images')
                     ->image()
-                    ->required(),
+                    ->multiple()
+                    ->required()
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                            ->prepend('chitwan-buy-and-sell-'),
+                    ),
             ]);
     }
 
@@ -68,10 +74,8 @@ class AdResource extends Resource
     {
         return $table
             ->columns([
-<<<<<<< HEAD
-=======
-                Tables\Columns\ImageColumn::make('images'),                   
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+                Tables\Columns\ImageColumn::make('images')
+                    ->stacked(),
                 // Tables\Columns\TextColumn::make('user_id')
                 //     ->numeric()
                 //     ->sortable(),
@@ -90,7 +94,7 @@ class AdResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('negotiable')
                     ->boolean(),
-         Tables\Columns\TextColumn::make('condition')
+                Tables\Columns\TextColumn::make('condition')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -99,7 +103,7 @@ class AdResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),   
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()

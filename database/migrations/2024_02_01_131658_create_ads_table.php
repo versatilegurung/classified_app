@@ -12,16 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ads', function (Blueprint $table) {
-            $table->id(); $table->unsignedBigInteger('user_id');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->string('location');
             $table->decimal('price')->nullable();
             $table->boolean('negotiable')->default(false);
+            $table->boolean('featured')->default(false);
             $table->string('condition');
-            $table->text('images')->nullable();
+            // $table->text('images')->nullable();
+            $table->boolean('published')->default(false);
+            $table->json('library')->nullable();
+
+
             $table->timestamps();
             $table->softDeletes();
 

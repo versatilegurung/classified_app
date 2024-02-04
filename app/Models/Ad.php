@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ad extends Model
@@ -12,14 +14,17 @@ class Ad extends Model
 
     protected $fillable = [
         'title',
+        'slug', //add slug to fillable
         'description',
         'price',
         'category_id',
         'location',
         'negotiable',
+        'featured',
         'condition',
         'user_id',
-        'images'
+        'library',
+        'published'
     ];
 
     protected $hidden = [
@@ -29,28 +34,22 @@ class Ad extends Model
     ];
 
     protected $casts = [
-        'negotiable' => 'boolean'
+        'negotiable' => 'boolean',
+        'attachments' => 'array',
+        'library' => AsCollection::class,
+
     ];
 
-
-<<<<<<< HEAD
-    protected static function boot()
+    //add slug when saving the data
+    public static function boot()
     {
         parent::boot();
-    }
-=======
-    // protected static function boot()
-    // {
-    //     parent::boot();
 
-    //     static::saving(function ($model) {
-    //         // Check if the name attribute is set and if the slug should be updated.
-    //         if ($model->isDirty('images')) {
-    //             $model->user_id = Auth::user()->id;
-    //         }
-    //     });
-    // }
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+        static::creating(function ($ad) {
+            // ...creating slug
+            $ad->slug = Str::slug($ad->title);
+        });
+    }
 
     // Define relationships
     public function user()

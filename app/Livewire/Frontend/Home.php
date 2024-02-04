@@ -7,11 +7,10 @@ use Butschster\Head\Facades\Meta;
 
 class Home extends Component
 {
-    
+
     public function render()
-    {      
-        Meta::prependTitle('Homepage')
-            ->setFavicon('favicon-index.ico');
+    {
+        Meta::prependTitle('Homepage');
 
         return view('livewire.frontend.home');
     }

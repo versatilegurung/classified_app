@@ -1,11 +1,13 @@
 <?php
 
-<<<<<<< HEAD
-use App\Livewire\Frontpage\HomePage;
-=======
 use App\Livewire\Frontend\Home;
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+use App\Livewire\Frontend\Ad\View;
+use App\Livewire\Frontend\Auth\Login;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Frontend\Auth\Register;
+use App\Livewire\Frontend\Account\Profile;
+use App\Livewire\Frontend\Ads\PostAd;
+use App\Livewire\Frontend\Auth\ForgotPassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +20,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', HomePage::class)->name('home');
-=======
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
+Route::get('/register', Register::class)->name('register');
+Route::get('/login', Login::class)->name('login');
+Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+Route::get('/account/profile', Profile::class)->name('account.profile');
+
+//ads route
+Route::get('/ad/{slug}', View::class)->name('ad.show');
+
+//post ad
+Route::get('/post-ad', PostAd::class)->name('post.ad');

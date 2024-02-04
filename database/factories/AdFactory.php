@@ -2,10 +2,6 @@
 
 namespace Database\Factories;
 
-<<<<<<< HEAD
-use App\Models\Ad;
-=======
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -15,11 +11,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AdFactory extends Factory
 {
-<<<<<<< HEAD
-    protected $model = Ad::class;
-
-=======
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
     /**
      * Define the model's default state.
      *
@@ -27,10 +18,9 @@ class AdFactory extends Factory
      */
     public function definition(): array
     {
-<<<<<<< HEAD
-=======
+        $imagePath = $this->faker->image(storage_path('app/public/ad_images'), 640, 480, 'chitwanbuyandsell', false);
 
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
+
         return [
             'user_id' => User::factory(),
             'title' => $this->faker->sentence,
@@ -39,16 +29,10 @@ class AdFactory extends Factory
             'location' => $this->faker->city,
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
+            'featured' => $this->faker->boolean,
             'condition' => $this->faker->randomElement(['New', 'Used']),
-<<<<<<< HEAD
-            'images' => null, // You may modify this based on your specific needs
+            'library' =>  $imagePath,
+            'published' => $this->faker->boolean,
         ];
     }
 }
-=======
-            'images' =>  $this->faker->imageURL(800, 600, 'cats', true, true), // You may modify this based on your specific needs
-       
-        ];
-    }
-}
->>>>>>> 3f589972068e82ec33911d7b1e0609d91f82408c
