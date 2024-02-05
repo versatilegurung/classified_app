@@ -170,6 +170,9 @@ return [
         App\Providers\MetaTagsServiceProvider::class,
         App\Providers\Filament\BackendPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ])->toArray(),
 
     /*

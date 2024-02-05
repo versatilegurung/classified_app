@@ -9,29 +9,27 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.1/Sortable.min.js"></script>
 
     {{-- tinymce --}}
-    <script type="text/javascript" src='https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js'
+    <script type="text/javascript"
+        src='https://cdn.tiny.cloud/1/v1fwgu9i53o83bzpf4imzkp3q1sjlqlhd9vqeeqzxaxdxsu4/tinymce/6/tinymce.min.js'
         referrerpolicy="origin"></script>
     <script type="text/javascript">
         tinymce.init({
-            selector: '#myTextarea',
-            width: 600,
-            height: 300,
-            plugins: [
-                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-                'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen',
-                'insertdatetime',
-                'media', 'table', 'emoticons', 'template', 'help'
-            ],
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-                'forecolor backcolor emoticons | help',
-            menu: {
-                favs: {
-                    title: 'My Favorites',
-                    items: 'code visualaid | searchreplace | emoticons'
-                }
-            },
-            menubar: 'favs file edit view insert format tools table help',
+            selector: '#descriptionTiny',
+
+            // plugins: [
+            //     'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            //     'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen',
+            //     'insertdatetime',
+            //     'media', 'table', 'emoticons', 'template', 'help'
+            // ],
+            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify',
+            // menu: {
+            //     favs: {
+            //         title: 'My Favorites',
+            //         items: 'code visualaid | searchreplace | emoticons'
+            //     }
+            // },
+            // menubar: 'favs file edit view insert format tools table help',
             content_css: 'css/content.css'
         });
     </script>
@@ -52,10 +50,27 @@
             <form action="#" method="post">
                 @csrf
 
+                <!-- Category ID -->
+                <div>
+                    @php
+                        $categories = App\Models\Category::all();
+                    @endphp
+                    {{-- <label for="category_id" class="text-primary">Category ID:</label><br> --}}
+                    <x-select :options="$categories" placeholder="Select a category" placeholder-value="0"
+                        {{-- Set a value for placeholder. Default is `null` --}} hint="Select category." wire:model="selectedUser2"
+                        class=" text-primary placeholder:text-gray-500">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </x-select>
+
+                </div>
+                <br>
+
                 <!-- Title -->
                 <div>
-                    <x-input name="title" placeholder="Ad Title" icon="o-plus" hint="Your Ad Title "
-                        class="bg-cream placeholder:text-gray-700 text-primary" />
+                    <x-input name="title" placeholder="Ad Title" hint="Ad Title "
+                        class="placeholder:text-gray-500 text-primary" />
 
                 </div>
                 <br>
@@ -63,84 +78,62 @@
 
                 <!-- Description -->
                 <div>
-                    <textarea id="myTextarea"></textarea>
-
-
+                    {{-- <textarea id="descriptionTiny"></textarea> --}}
+                    <label for="description" class="text-sm">Ad Description</label>
+                    <x-textarea wire:model="bio" placeholder="Your story ..." hint="Max 1000 chars" rows="5"
+                        inline />
                 </div>
                 <br>
-
-                <!-- Category ID -->
-                <div>
-                    <label for="category_id">Category ID:</label><br>
-                    <select name="category_id" id="">
-                        <option value="">Select Category</option>
-                        @foreach ($categories as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
-
-                </div>
-                <br>
-
-                <!-- Sub Category ID -->
-                <div>
-                    <label for="sub_category_id">Sub Category ID:</label><br>
-                    <input type="text" name="sub_category_id" id="sub_category_id">
-                </div>
-                <br>
-
                 <!-- Location -->
                 <div>
-                    <label for="location">Location:</label><br>
                     <input type="text" name="location" id="location" required>
+                    <x-input name="title" placeholder="Location" hint="Location "
+                        class="placeholder:text-gray-500 text-primary" />
                 </div>
                 <br>
 
                 <!-- Price -->
                 <div>
-                    <label for="price">Price:</label><br>
-                    <input type="text" name="price" id="price">
+                    {{-- <input type="text" name="price" id="price"> --}}
+                    <x-input prefix="NRS" wire:model="" money inline class="text-primary" hint="price" />
                 </div>
                 <br>
 
                 <!-- Negotiable -->
                 <div>
-                    <label for="negotiable">Negotiable:</label><br>
-                    <input type="checkbox" name="negotiable" id="negotiable" value="1">
-                </div>
-                <br>
-
-                <!-- Featured -->
-                <div>
-                    <label for="featured">Featured:</label><br>
-                    <input type="checkbox" name="featured" id="featured" value="1">
+                    <x-toggle label="Negotiable" wire:model="item2" right hint="Is negotiable?" class="toggle-primary"
+                        right />
                 </div>
                 <br>
 
                 <!-- Condition -->
                 <div>
-                    <label for="condition">Condition:</label><br>
-                    <input type="text" name="condition" id="condition" required>
+                    <label for="condition">Condition:</label>*<br>
+                    <select name="condition" id="condition" class="py-4 px-3 w-full bg-[#e8e8e8] rounded-lg">
+                        <option value="">Select Condition</option>
+                        <option value="new">New</option>
+                        <option value="used">Used</option>
+                    </select>
                 </div>
                 <br>
 
                 <!-- Images -->
                 <div>
-                    <label for="images">Images:</label><br>
-                    <input type="file" name="images" id="images" multiple>
+                    <label for="images">Ad Images:</label><br>
+                    @if ($images) 
+                    <img src="{{ $photo->temporaryUrl() }}">
+                @endif
+                    <input type="file" class="py-3 px-3 rounded-lg bg-gray-100 w-full" name="images" id="images"
+                        multiple>
+                        @error('images') <span class="error">{{ $message }}</span> @enderror
+
                 </div>
                 <br>
-
-                <!-- Published -->
-                <div>
-                    <label for="published">Published:</label><br>
-                    <input type="checkbox" name="published" id="published" value="1">
-                </div>
-                <br>
-
-                <button type="submit">Submit</button>
+                <x-button type="submit" label="Submit Ad" class="bg-primary text-white" />
             </form>
-
+            <p class="p-3 text-gray-400 font-normal">field * are required.</p>
+        </div>
+        <div>
         </div>
     </div>
 

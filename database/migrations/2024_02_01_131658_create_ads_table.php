@@ -24,9 +24,8 @@ return new class extends Migration
             $table->boolean('negotiable')->default(false);
             $table->boolean('featured')->default(false);
             $table->string('condition');
-            // $table->text('images')->nullable();
-            $table->boolean('published')->default(false);
-            $table->json('library')->nullable();
+            $table->text('images')->nullable();
+            $table->boolean('published')->default(false);            
 
 
             $table->timestamps();

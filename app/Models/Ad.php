@@ -12,6 +12,14 @@ class Ad extends Model
 {
     use HasFactory;
 
+    
+    protected $casts = [
+        'negotiable' => 'boolean',
+        'attachments' => 'array',
+        'library' => AsCollection::class,
+
+    ];
+
     protected $fillable = [
         'title',
         'slug', //add slug to fillable
@@ -24,6 +32,7 @@ class Ad extends Model
         'condition',
         'user_id',
         'library',
+        'images',
         'published'
     ];
 
@@ -33,12 +42,6 @@ class Ad extends Model
         'deleted_at'
     ];
 
-    protected $casts = [
-        'negotiable' => 'boolean',
-        'attachments' => 'array',
-        'library' => AsCollection::class,
-
-    ];
 
     //add slug when saving the data
     public static function boot()

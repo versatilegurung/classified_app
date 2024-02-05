@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Livewire\Frontend\Ad;
-
 use Livewire\Component;
+use Butschster\Head\Facades\Meta;
 
 class View extends Component
 {
@@ -15,6 +15,8 @@ class View extends Component
 
     public function render()
     {
+        Meta::prependTitle($this->ad->title);
+
         return view('livewire.frontend.ad.view');
     }
 }

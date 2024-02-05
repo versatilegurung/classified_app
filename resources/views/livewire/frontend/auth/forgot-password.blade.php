@@ -1,7 +1,7 @@
 <div>
     {{-- forgot password form  --}}
-    <div class="flex flex-cols-2 h-[60vh] w-full md:w-2/3 mx-auto items-center justify-center px-10">
-        <div class="bg-white shadow-lg rounded-2xl p-10 w-full">
+    <div class="container mx-auto py-0 md:py-10">
+        <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">    
             <h2 class="font-black text-primary text-2xl text-center mb-10">Forgot Password</h2>
             <form wire:submit.prevent="forgotPassword">
                 <div class="mb-8">

@@ -1,7 +1,7 @@
 <div>
     {{-- main nav  --}}
     <div
-        class="fixed top-0 left-0 w-full bg-primary text-white p-4 flex justify-between items-center py-5 gap-5 z-[999]">
+        class="fixed top-0 left-0 w-full bg-primary text-white p-4 flex justify-between items-center py-5 gap-5 z-[10]">
         <div class="flex items-center gap-3 px-3">
             <label for="my-drawer" class="cursor-pointer">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -11,7 +11,7 @@
                 </svg>
             </label>
             <a href="{{ route('home') }}" class="text-lg md:text-2xl font-bold text-white tracking-tight">
-                {{ env('APP_NAME') }}
+                {{ env('APP_NAME') }} <p>{{__("welcome")}}</p>
             </a>
         </div>
 
@@ -61,6 +61,8 @@
                 @endif
             </div>
         </div>
+
+        @livewire('frontend.language-toggle')
 
     </div>
     {{-- main nav  --}}

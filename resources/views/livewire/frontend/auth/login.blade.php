@@ -1,6 +1,8 @@
     <div>
-        <div class="flex flex-cols h-[100vh] w-full md:w-1/3 mx-auto items-center justify-center px-10">
-            <div class="bg-white shadow-lg rounded-2xl p-10 w-full">
+        <div class="container mx-auto py-0 md:py-10">
+            <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">
+        {{-- <div class="flex flex-cols h-[100vh] w-full md:w-1/3 mx-auto items-center justify-center px-10">
+            <div class="bg-white shadow-lg rounded-2xl p-10 w-full"> --}}
                 <h2 class="font-black text-primary text-2xl text-center">Login</h2>
 
                 <form wire:submit.prevent="login">
