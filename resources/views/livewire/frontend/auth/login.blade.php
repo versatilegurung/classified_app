@@ -1,28 +1,17 @@
     <div>
         <div class="container mx-auto py-0 md:py-10">
-            <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">
-                {{-- <div class="flex flex-cols h-[100vh] w-full md:w-1/3 mx-auto items-center justify-center px-10">
-            <div class="bg-white shadow-lg rounded-2xl p-10 w-full"> --}}
-                <h2 class="font-black text-primary text-2xl text-center">{{ __('login') }}</h2>
+            <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">                
+                <h2 class="font-black text-primary text-2xl py-7 mb-5">{{ __('login') }}</h2>
 
-                <x-form wire:submit="login">
-                    {{-- Full error bag --}}
+                <x-form wire:submit.prevent="login">
+                    {{-- email--}}
                     <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" />
-                    <div>
-                        @error('email')
-                            <span class="text-error">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    {{-- Notice `omit-error` --}}
+                    {{-- password--}}
                     <x-input type="password" label="{{ __('password') }}" wire:model="password"
                         placeholder="{{ __('password') }}" />
-                    <div>
-                        @error('email')
-                            <span class="text-error">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    
                     <x-slot:actions>
-                        <x-button label="{{ __('login') }}" class="btn-primary text-white w-full" type="submit" />
+                        <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full" type="submit" />
                     </x-slot:actions>
                 </x-form>
                 {{-- social logins  --}}

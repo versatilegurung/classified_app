@@ -2,11 +2,8 @@
     {{-- register form --}}
     <div class="container mx-auto py-0 md:py-10">
         <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">
-            {{-- <div class="flex flex-cols-2 h-[100vh] w-full md:w-2/3 mx-auto items-center justify-center px-10">
-        <div class="w-full py-10  bg-white rounded-2xl p-10"> --}}
+    
             <h3 class="font-bold text-2xl md:text-3xl text-primary mt-5 mb-3">{{ __('register') }}</h3>
-
-
             <x-form wire:submit.prevent="register" class="py-5 flex gap-3">
                 {{-- Full error bag --}}
                 <x-input label="{{ __('name') }}" type="name" wire:model="name"
@@ -22,13 +19,12 @@
                     placeholder="{{ __('confirm-password') }}" />
 
                 {{-- //message  --}}
-                <div>
                     @if (session()->has('message'))
-                        <div class="text-success">
+                        <div class="text-success text-sm">
                             {{ session('message') }}
                         </div>
                     @endif
-                </div>
+                
                 <x-slot:actions>
                     <x-button label="{{ __('register') }}" class="btn-primary text-white w-full" type="submit" />
                 </x-slot:actions>

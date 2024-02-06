@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Livewire\Frontend\Auth\Register;
 use App\Livewire\Frontend\Account\Profile;
 use App\Livewire\Frontend\Ads\LocationMap;
+use App\Livewire\Frontend\Account\Dashboard;
 use App\Livewire\Frontend\Auth\ForgotPassword;
 
 /*
@@ -36,7 +37,20 @@ Route::get('/register', Register::class)->name('register');
 Route::get('/login', Login::class)->name('login');
 Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 
-Route::get('/account/profile', Profile::class)->name('account.profile');
+
+// only authenticated user can get into this route**
+Route::middleware(['auth'])->group(function () {
+    //user account route
+    Route::get('/account/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/post-ad', PostAd::class)->name('post.ad');
+
+    //log out route
+    Route::get('/logout', function () {
+        Session::flush();
+        return redirect(route('home'));
+    })->name('logout');
+});
+
 
 //ads route
 Route::get('/ad/{slug}', View::class)->name('ad.show');
