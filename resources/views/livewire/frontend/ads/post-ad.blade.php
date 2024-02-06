@@ -36,8 +36,8 @@
 @endpush
 <div>
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <div class="py-10">
-        <div class="flex flex-col gap-5 bg-white py-10 px-10 mt-20 rounded-xl w-[90%] md:w-2/5 mx-auto">
+    <div class="py-0 md:py-10">
+        <div class="flex flex-col gap-2 bg-white py-10 px-4 md:px-8 mt-20 rounded-xl md:w-2/5 mx-auto">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ __('post.ad') }}</h3>
 
             <x-form wire:submit.prevent="save">
@@ -45,7 +45,7 @@
                 @php
                     $categories = App\Models\Category::all();
                 @endphp
-                <label for="category_id" class="text-secondary text-sm">{{ __('category') }}*</label>
+                <label for="category" class="text-secondary text-sm">{{ __('category') }}*</label>
                 <x-select :options="$categories" placeholder="{{ __('select.category') }}" placeholder-value="0"
                     {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('select.one') }}" wire:model="category_id" class=" text-primary">
                     @foreach ($categories as $category)

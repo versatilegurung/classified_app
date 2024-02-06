@@ -18,7 +18,7 @@ class AdFactory extends Factory
      */
     public function definition(): array
     {
-        $imagePath = $this->faker->image(storage_path('app/public/ad_images'), 640, 480, 'chitwanbuyandsell', false);
+        $imagePath = $this->faker->image(storage_path('app/public/ad_images'), 200, 200, 'chitwanbuyandsell', true);
 
 
         return [
@@ -31,7 +31,7 @@ class AdFactory extends Factory
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,
             'condition' => $this->faker->randomElement(['New', 'Used']),
-            'library' =>  $imagePath,
+            'images' =>  $imagePath,
             'published' => $this->faker->boolean,
         ];
     }

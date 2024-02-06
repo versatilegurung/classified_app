@@ -30,14 +30,14 @@ class PostAd extends Component
 
     protected $rules = [
         'title' => 'required|min:3|max:120',
-        'description' => 'required|min:20|max:500',
+        'description' => 'required|min:5|max:500',
         'price' => 'required|numeric|min:1|max:1000000',
         'category_id' => 'required',
         'images' => 'array|required|min:1|max:5',
         'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
         'negotiable' => 'required',
         'selectedCondition' => 'required',
-        'location' => 'required'
+        'location' => 'min:3|max:120'
     ];
 
 
@@ -45,7 +45,24 @@ class PostAd extends Component
     public function save()
     {
         $this->validate();
-        dd($this->validate());
+        // dd($this->validate());
+
+        $ad = Ad::create([
+            'title' => $this->title,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category_id' => $this->category_id,
+            'negotiable' => $this->negotiable,
+            'condition' => $this->selectedCondition,
+            'location' => $this->location,
+            'user_id' => auth()->id()
+        ]);
+
+        foreach ($this->images as $image) {
+            $ad->addMedia($image->getRealPath())->toMediaCollection('ad_images');
+        }
+
+        dd('success.');
     }
 
     public function mount()

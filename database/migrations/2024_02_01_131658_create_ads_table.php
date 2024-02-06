@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id')->nullable();
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->decimal('price')->nullable();
             $table->boolean('negotiable')->default(false);
             $table->boolean('featured')->default(false);
