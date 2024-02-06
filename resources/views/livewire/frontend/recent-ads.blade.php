@@ -10,7 +10,7 @@
                 @foreach ($ads as $item)
                     <div class="flex gap-4 items-center">
                         <div class="w-[160px0 bg-secondary">
-                            <img src="./storage/ad_images/{{ $item->images }}" alt="{{ $item->title }}"
+                            <img src="./storage/ad_images/{{ $adThumbImage }}" alt="{{ $item->title }}"
                                 class="object-cover h-[160px] w-[160px] rounded-md">
                         </div>
 

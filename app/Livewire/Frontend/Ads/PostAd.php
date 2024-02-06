@@ -3,8 +3,10 @@
 namespace App\Livewire\Frontend\Ads;
 
 use App\Models\Ad;
-use Livewire\Component;
+use Carbon\Carbon;
 
+use App\Models\AdImage;
+use Livewire\Component;
 use App\Models\Category;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
@@ -45,8 +47,8 @@ class PostAd extends Component
     public function save()
     {
         $this->validate();
-        // dd($this->validate());
 
+        // $uniqueID = Carbon::now()->timestamp. uniqid();
         $ad = Ad::create([
             'title' => $this->title,
             'description' => $this->description,
@@ -55,12 +57,15 @@ class PostAd extends Component
             'negotiable' => $this->negotiable,
             'condition' => $this->selectedCondition,
             'location' => $this->location,
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
-
         foreach ($this->images as $image) {
-            $ad->addMedia($image->getRealPath())->toMediaCollection('ad_images');
+            $ad_image = new AdImage();
+            $ad_image->ad_id = $ad->id;
+            $ad_image->image = $image->store('ad_images', 'public');
+            $ad_image->save();
         }
+
 
         dd('success.');
     }

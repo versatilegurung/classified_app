@@ -80,8 +80,7 @@
 
                 <!-- Images -->
                 <label for="photo" class="text-sm mt-2 text-secondary">{{ __('upload.photos') }}</label>
-                <x-file name="images" wire:model="images" hint="{{ __('hint.uploadimages') }} [jpg,jpeg,png]"
-                    multiple />
+                <x-file wire:model="images" hint="{{ __('hint.uploadimages') }} [jpg,jpeg,png]" multiple />
                 <!-- Images -->
 
 
