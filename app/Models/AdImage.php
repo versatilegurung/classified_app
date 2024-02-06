@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AdImage extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['ad_id', 'image'];
+
+    protected $table = 'ad_images';
+
+    public function ad()
+    {
+        return $this->belongsTo(Ad::class);
+    }
 }

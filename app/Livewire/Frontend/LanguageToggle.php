@@ -7,16 +7,20 @@ use Illuminate\Support\Facades\App;
 
 class LanguageToggle extends Component
 {
-    public $supportedLocales = ['en', 'ne']; // english and nepali
+    public $currentLanguage;
 
-    public function toggleLanguage($locale)
+    public function mount()
     {
-        if (in_array($locale, $this->supportedLocales)) {
-            App::setLocale($locale);
-            session()->put('locale', $locale);
-            $this->redirect(route('home')); // Adjust the route name or URL as needed
-        }
+        $this->currentLanguage = App::currentLocale();
     }
+
+    public function toggleLanguage()
+    {
+        $newLanguage = $this->currentLanguage === 'en' ? 'ne' : 'en';
+        App::setLocale($newLanguage);
+        $this->currentLanguage = $newLanguage;
+    }
+
 
     public function render()
     {

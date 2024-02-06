@@ -2,7 +2,9 @@
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="container mx-auto py-0 md:py-10">
         <div class="w-full bg-white px-4 py-5 md:mt-16">
-            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">Recent Ads</h3>
+            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
+                {{ __('recent.ads') }}
+            </h3>
             <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)

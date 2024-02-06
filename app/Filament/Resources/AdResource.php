@@ -52,13 +52,19 @@ class AdResource extends Resource
                     ->prefix('$'),
                 Forms\Components\Toggle::make('negotiable')
                     ->required(),
-                Forms\Components\TextInput::make('condition')
-                    ->required()
-                    ->maxLength(255),
+
+                //condition new or used
+                Forms\Components\Select::make('condition')
+                    ->options([
+                        'new' => 'New',
+                        'used' => 'Used',
+                    ])
+                    ->required(),
+
                 Forms\Components\TextInput::make('location')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('images')
+                Forms\Components\FileUpload::make('library')
                     ->directory('ad_images')
                     ->image()
                     ->multiple()
@@ -67,6 +73,11 @@ class AdResource extends Resource
                         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                             ->prepend('chitwan-buy-and-sell-'),
                     ),
+                //get user list
+                Forms\Components\Select::make('user_id')
+                    ->label('User')
+                    ->options(\App\Models\User::all()->pluck('name', 'id'))
+                    ->required(),
             ]);
     }
 

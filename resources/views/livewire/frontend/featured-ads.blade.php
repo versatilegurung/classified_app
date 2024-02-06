@@ -8,7 +8,9 @@
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="container mx-auto py-0 md:py-10">
         <div class="w-full bg-white px-4 py-5 md:mt-16">
-            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">Featured Ads</h3>
+            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
+                {{ __('featured.ads') }}
+            </h3>
             {{-- slider  --}}
             <div class="flex">
                 <div class="owl-carousel owl-theme">
@@ -50,7 +52,13 @@
 
                                 </div>
                                 <div class=" text-end">
-                                    <p class="text-primary font-bold text-sm">रु. {{ $item->price }}</p>
+                                    <p class="text-primary font-bold text-sm">रु. {{ $item->price }}<br>
+                                        {{-- if negotiable true show negotiable  --}}
+                                        @if ($item->negotiable)
+                                            <span class="text-[10px] text-red-800 font-normal">Negotiable</span>
+                                        @endif
+
+                                    </p>
                                 </div>
                             </div>
                             <p class="text-xs text-gray-800 bg-gray-100 py-1 w-full text-center">

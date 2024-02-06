@@ -9,6 +9,21 @@
 
     @vite(['resources/css/app.css', 'resources/css/custom-styles.css', 'resources/js/app.js'])
     @stack('styles')
+    <!-- Dynamic font selection based on language -->
+    @if (app()->getLocale() == 'en')
+        <style>
+            body {
+                font-family: "Poppins", sans-serif;
+                background-color: rgb(226, 226, 226);
+            }
+        </style>
+    @elseif(app()->getLocale() == 'ne')
+        <style>
+            body {
+                font-family: 'YourJapaneseFont', sans-serif;
+            }
+        </style>
+    @endif
 
 </head>
 

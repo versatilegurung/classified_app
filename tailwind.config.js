@@ -8,28 +8,24 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'primary': '#3d0b37',
-        'secondary': '#63264a',
-        'cream': '#ced3dc',
-        'cbs-gray': '#f2f2f2',
-      },
     },
   },
   daisyui: {
     themes: [
       {
         mytheme: {
-          "primary": "#3d0b37",
-          "secondary": "#63264a",
-          "accent": "#facc15",
-          "neutral": "#02141b",
-          "base-100": "#e8e8e8",
-          "info": "#4f46e5",
-          "success": "#19b34a",
-          "warning": "#d97706",
-          "error": "#dc2626",
+
+          "primary": "#3D0B37",
+          "secondary": "#63264A",
+          "accent": "#121826",
+          "neutral": "#F2F2F2",
+          "base-100": "#ffffff",
+          "info": "#4eb2ff",
+          "success": "#296637",
+          "warning": "#ffba15",
+          "error": "#fa043e",
         },
+
       },
     ],
   },

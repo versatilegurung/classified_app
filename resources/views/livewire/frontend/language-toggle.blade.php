@@ -1,8 +1,9 @@
 <div>
     {{-- Stop trying to control. --}}
     <div>
-        <a wire:click="toggleLanguage('en')" wire:key="en" class="cursor-pointer">English</a>
-        <span>|</span>
-        <a wire:click="toggleLanguage('ne')" wire:key="ne" class="cursor-pointer">नेपाली</a>
+
+        <button wire:click="toggleLanguage" class="cursor-pointer focus:outline-none">
+            {{ $currentLanguage === 'en' ? 'नेपाली' : 'English' }}
+        </button>
     </div>
 </div>

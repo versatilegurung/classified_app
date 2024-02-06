@@ -25,7 +25,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->string('condition');
             $table->text('images')->nullable();
-            $table->boolean('published')->default(false);            
+            $table->boolean('published')->default(false);
 
 
             $table->timestamps();

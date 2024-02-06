@@ -12,7 +12,8 @@ class Ad extends Model
 {
     use HasFactory;
 
-    
+    protected $table = 'ads';
+
     protected $casts = [
         'negotiable' => 'boolean',
         'attachments' => 'array',
@@ -32,7 +33,7 @@ class Ad extends Model
         'condition',
         'user_id',
         'library',
-        'images',
+        // 'images',
         'published'
     ];
 
@@ -63,5 +64,9 @@ class Ad extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function adImage()
+    {
+        return $this->hasMany(AdImage::class);
     }
 }

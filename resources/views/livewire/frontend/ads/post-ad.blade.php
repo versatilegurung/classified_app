@@ -37,104 +37,80 @@
 <div>
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <div class="py-10">
-        <div class="flex flex-col gap-4 bg-white py-10 px-10 mt-20 rounded-xl w-[90%] md:w-2/5 mx-auto">
-            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">Post Ad</h3>
-            {{-- <x-input label="Name" placeholder="Your name" icon="o-user" hint="Your full name" />
+        <div class="flex flex-col gap-5 bg-white py-10 px-10 mt-20 rounded-xl w-[90%] md:w-2/5 mx-auto">
+            <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ __('post.ad') }}</h3>
 
-            <x-input label="Right icon" wire:model="address" icon-right="o-map-pin" />
-
-            <x-input label="Password" wire:model="password" icon="o-eye" type="password" />
-
-            <x-input label="Name" wire:model="name" placeholder="Clearable field" clearable /> --}}
-
-            <form action="#" method="post">
-                @csrf
-
+            <x-form wire:submit.prevent="save">
                 <!-- Category ID -->
-                <div>
-                    @php
-                        $categories = App\Models\Category::all();
-                    @endphp
-                    {{-- <label for="category_id" class="text-primary">Category ID:</label><br> --}}
-                    <x-select :options="$categories" placeholder="Select a category" placeholder-value="0"
-                        {{-- Set a value for placeholder. Default is `null` --}} hint="Select category." wire:model="selectedUser2"
-                        class=" text-primary placeholder:text-gray-500">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </x-select>
-
-                </div>
-                <br>
+                @php
+                    $categories = App\Models\Category::all();
+                @endphp
+                <label for="category_id" class="text-secondary text-sm">{{ __('category') }}*</label>
+                <x-select :options="$categories" placeholder="{{ __('select.category') }}" placeholder-value="0"
+                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('select.one') }}" wire:model="category_id" class=" text-primary">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </x-select>
+                <!-- Category ID -->
 
                 <!-- Title -->
-                <div>
-                    <x-input name="title" placeholder="Ad Title" hint="Ad Title "
-                        class="placeholder:text-gray-500 text-primary" />
-
-                </div>
-                <br>
-
+                <label for="title" class="text-secondary text-sm">{{ __('ad.title') }}</label>
+                <x-input wire:model="title" placeholder="{{ __('enter-ad-title') }}" hint="{{ __('ad.title') }}"
+                    class="text-primary" />
+                <!-- Title -->
 
                 <!-- Description -->
-                <div>
-                    {{-- <textarea id="descriptionTiny"></textarea> --}}
-                    <label for="description" class="text-sm">Ad Description</label>
-                    <x-textarea wire:model="bio" placeholder="Your story ..." hint="Max 1000 chars" rows="5"
-                        inline />
-                </div>
-                <br>
+                <label for="description" class="text-sm mt-2 text-secondary">{{ __('ad.description') }}</label>
+                <x-textarea wire:model="description" placeholder="{{ __('enter-ad-description') }} ..."
+                    hint="{{ __('max-characters') }}" rows="5" inline />
+                <!-- Description -->
+
                 <!-- Location -->
-                <div>
-                    <input type="text" name="location" id="location" required>
-                    <x-input name="title" placeholder="Location" hint="Location "
-                        class="placeholder:text-gray-500 text-primary" />
-                </div>
-                <br>
+                <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>
+                <x-input wire:model="location" placeholder="{{ __('enter-ad-location') }}"
+                    hint="{{ __('ad.location') }} " class="text-primary mb-2" />
+                <!-- Location -->
 
                 <!-- Price -->
-                <div>
-                    {{-- <input type="text" name="price" id="price"> --}}
-                    <x-input prefix="NRS" wire:model="" money inline class="text-primary" hint="price" />
-                </div>
-                <br>
-
-                <!-- Negotiable -->
-                <div>
-                    <x-toggle label="Negotiable" wire:model="item2" right hint="Is negotiable?" class="toggle-primary"
-                        right />
-                </div>
-                <br>
-
-                <!-- Condition -->
-                <div>
-                    <label for="condition">Condition:</label>*<br>
-                    <select name="condition" id="condition" class="py-4 px-3 w-full bg-[#e8e8e8] rounded-lg">
-                        <option value="">Select Condition</option>
-                        <option value="new">New</option>
-                        <option value="used">Used</option>
-                    </select>
-                </div>
-                <br>
+                <label for="price" class="text-sm mt-2 text-secondary">{{ __('price') }}*</label>
+                <x-input prefix="{{ __('ad.currency') }}" wire:model="price" class="text-primary"
+                    hint="{{ __('ad.price') }}" />
+                <!-- Price -->
 
                 <!-- Images -->
-                <div>
-                    <label for="images">Ad Images:</label><br>
-                    @if ($images) 
-                    <img src="{{ $photo->temporaryUrl() }}">
-                @endif
-                    <input type="file" class="py-3 px-3 rounded-lg bg-gray-100 w-full" name="images" id="images"
-                        multiple>
-                        @error('images') <span class="error">{{ $message }}</span> @enderror
+                <label for="photo" class="text-sm mt-2 text-secondary">{{ __('upload.photos') }}</label>
+                <x-file name="images" wire:model="images" hint="{{ __('hint.uploadimages') }} [jpg,jpeg,png]"
+                    multiple />
+                <!-- Images -->
 
-                </div>
-                <br>
-                <x-button type="submit" label="Submit Ad" class="bg-primary text-white" />
-            </form>
+
+                <!-- Negotiable -->
+                <label for="negotiable" class="text-sm mt-2 text-secondary">{{ __('negotiable') }}</label>
+                <x-toggle wire:model="negotiable" left hint="{{ __('is.negotiable') }}" class="toggle-primary" left />
+                <!-- Negotiable -->
+
+                <!-- Condition -->
+                <label for="condition" class="text-sm mt-2 text-secondary">{{ __('condition') }}*</label>
+                @php
+                    $conditions = [['custom_key' => 'new', 'other_name' => 'New'], ['custom_key' => 'used', 'other_name' => 'Used']];
+                @endphp
+                <x-select :options="$conditions" option-value="custom_key" option-label="other_name"
+                    placeholder="{{ __('select.condition') }}" placeholder-value="0" wire:model="selectedCondition"
+                    hint="{{ __('hint.condition') }}" />
+                <!-- Condition -->
+
+                <x-slot:actions>
+                    {{-- <x-button label="Cancel" /> --}}
+                    {{-- <x-button label="Click me!" class="btn-primary" type="submit" spinner="save" /> --}}
+                    <x-button type="submit" label="{{ __('submit.ad') }}" class="bg-primary text-white" />
+
+                </x-slot:actions>
+            </x-form>
+
             <p class="p-3 text-gray-400 font-normal">field * are required.</p>
         </div>
         <div>
         </div>
     </div>
-
 </div>

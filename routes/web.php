@@ -2,11 +2,14 @@
 
 use App\Livewire\Frontend\Home;
 use App\Livewire\Frontend\Ad\View;
+use Illuminate\Support\Facades\App;
+use App\Livewire\Frontend\Ads\PostAd;
 use App\Livewire\Frontend\Auth\Login;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Livewire\Frontend\Auth\Register;
 use App\Livewire\Frontend\Account\Profile;
-use App\Livewire\Frontend\Ads\PostAd;
+use App\Livewire\Frontend\Ads\LocationMap;
 use App\Livewire\Frontend\Auth\ForgotPassword;
 
 /*
@@ -23,6 +26,9 @@ use App\Livewire\Frontend\Auth\ForgotPassword;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/location', LocationMap::class);
+
 
 
 Route::get('/', Home::class)->name('home');

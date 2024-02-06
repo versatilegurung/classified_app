@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Header extends Component
 {
+    public $isOpen = false;
+
+    public function toggleDropdown()
+    {
+        $this->isOpen = !$this->isOpen;
+    }
+
     public function checkAuth()
     {
         if (Auth::check()) {

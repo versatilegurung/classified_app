@@ -18,16 +18,34 @@ class PostAd extends Component
 
     use WithFileUploads, WithMediaSync;
 
-    #[Validate('image|max:1024')]
-    public $images = [];
-    
     public $categories;
+    public $title;
+    public $description;
+    public $price;
+    public $category_id;
+    public $negotiable;
+    public $selectedCondition;
+    public $location;
+    public array $images = [];
+
+    protected $rules = [
+        'title' => 'required|min:3|max:120',
+        'description' => 'required|min:20|max:500',
+        'price' => 'required|numeric|min:1|max:1000000',
+        'category_id' => 'required',
+        'images' => 'array|required|min:1|max:5',
+        'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
+        'negotiable' => 'required',
+        'selectedCondition' => 'required',
+        'location' => 'required'
+    ];
+
+
 
     public function save()
     {
-        foreach ($this->images as $photo) {
-            $photo->store(path: 'ad_photos');
-        }
+        $this->validate();
+        dd($this->validate());
     }
 
     public function mount()
