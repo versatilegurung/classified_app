@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Ad;
 use App\Models\User;
+use App\Models\AdImage;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,13 +26,13 @@ class AdFactory extends Factory
             'user_id' => User::factory(),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'category_id' => Category::factory(),
+            'category_id' => $this->faker->numberBetween(11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23),
             'location' => $this->faker->city,
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,
-            'condition' => $this->faker->randomElement(['new', 'used']),            
-            'published' => $this->faker->boolean,
+            'condition' => $this->faker->randomElement(['new', 'used']),
+            'published' => $this->faker->boolean
         ];
     }
 }

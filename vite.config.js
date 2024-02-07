@@ -9,6 +9,6 @@ export default defineConfig({
         }),
     ],
     server: {
-        // host: '172.16.173.16', // Replace with your actual local IP address
+        host: '172.16.173.16', // Replace with your actual local IP address
     },
 });

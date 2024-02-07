@@ -12,19 +12,14 @@ class RecentAds extends Component
 
     public function mount()
     {
-        $this->ads = \App\Models\Ad::orderBy('id', 'desc')->where('published', true)->limit(10)->get();  
-        $adId = $this->ads->first()->id;
-        // dd($adId);             
-
-        
+        $this->ads = \App\Models\Ad::orderBy('id', 'desc')->where('published', true)->limit(10)->get();
     }
     public function render()
     {
         return view(
             'livewire.frontend.recent-ads',
             [
-                'ads' => $this->ads,
-                'adId' => $this->adId
+                'ads' => $this->ads
             ]
         );
     }

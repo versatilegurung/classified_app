@@ -30,8 +30,6 @@ use App\Livewire\Frontend\Auth\ForgotPassword;
 
 Route::get('/location', LocationMap::class);
 
-
-
 Route::get('/', Home::class)->name('home');
 Route::get('/register', Register::class)->name('register');
 Route::get('/login', Login::class)->name('login');
@@ -51,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('logout');
 });
 
+//ads by category
+Route::get('/category/{slug}', \App\Livewire\Frontend\Ads\CategoryAds::class)->name('ads.by.category');
 
 //ads route
 Route::get('/ad/{slug}', View::class)->name('ad.show');

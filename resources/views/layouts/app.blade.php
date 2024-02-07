@@ -9,25 +9,10 @@
 
     {!! Meta::toHtml() !!}
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
     @stack('styles')
-    <!-- Dynamic font selection based on language -->
-    @if (app()->getLocale() == 'en')
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700&display=swap");      
-            body {
-                font-family: "Poppins", sans-serif;
-                background-color: rgb(226, 226, 226);
-            }
-        </style>
-    @elseif(app()->getLocale() == 'ne')
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Rhodium+Libre&display=swap');
-            body {
-                font-family: 'Rhodium Libre', serif;
-            }
-        </style>
-    @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
 
 </head>
 

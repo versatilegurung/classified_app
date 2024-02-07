@@ -1,9 +1,8 @@
 {
-    "chitwanbuyandsell": "Classified App",
-    "header.welcome": "Welcome",
-    "header.logout": "Logout",
-    "header.dashboard": "Dashboard",
-    "header.postad": "Post Ad",
+    "chitwanbuyandsell": "Chitwan Buy & Sell",
+    "welcome": "Welcome",
+    "dashboard": "Dashboard",
+    "postad": "Post Ad",
     "header.myads": "My Ads",
     "header.myprofile": "My Profile",
     "header.language": "Language",

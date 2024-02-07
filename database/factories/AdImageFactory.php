@@ -20,7 +20,8 @@ class AdImageFactory extends Factory
     public function definition(): array
     {
 
-        $imagePath = $this->faker->image(storage_path("app/public/ad_images"), 200, 200, 'chitwanbuyandsell', false);
+        $image = $this->faker->image(storage_path("app/public/ad_images"), 200, 200, 'chitwanbuyandsell', false);
+        $imagePath = 'ad_images/' . $image;
 
         return [
             //

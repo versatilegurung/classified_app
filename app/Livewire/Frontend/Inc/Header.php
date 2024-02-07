@@ -9,6 +9,9 @@ class Header extends Component
 {
     public $isOpen = false;
 
+    public bool $myModal = false;
+
+
     public function toggleDropdown()
     {
         $this->isOpen = !$this->isOpen;

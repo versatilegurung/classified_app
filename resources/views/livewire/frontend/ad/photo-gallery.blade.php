@@ -4,17 +4,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
         referrerpolicy="no-referrer" />
 @endpush
-<div>   
-   
+<div>
+
     <div class="owl-carousel owl-theme">
-        @foreach ($images as $item)
-        <!-- Item 1 -->
-        <div class="mb-3">
-            <img src="../storage/{{$item->image}}" alt="{{__('chitwanbuyandsell')}}" class="h-[300px] w-full object-cover rounded-lg">
-        </div>                
-        @endforeach
+
+        @if ($images->isEmpty())
+            <div class="py-2">
+                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                    alt="{{ __('chitwanbuyandsell') }}" class="h-[300px] w-full object-cover rounded-lg">
+            </div>
+        @else
+            @foreach ($images as $item)
+                <!-- Item 1 -->
+                <div class="mb-3">
+                    <img src="../storage/{{ $item->image }}" alt="{{ __('chitwanbuyandsell') }}"
+                        class="h-[300px] w-full object-cover rounded-lg">
+                </div>
+            @endforeach
+        @endif
     </div>
-    
+
 </div>
 
 @push('scripts')
@@ -26,8 +35,8 @@
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            autoplay: false,            
-            items: 1,           
+            autoplay: false,
+            items: 1,
         })
     </script>
 @endpush

@@ -30,6 +30,8 @@ class PostAd extends Component
     public $location;
     public $images = [];
 
+
+
     protected $rules = [
         'title' => 'required|min:3|max:120',
         'description' => 'required|min:5|max:500',
@@ -42,37 +44,55 @@ class PostAd extends Component
         'location' => 'min:3|max:120'
     ];
 
+    public function postAd()
+    {
+        //show modal if user is not logged in
+        if (!auth()->check()) {
+            $this->emit('showLoginModal');
+        } else {
+            $this->validate();
+            $this->save();
+        }
+    }
 
 
     public function save()
     {
-        $this->validate();
 
-        // $uniqueID = Carbon::now()->timestamp. uniqid();
-        $ad = Ad::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'price' => $this->price,
-            'category_id' => $this->category_id,
-            'negotiable' => $this->negotiable,
-            'condition' => $this->selectedCondition,
-            'location' => $this->location,
-            'user_id' => auth()->id(),
-        ]);
-        foreach ($this->images as $image) {
-            $ad_image = new AdImage();
-            $ad_image->ad_id = $ad->id;
+        $this->validate();        // put validated into a session
 
-            //rename file
-            $imageName = $ad->id . '_' . time() . '.' . $image->getClientOriginalExtension();
-            //upload image to ad_images folder in public disk
-            $ad_image->image = $image->store('ad_images', 'public');
-            
-            $ad_image->save();
+        //if user is not logged in save data to session and redirect to login page
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        } else {
+
+            $ad = Ad::create([
+                'title' => $this->title,
+                'description' => $this->description,
+                'price' => $this->price,
+                'category_id' => $this->category_id,
+                'negotiable' => $this->negotiable,
+                'condition' => $this->selectedCondition,
+                'location' => $this->location,
+                'user_id' => auth()->id(),
+            ]);
+
+            foreach ($this->images as $image) {
+                $ad_image = new AdImage();
+                $ad_image->ad_id = $ad->id;
+
+                //rename file
+                $imageName = $ad->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+                //upload image to ad_images folder in public disk
+                $ad_image->image = $image->store('ad_images', 'public');
+
+                $ad_image->save();
+            }
+
+            // $uniqueID = Carbon::now()->timestamp. uniqid();
+
+
         }
-
-
-        dd('success.');
     }
 
     public function mount()

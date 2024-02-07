@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
         // Role::create([
         //     'name' => 'User',
         // ]);
-        \App\Models\User::factory(1)->create();
+        // \App\Models\User::factory(1)->create();
+        // \App\Models\Ad::factory(1)->create();
+
         \App\Models\AdImage::factory(10)->create();
-        
     }
 }

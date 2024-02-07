@@ -31,10 +31,21 @@
 
         <div class="flex items-center">
             <div>
-                <a href="{{ route('post.ad') }}"
-                    class="bg-secondary py-2 px-3 rounded-md text-white text-sm hover:bg-white hover:text-primary mr-3">
-                    {{ __('header.postad') }}
-                </a>
+                {{-- <a href="{{ route('post.ad') }}"
+                    class="bg-secondary py-4 px-3 rounded-md text-white font-bold hover:bg-white hover:text-primary mr-3">
+                    {{ __('postad') }}
+                </a> --}}
+
+                @if (Auth::check())
+                    <a href="{{ route('post.ad') }}"
+                        class="bg-secondary py-3 px-3 rounded-md text-white font-normal hover:bg-white hover:text-primary mr-3">
+                        {{ __('postad') }}
+                    </a>
+                @else
+                    <x-button label="{{ __('postad') }}" class="btn-secondary mr-3" wire:click="$toggle('myModal')" />
+                @endif
+
+
             </div>
 
             <div>
@@ -83,4 +94,13 @@
     {{-- slide sheet menu drawer --}}
 
     {{-- main nav  --}}
+
+    {{-- Notice `wire:model`, no `id="xxx"` --}}
+    <x-modal wire:model="myModal">
+        Please login
+        <x-slot:actions>
+            <x-button label="Cancel" @click="$wire.myModal = false" />
+            <x-button label="Login" class="btn-primary" />
+        </x-slot:actions>
+    </x-modal>
 </div>

@@ -49,7 +49,7 @@ class AdResource extends Resource
 
                 Forms\Components\TextInput::make('price')
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix('NPR'),
                 Forms\Components\Toggle::make('negotiable')
                     ->required(),
 
@@ -64,7 +64,7 @@ class AdResource extends Resource
                 Forms\Components\TextInput::make('location')
                     ->required()
                     ->maxLength(255),
-                
+
                 //get user list
                 Forms\Components\Select::make('user_id')
                     ->label('User')
@@ -79,23 +79,22 @@ class AdResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('images')
-                    ->stacked(),               
+
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('location')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('NPR')
                     ->sortable(),
-                Tables\Columns\IconColumn::make('negotiable')
+                Tables\Columns\TextColumn::make('category.name')
+                    ->searchable(),
+                // Tables\Columns\TextColumn::make('condition')
+                //     ->searchable(),
+                Tables\Columns\IconColumn::make('published')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('condition')
+                Tables\Columns\TextColumn::make('user.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('published'),
-                Tables\Columns\TextColumn::make('user.name')                  
-                    ->searchable(),
-                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

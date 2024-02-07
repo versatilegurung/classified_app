@@ -8,16 +8,25 @@
             <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 ">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
-                    <div class="flex gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">            
+                    <div class="flex gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">
                         @php
-                            $adImages = App\Models\AdImage::where('ad_id', $item->id)->limit(1)->get();                          
+                            $adImages = App\Models\AdImage::where('ad_id', $item->id)
+                                ->limit(1)
+                                ->get();
                         @endphp
-                        @foreach ($adImages as $adImage)
+                        @if ($adImages->isEmpty())
                             <div class="w-[180px]">
-                                <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                    class="object-cover h-[150px] w-[180px] rounded-md">                                    
-                            </div>                           
-                        @endforeach
+                                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                                    alt="{{ $item->title }}" class="object-cover h-[150px] w-[180px] rounded-md">
+                            </div>
+                        @else
+                            @foreach ($adImages as $adImage)
+                                <div class="w-[180px]">
+                                    <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                        class="object-cover h-[150px] w-[180px] rounded-md">
+                                </div>
+                            @endforeach
+                        @endif
 
                         <div class="flex flex-col w-full">
                             <a href="{{ route('ad.show', $item->slug) }}">
@@ -56,7 +65,8 @@
                             </div>
 
                             <div class="grid grid-cols-2 gap-2 justify-between items-center py-2">
-                                <span class="text-primary font-bold  text-sm">{{__('ad.currency')}}. {{ $item->price }}</span>
+                                <span class="text-primary font-bold  text-sm">{{ __('ad.currency') }}.
+                                    {{ $item->price }}</span>
                                 <span>
                                     @if ($item->negotiable)
                                         <span class="text-red-800 text-[10px] font-normal">Negotiable</span>

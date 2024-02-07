@@ -8,7 +8,7 @@
             {{-- <div class="grid grid-cols-3 md:grid-cols-6 py-5 gap-5"> --}}
             <div class="flex flex-wrap gap-3 mb-5">
                 @foreach ($categories as $item)
-                    <a href="{{ $item->id }}">
+                    <a href="{{ route('ads.by.category', $item->slug) }}">
                         <div
                             class="bg-secondary hover:bg-primary cursor-pointer p-3 rounded-md flex gap-3 justify-between">
                             <div class="flex gap-3 items-center align-self-center text-white">
