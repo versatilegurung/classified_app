@@ -64,20 +64,14 @@ class AdResource extends Resource
                 Forms\Components\TextInput::make('location')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('library')
-                    ->directory('ad_images')
-                    ->image()
-                    ->multiple()
-                    ->required()
-                    ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                            ->prepend('chitwan-buy-and-sell-'),
-                    ),
+                
                 //get user list
                 Forms\Components\Select::make('user_id')
                     ->label('User')
                     ->options(\App\Models\User::all()->pluck('name', 'id'))
                     ->required(),
+
+                Forms\Components\Toggle::make('published'),
             ]);
     }
 
@@ -86,20 +80,11 @@ class AdResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('images')
-                    ->stacked(),
-                // Tables\Columns\TextColumn::make('user_id')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\TextColumn::make('category_id')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\TextColumn::make('sub_category_id')
-                //     ->numeric()
-                //     ->sortable(),
+                    ->stacked(),               
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('location')
-                //     ->searchable(),
+                Tables\Columns\TextColumn::make('location')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
@@ -107,6 +92,10 @@ class AdResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('condition')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('published'),
+                Tables\Columns\TextColumn::make('user.name')                  
+                    ->searchable(),
+                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -145,7 +134,7 @@ class AdResource extends Resource
     {
         return [
             'index' => Pages\ListAds::route('/'),
-            'create' => Pages\CreateAd::route('/create'),
+            // 'create' => Pages\CreateAd::route('/create'),
             'edit' => Pages\EditAd::route('/{record}/edit'),
         ];
     }

@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('condition');
             $table->text('images')->nullable();
             $table->boolean('published')->default(false);
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
 
 
             $table->timestamps();

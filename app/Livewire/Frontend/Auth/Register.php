@@ -14,6 +14,9 @@ class Register extends Component
 {
     public $name, $email, $password, $passwordConfirmation;
 
+    public $registrationSuccess = false;
+
+
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
@@ -30,14 +33,14 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        // $this->sendConfirmationEmail($user); // sends confirmation email to user.
         $this->reset(); // reset form fields
 
-        //how to send flash message from language file
+        event(new \App\Events\UserRegistered($user));
+
+        $this->registrationSuccess = true;
+        
         session()->flash('message', Lang::get('register_success'));
 
-        // session()->flash('message', trans('register_success'));
-        // Or redirect to another page
     }
 
 

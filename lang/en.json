@@ -1,5 +1,5 @@
 {
-    "chitwanbuyandsell": "Chitwan Buy & Sell",
+    "chitwanbuyandsell": "Classified App",
     "header.welcome": "Welcome",
     "header.logout": "Logout",
     "header.dashboard": "Dashboard",
@@ -8,14 +8,12 @@
     "header.myprofile": "My Profile",
     "header.language": "Language",
     "header.search": "Search",
-
     "login": "Login",
     "logout": "Logout",
     "register": "Register",
     "email": "Email",
     "password": "Password",
     "forgot-password": "Forgot Password",
-
     "name": "Name",
     "enter-your-name": "Enter your name",
     "enter-your-email": "Enter your email",
@@ -30,13 +28,10 @@
     "reset-link-sent": "Reset Link Sent",
     "reset-link-sent-message": "We have sent you an email with a link to reset your password.",
     "back-to-login": "Back to Login",
-
     "register_success": "You have successfully registered. Please check your email to verify your account.",
-
     "featured.ads": "Featured Ads",
     "categories": "Categories",
     "recent.ads": "Recent Ads",
-
     "post.ad": "Post Ad",
     "select.category": "Select Category",
     "category": "Category",
@@ -64,5 +59,6 @@
     "select.condition": "Select Condition",
     "condition": "Condition",
     "hint.condition": "Select the condition of your item",
-    "submit.ad": "Submit Ad"
+    "submit.ad": "Submit Ad",
+    "posted.at": "Posted at"
 }

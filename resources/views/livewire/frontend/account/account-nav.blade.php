@@ -13,4 +13,19 @@
 
             </div>
     </div>
+
+
+     {{-- NAVBAR mobile only --}}
+     <x-nav sticky class="lg:hidden">
+        <x-slot:brand class="flex gap-2 items-center">
+            <x-icon name="o-square-3-stack-3d" class="text-primary" />
+            <div>App</div>
+        </x-slot:brand>
+        <x-slot:actions>
+            <label for="main-drawer" class="lg:hidden mr-3">
+                <x-icon name="o-bars-3" class="cursor-pointer" />
+            </label>
+        </x-slot:actions>
+    </x-nav>
+ 
 </div>

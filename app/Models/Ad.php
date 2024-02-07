@@ -32,7 +32,7 @@ class Ad extends Model
         'featured',
         'condition',
         'user_id',
-        'library',
+        // 'library',
         // 'images',
         'published'
     ];
@@ -65,8 +65,9 @@ class Ad extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     public function adImage()
     {
-        return $this->hasMany(AdImage::class);
+        return $this->hasMany(AdImage::class)->latest();
     }
 }

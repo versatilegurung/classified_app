@@ -17,6 +17,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            
+            \App\Events\UserRegistered::class => [
+                \App\Listeners\SendUserRegisterNotification::class,
+            ],
+            
         ],
     ];
 

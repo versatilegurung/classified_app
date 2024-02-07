@@ -1,6 +1,6 @@
 <div>
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 h-[40vh]">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto flex flex-wrap">
             <!-- Website Description -->
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">

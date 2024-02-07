@@ -11,7 +11,7 @@ class FeaturedAds extends Component
 
     public function mount()
     {
-        $this->ads = \App\Models\Ad::where('featured', true)->inRandomOrder()->limit(8)->get();
+        $this->ads = \App\Models\Ad::where('featured', true)->where('published', true)->inRandomOrder()->limit(8)->get();
     }
     public function render()
     {

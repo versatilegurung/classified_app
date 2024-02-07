@@ -28,7 +28,7 @@ class PostAd extends Component
     public $negotiable;
     public $selectedCondition;
     public $location;
-    public array $images = [];
+    public $images = [];
 
     protected $rules = [
         'title' => 'required|min:3|max:120',
@@ -62,7 +62,12 @@ class PostAd extends Component
         foreach ($this->images as $image) {
             $ad_image = new AdImage();
             $ad_image->ad_id = $ad->id;
+
+            //rename file
+            $imageName = $ad->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+            //upload image to ad_images folder in public disk
             $ad_image->image = $image->store('ad_images', 'public');
+            
             $ad_image->save();
         }
 

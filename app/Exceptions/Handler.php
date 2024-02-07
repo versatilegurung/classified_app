@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use layout;
 use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -27,4 +28,31 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+    function render($request, Throwable $exception)
+{
+        if ($this->isHttpException($exception)) {
+            if ($exception->getStatusCode() == 400) {
+                return response()->view('errors.400', [], 400);
+            }
+            if ($exception->getStatusCode() == 401) {
+                return response()->view('errors.401', [], 401);
+            }
+            if ($exception->getStatusCode() == 404) {
+                return response()->view('errors.404', [], 404);
+            }
+            if ($exception->getStatusCode() == 502) {
+                return response()->view('errors.502', [], 502);
+            }
+            if ($exception->getStatusCode() == 503) {
+                return response()->view('errors.503', [], 503);
+            }
+            if ($exception->getStatusCode() == 504) {
+                return response()->view('errors.504', [], 504);
+            }
+
+        }
+        return parent::render($request, $exception);
+     }
 }

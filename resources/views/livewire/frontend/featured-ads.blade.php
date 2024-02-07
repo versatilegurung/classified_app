@@ -15,10 +15,21 @@
             <div class="flex">
                 <div class="owl-carousel owl-theme">
                     @foreach ($ads as $item)
-                        <div class="item">
+                        <div class="item hover:bg-gray-50 rounded-xl p-3">
                             <a href="{{ route('ad.show', $item->slug) }}">
-                                <img src="/storage/ad_images/{{ $item->library }}" alt="{{ $item->title }}"
-                                    class="object-cover h-[200px] md:h-[200px] rounded-md">
+                                @php
+                                    $adImages = App\Models\AdImage::where('ad_id', $item->id)->limit(1)->get();                          
+                                @endphp
+                                @foreach ($adImages as $adImage)
+                                    <div class="py-2">
+                                        <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                            class="object-cover h-[200px] w-full rounded-md">                                    
+                                    </div>                           
+                                @endforeach
+
+                            
+                                {{-- <img src="/storage/ad_images/{{ $item->library }}" alt="{{ $item->title }}"
+                                    class="object-cover h-[200px] md:h-[200px] rounded-md"> --}}
 
                                 <p class="text-primary font-bold text-sm py-3 hover:underline">
                                     {{ Str::limit($item->title, 40, '...') }}</p>
@@ -52,7 +63,7 @@
 
                                 </div>
                                 <div class=" text-end">
-                                    <p class="text-primary font-bold text-sm">रु. {{ $item->price }}<br>
+                                    <p class="text-primary font-bold text-sm">{{__('ad.currency')}}. {{ $item->price }}<br>
                                         {{-- if negotiable true show negotiable  --}}
                                         @if ($item->negotiable)
                                             <span class="text-[10px] text-red-800 font-normal">Negotiable</span>

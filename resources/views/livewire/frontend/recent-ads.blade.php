@@ -5,19 +5,26 @@
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('recent.ads') }}
             </h3>
-            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 ">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
-                    <div class="flex gap-4 items-center">
-                        <div class="w-[160px0 bg-secondary">
-                            <img src="./storage/ad_images/{{ $adThumbImage }}" alt="{{ $item->title }}"
-                                class="object-cover h-[160px] w-[160px] rounded-md">
-                        </div>
+                    <div class="flex gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">            
+                        @php
+                            $adImages = App\Models\AdImage::where('ad_id', $item->id)->limit(1)->get();                          
+                        @endphp
+                        @foreach ($adImages as $adImage)
+                            <div class="w-[180px]">
+                                <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                    class="object-cover h-[150px] w-[180px] rounded-md">                                    
+                            </div>                           
+                        @endforeach
 
                         <div class="flex flex-col w-full">
-                            <h3 class="font-medium text-md text-black py-2 leading-tight">
-                                {{ Str::limit($item->title, 30, '...') }}
-                            </h3>
+                            <a href="{{ route('ad.show', $item->slug) }}">
+                                <h3 class="font-medium text-md text-black py-2 leading-tight">
+                                    {{ Str::limit($item->title, 30, '...') }}
+                                </h3>
+                            </a>
                             <p class="text-xs leading-tight text-gray-500">
                                 {{ Str::limit($item->description, 40) }}</p>
 
@@ -49,7 +56,7 @@
                             </div>
 
                             <div class="grid grid-cols-2 gap-2 justify-between items-center py-2">
-                                <span class="text-primary font-bold  text-sm">रु. {{ $item->price }}</span>
+                                <span class="text-primary font-bold  text-sm">{{__('ad.currency')}}. {{ $item->price }}</span>
                                 <span>
                                     @if ($item->negotiable)
                                         <span class="text-red-800 text-[10px] font-normal">Negotiable</span>

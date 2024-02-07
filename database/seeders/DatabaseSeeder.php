@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'User',
         // ]);
         \App\Models\User::factory(1)->create();
-        \App\Models\Ad::factory(10)->create();
+        \App\Models\AdImage::factory(10)->create();
+        
     }
 }

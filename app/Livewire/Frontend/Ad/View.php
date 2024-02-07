@@ -8,15 +8,19 @@ class View extends Component
 {
     public $ad;
 
+    public $images;
+
     public function mount($slug)
     {
-        $this->ad = \App\Models\Ad::where('slug', $slug)->first();
+        $this->ad = \App\Models\Ad::where('slug', $slug)->firstOrFail();
     }
 
     public function render()
     {
-        Meta::prependTitle($this->ad->title);
-
+        Meta::prependTitle($this->ad->title)
+            ->setDescription($this->ad->description)
+            ->setKeywords($this->ad->title)            
+        ;
         return view('livewire.frontend.ad.view');
     }
 }
