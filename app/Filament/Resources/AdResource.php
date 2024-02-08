@@ -61,9 +61,9 @@ class AdResource extends Resource
                     ])
                     ->required(),
 
-                Forms\Components\TextInput::make('location')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('location_id')
+                    ->relationship('location', 'name')
+                    ->required(),
 
                 //get user list
                 Forms\Components\Select::make('user_id')
@@ -82,7 +82,7 @@ class AdResource extends Resource
 
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('location')
+                Tables\Columns\TextColumn::make('location.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money('NPR')

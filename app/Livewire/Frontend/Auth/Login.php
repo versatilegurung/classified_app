@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Livewire\Frontend\Auth;
-use Butschster\Head\Facades\Meta;
 
 use Livewire\Component;
+
+use Butschster\Head\Facades\Meta;
+use Illuminate\Support\Facades\Auth;
 
 class Login extends Component
 {
@@ -28,6 +30,10 @@ class Login extends Component
     public function render()
     {
         Meta::prependTitle('Login');
+
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
 
         return view('livewire.frontend.auth.login');
     }

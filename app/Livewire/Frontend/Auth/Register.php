@@ -28,21 +28,21 @@ class Register extends Component
     {
         $this->validate();
 
+
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
 
+        event(new Registered($user));
+
         $this->reset(); // reset form fields
 
         $this->registrationSuccess = true;
-        
-        event(new Registered($user));
 
-        
+
         session()->flash('message', Lang::get('register_success'));
-
     }
 
 

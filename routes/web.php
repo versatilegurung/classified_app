@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Livewire\Frontend\Home;
 use App\Livewire\Frontend\Ad\View;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\Frontend\Ads\PostAd;
 use App\Livewire\Frontend\Auth\Login;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +15,6 @@ use App\Livewire\Frontend\Ads\LocationMap;
 use App\Livewire\Frontend\Account\Dashboard;
 use App\Livewire\Frontend\Auth\ForgotPassword;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,17 +43,19 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 
 //laravel verify email
+
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
+
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill(); 
+    $request->fulfill();
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
- 
+
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
@@ -86,7 +89,3 @@ Route::get('/ad/{slug}', View::class)->name('ad.show');
 
 //post ad
 Route::get('/post-ad', PostAd::class)->name('post.ad');
-
-
-//search result
-Route::get('/search', \App\Livewire\Frontend\SearchResult::class)->name('search');

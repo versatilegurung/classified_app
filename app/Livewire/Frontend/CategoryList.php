@@ -12,7 +12,7 @@ class CategoryList extends Component
     {
         $this->categories = \App\Models\Category::all();
 
-        //get random categories 
+        //get random categories
         $this->categories = $this->categories->shuffle();
 
 

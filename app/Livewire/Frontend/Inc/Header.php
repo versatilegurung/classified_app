@@ -11,10 +11,22 @@ class Header extends Component
 
     public bool $myModal = false;
 
+    public $showSearchForm = false;
+
 
     public function toggleDropdown()
     {
         $this->isOpen = !$this->isOpen;
+    }
+
+    public function toggleSearchForm()
+    {
+        $this->showSearchForm = !$this->showSearchForm;
+    }
+
+    public function closeSearchForm()
+    {
+        $this->showSearchForm = false;
     }
 
     public function checkAuth()

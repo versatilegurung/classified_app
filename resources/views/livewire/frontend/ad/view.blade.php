@@ -4,7 +4,7 @@
         <div class="w-full bg-white rounded-xl">
 
             {{-- breadcrumb --}}
-            <div class="flex gap-3 px-6 md:px-12 py-8 font-normal text-xs items-center">
+            <div class="flex gap-3 px-6 md:px-12 py-14 md:py-10 font-normal text-xs items-center">
                 <p><a href="{{ route('home') }}" class="text-primary">
                         {{-- home icon --}}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -47,30 +47,30 @@
                         </div>
                         <div>
                             {{-- some social share icons --}}
-                            
+
 
                         </div>
                     </div>
                 </div>
-                    {{-- get photo gallery with ad id --}}
+                {{-- get photo gallery with ad id --}}
 
-                    <div class="col-span-1 md:col-span-1 lg:col-span-5 py-5">
-                        <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
-                                class="font-normal text-sm text-gray-400">({{ $ad->category->name }})</span> </h3>
-                        <p class="text-secondary">{{ $ad->description }}</p>
-                        <div class="flex justify-between items-center py-2 md:py-3 gap-5">
-                            <p class="text-sm">
-                                <span class=" text-gray-500">Location: {{ $ad->location->name }} </span>
-                            </p>
-                            <p class="text-sm">
+                <div class="col-span-1 md:col-span-1 lg:col-span-5 py-5">
+                    <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
+                            class="font-normal text-sm text-gray-400">({{ $ad->category->name }})</span> </h3>
+                    <p class="text-secondary">{{ $ad->description }}</p>
+                    <div class="flex justify-between items-center py-2 md:py-3 gap-5">
+                        <p class="text-sm">
+                            <span class=" text-gray-500">Location: {{ $ad->location->name }} </span>
+                        </p>
+                        <p class="text-sm">
 
-                        </div>
                     </div>
+                </div>
 
-                    <div class="col-span-1 md:col-span-2">
-                        @livewire('frontend.ads.similar-ads', ['adId' => $ad->id])
-                    </div>
+                <div class="col-span-1 md:col-span-2">
+                    @livewire('frontend.ads.similar-ads', ['adId' => $ad->id])
                 </div>
             </div>
         </div>
     </div>
+</div>

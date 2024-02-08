@@ -14,24 +14,24 @@
                                 ->get();
                         @endphp
                         @if ($adImages->isEmpty())
-                            <div class="bg-gray-200">
+                            <div class="w-full md:w-180">
                                 <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
                                     alt="{{ $item->title }}" class="object-cover rounded-md">
                             </div>
                         @else
                             @foreach ($adImages as $adImage)
-                                <div class="bg-gray-200">
-                                <a href="{{ route('ad.show', $item->slug)}}">
+                                <div class="bg-gray-200 w-full">
+                                    <a href="{{ route('ad.show', $item->slug) }}">
 
-                                    <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                        class="object-cover rounded-md">
-                                </a>
+                                        <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                            class="object-cover rounded-md w-full">
+                                    </a>
                                 </div>
                             @endforeach
                         @endif
                         <div>
                             <h2 class="text-sm font-bold py-2 leading-tight">
-                                <a href="{{ route('ad.show', $item->slug)}}">
+                                <a href="{{ route('ad.show', $item->slug) }}">
                                     {{ Str::limit($item->title, 30) }}
                                 </a>
                             </h2>

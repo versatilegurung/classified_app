@@ -1,17 +1,19 @@
     <div>
         <div class="container mx-auto py-0 md:py-10">
-            <div class="w-full shadow-lg md:w-3/5 lg:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">                
+            <div
+                class="w-full shadow-lg md:w-3/5 lg:w-2/5 mx-auto bg-white px-10 py-16 md:py-5 mt-16 md:mt-16 rounded-xl">
                 <h2 class="font-black text-primary text-2xl py-7 mb-5">{{ __('login') }}</h2>
 
                 <x-form wire:submit.prevent="login">
-                    {{-- email--}}
+                    {{-- email --}}
                     <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" />
-                    {{-- password--}}
+                    {{-- password --}}
                     <x-input type="password" label="{{ __('password') }}" wire:model="password"
                         placeholder="{{ __('password') }}" />
-                    
+
                     <x-slot:actions>
-                        <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full" type="submit" />
+                        <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full"
+                            type="submit" />
                     </x-slot:actions>
                 </x-form>
                 {{-- social logins  --}}

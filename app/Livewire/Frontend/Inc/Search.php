@@ -2,20 +2,27 @@
 
 namespace App\Livewire\Frontend\Inc;
 
+use App\Models\Ad;
 use Livewire\Component;
 
 class Search extends Component
 {
 
-    public $query = '';    
-  
-    public function updatedSearchTerm()
-    {
-        $this->emit('query', $this->query);
-    }
+    public $searchTerm = '';
+
+    public $adImages = [];
+
 
     public function render()
-    {       
-        return view('livewire.frontend.inc.search');
+    {
+        $results = [];
+
+        if (strlen($this->searchTerm) >= 1) {
+            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')->limit(4)->get();
+        }
+
+        return view('livewire.frontend.inc.search', [
+            'results' => $results
+        ]);
     }
 }

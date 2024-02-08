@@ -5,7 +5,7 @@
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('recent.ads') }}
             </h3>
-            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 cursor-pointer">
+            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-3 gap-5 cursor-pointer">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
                     <div class="flex gap-3 md:gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">
@@ -14,21 +14,21 @@
                                 ->limit(1)
                                 ->get();
                         @endphp
-                         <a href="{{ route('ad.show', $item->slug) }}">
-                        @if ($adImages->isEmpty())
-                            <div class="w-[180px]">
-                                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
-                                    alt="{{ $item->title }}" class="object-cover h-[150px] w-[180px] rounded-md">
-                            </div>
-                        @else
-                            @foreach ($adImages as $adImage)
-                                <div class="md:w-[180px]">
-                                    <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                        class="object-cover h-[100px] w-[100px] md:h-[150px] md:w-[180px] rounded-md">
+                        <a href="{{ route('ad.show', $item->slug) }}">
+                            @if ($adImages->isEmpty())
+                                <div class="w-[150px] md:w-[180px]">
+                                    <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                                        alt="{{ $item->title }}" class="object-cover h-[150px] w-[180px] rounded-md">
                                 </div>
-                            @endforeach
-                        @endif
-                            </a>
+                            @else
+                                @foreach ($adImages as $adImage)
+                                    <div class="w-[150px] md:w-[180px]">
+                                        <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                            class="object-cover h-[150px] w-[150px] md:h-[180px] md:w-[180px] rounded-md">
+                                    </div>
+                                @endforeach
+                            @endif
+                        </a>
 
                         <div class="flex flex-col w-full">
                             <a href="{{ route('ad.show', $item->slug) }}">
@@ -62,7 +62,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 </svg>
-                                <a href="{{route('ads.user', $item->user->id)}}">
+                                <a href="{{ route('ads.user', $item->user->id) }}">
                                     <p class="text-xs text-gray-500 hover:underline">{{ $item->user->name }}</p>
                                 </a>
 
@@ -80,7 +80,8 @@
                                 @if ($item->condition == 'new')
                                     <span class="text-black px-2 py-1 text-xs bg-green-500 w-fit rounded-lg">New</span>
                                 @else
-                                    <span class=" bg-amber-700 text-white w-fit rounded-lg px-2 py-1 text-xs">Used</span>
+                                    <span
+                                        class=" bg-amber-700 text-white w-fit rounded-lg px-2 py-1 text-xs">Used</span>
                                 @endif
 
                                 <span class="text-gray-800 text-xs">

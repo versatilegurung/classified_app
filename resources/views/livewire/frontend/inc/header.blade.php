@@ -15,20 +15,32 @@
             </a>
         </div>
 
-        {{-- search bar --}}
-        {{-- <div class="hidden md:flex items-center gap-3">
-            <input type="text"
-                class="px-3 py-2 border border-secondary rounded-xl bg-secondary w-[40vw] placeholder-white focus:outline-none text-white"
-                placeholder="{{ __('search') }}">
-            <button class="text-gray-200 focus:outline-none bg-secondary p-1 rounded-md">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-            </button>
-        </div> --}}
-        {{-- search bar --}}
+
+        {{-- search toggle button for mobile --}}
+        <button class="flex md:hidden" wire:click="toggleSearchForm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+        </button>
+        @if ($showSearchForm)
+            <div
+                class="absolute top-20 bg-secondary left-0 w-full justify-center text-center py-4 px-3 flex gap-4 items-center">
+                <input wire:model.live="searchTerm" type="text"
+                    class="px-3 py-3 border border-secondary rounded-md bg-primary placeholder-white focus:outline-none text-white"
+                    placeholder="{{ __('search') }}">
+                <button wire:click="closeSearchForm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 text-primary">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+
+                </button>
+            </div>
+        @endif
+
 
         {{-- search bar --}}
         @livewire('frontend.inc.search')
@@ -36,7 +48,7 @@
 
         <div class="flex items-center">
             <div>
-             
+
                 @if (Auth::check())
                     <a href="{{ route('post.ad') }}"
                         class="bg-secondary py-3 px-3 rounded-md text-white font-normal hover:bg-white hover:text-primary mr-3">
@@ -102,7 +114,7 @@
         <x-slot:actions>
             <x-button label="Cancel" @click="$wire.myModal = false" />
             <x-button class="btn-primary text-white">
-                <a href="{{ route('login')}}">Login</a>
+                <a href="{{ route('login') }}">Login</a>
             </x-button>
         </x-slot:actions>
     </x-modal>

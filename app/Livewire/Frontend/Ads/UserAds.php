@@ -18,6 +18,6 @@ class UserAds extends Component
 
     public function render()
     {
-        return view('livewire.frontend.ads.ads-by-user');
+        return view('livewire.frontend.ads.user-ads');
     }
 }

@@ -18,6 +18,16 @@ return [
         'passwords' => 'users',
     ],
 
+
+    'email' => [
+        'verify' => [
+            'enabled' => true,
+            'send_email' => true,
+            'expire_seconds' => 60 * 60 * 24, // One day expiration
+        ],
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
