@@ -1,15 +1,15 @@
 <div>
     {{-- dashboard nav  --}}
 
-        <div class="w-hidden md:w-1/4">
-            <div class="flex flex-col gap-4">
-                <div><a href="{{ route('dashboard')}}" class="hover:underline hover:text-secondary">Dashboard</a></div>
-                <div><a href="" class="hover:underline hover:text-secondary">Profile</a></div>
-                <div><a href="" class="hover:underline hover:text-secondary">Post Ad</a></div>
-                <div><a href="" class="hover:underline hover:text-secondary">Listed Ads</a></div>
-                <div><a href="" class="hover:underline hover:text-secondary">Message</a></div>
-                <div><a href="" class="hover:underline hover:text-secondary">Settings</a></div>
-                <div><a href="{{ route('logout')}}" class="hover:underline hover:text-secondary">Logout</a></div>
+        <div class="w-hidden">
+            <div class="flex flex-col gap-1">
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="{{ route('dashboard')}}">Dashboard</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="">Profile</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="">Post Ad</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="">Listed Ads</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="">Message</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="">Settings</a></div>
+                <div class="bg-gray-100 hover:bg-gray-400 hover:text-white px-2 py-1"><a href="{{ route('logout')}}">Logout</a></div>
 
             </div>
     </div>

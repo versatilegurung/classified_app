@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\User;
 use App\Models\AdImage;
 use App\Models\Category;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,8 +27,10 @@ class AdFactory extends Factory
             'user_id' => User::factory(),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'category_id' => $this->faker->numberBetween(11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23),
-            'location' => $this->faker->city,
+            'category_id' => $this->faker->numberBetween(1,39),
+            // 'category_id' => Category::factory(),
+            // 'location' => Location::factory(),
+            'location_id' => $this->faker->numberBetween(1, 3),
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,

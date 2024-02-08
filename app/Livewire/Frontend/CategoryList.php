@@ -10,7 +10,11 @@ class CategoryList extends Component
 
     public function mount()
     {
-        $this->categories = \App\Models\Category::limit(18)->get();
+        $this->categories = \App\Models\Category::all();
+
+        //get random categories 
+        $this->categories = $this->categories->shuffle();
+
 
         //count the number of ads in each category
         foreach ($this->categories as $category) {

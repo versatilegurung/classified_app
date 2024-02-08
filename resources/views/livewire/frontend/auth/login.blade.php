@@ -1,6 +1,6 @@
     <div>
         <div class="container mx-auto py-0 md:py-10">
-            <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">                
+            <div class="w-full shadow-lg md:w-3/5 lg:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">                
                 <h2 class="font-black text-primary text-2xl py-7 mb-5">{{ __('login') }}</h2>
 
                 <x-form wire:submit.prevent="login">

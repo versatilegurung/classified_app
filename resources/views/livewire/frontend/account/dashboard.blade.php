@@ -2,7 +2,7 @@
     {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="mt-16 py-10">
             <div class="container md:mx-auto bg-white px-7 py-10 rounded-xl">
-                <div class="flex gap-10">
+                <div class="flex gap-5">
 
                     {{-- navigation  --}}
                     @include('livewire.frontend.account.account-nav')

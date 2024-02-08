@@ -10,16 +10,16 @@
                 </svg>
             </label>
             <a href="{{ route('home') }}" class="text-lg md:text-2xl font-bold text-white tracking-tight">
-                {{-- {{ env('APP_NAME') }} --}}
-                {{ __('chitwanbuyandsell') }}
+                {{ env('APP_NAME') }}
+                {{-- {{ __('chitwanbuyandsell') }} --}}
             </a>
         </div>
 
         {{-- search bar --}}
-        <div class="hidden md:flex items-center gap-3">
+        {{-- <div class="hidden md:flex items-center gap-3">
             <input type="text"
                 class="px-3 py-2 border border-secondary rounded-xl bg-secondary w-[40vw] placeholder-white focus:outline-none text-white"
-                placeholder="{{ __('header.search') }}">
+                placeholder="{{ __('search') }}">
             <button class="text-gray-200 focus:outline-none bg-secondary p-1 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -27,15 +27,16 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
             </button>
-        </div>
+        </div> --}}
+        {{-- search bar --}}
+
+        {{-- search bar --}}
+        @livewire('frontend.inc.search')
+        {{-- search bar --}}
 
         <div class="flex items-center">
             <div>
-                {{-- <a href="{{ route('post.ad') }}"
-                    class="bg-secondary py-4 px-3 rounded-md text-white font-bold hover:bg-white hover:text-primary mr-3">
-                    {{ __('postad') }}
-                </a> --}}
-
+             
                 @if (Auth::check())
                     <a href="{{ route('post.ad') }}"
                         class="bg-secondary py-3 px-3 rounded-md text-white font-normal hover:bg-white hover:text-primary mr-3">
@@ -100,7 +101,9 @@
         Please login
         <x-slot:actions>
             <x-button label="Cancel" @click="$wire.myModal = false" />
-            <x-button label="Login" class="btn-primary" />
+            <x-button class="btn-primary text-white">
+                <a href="{{ route('login')}}">Login</a>
+            </x-button>
         </x-slot:actions>
     </x-modal>
 </div>

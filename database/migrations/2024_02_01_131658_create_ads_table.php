@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id')->nullable();
-            $table->string('location')->nullable();
+            $table->unsignedBigInteger('location_id');
             $table->decimal('price')->nullable();
             $table->boolean('negotiable')->default(false);
             $table->boolean('featured')->default(false);
@@ -36,6 +36,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('sub_category_id')->references('id')->on('categories');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 

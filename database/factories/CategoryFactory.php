@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CategoryFactory extends Factory
 {
+
+    protected $model = Category::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +21,20 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //faker word unique
-            'name' => $this->faker->unique()->word,
-        ];
+                'name' => $this->faker->unique()->randomElement([
+                    'Electronics', 'Furniture', 'Clothing & Accessories', 'Home & Garden',
+                    'Appliances', 'Sports & Outdoors', 'Musical Instruments', 'Toys & Games',
+                    'Cars', 'Motorcycles', 'Trucks & SUVs', 'Boats & Watercraft',
+                    'RVs & Campers', 'Bicycles', 'House/Room/Flat For Sale',
+                    'House/Room/Flat For Rent', 'Commercial Property', 'Land & Plots',
+                    'Jobs Full-time', 'Jobs Part-time', 'Temporary Jobs', 'Home Services',
+                    'Beauty & Spa', 'Cleaning', 'Health & Wellness', 'Event Services',
+                    'Tutoring & Lessons', 'Garage Sales', 'Dogs', 'Cats', 'Pet Services',
+                    'Pet Accessories', 'Mobile Phones', 'Computers & Laptops',
+                    'Cameras & Photography', 'Audio & Video Equipment',
+                    'Antiques & Collectibles', 'Arts & Crafts',
+                ]),
+            ];
     }
+
 }

@@ -6,9 +6,7 @@
 
             <x-form wire:submit.prevent="save">
                 <!-- Category ID -->
-                @php
-                    $categories = App\Models\Category::all();
-                @endphp
+              
                 <label for="category" class="text-secondary text-sm">{{ __('category') }}*</label>
                 <x-select :options="$categories" placeholder="{{ __('select.category') }}" placeholder-value="0"
                     {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('select.one') }}" wire:model="category_id" class=" text-primary">
@@ -31,9 +29,13 @@
                 <!-- Description -->
 
                 <!-- Location -->
-                <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>
-                <x-input wire:model="location" placeholder="{{ __('enter-ad-location') }}"
-                    hint="{{ __('ad.location') }} " class="text-primary mb-2" />
+                <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>    
+                    <x-select :options="$locations" placeholder="{{ __('enter-ad-location') }}" placeholder-value="0"
+                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location" class=" text-primary">
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name }}</option>
+                    @endforeach
+                </x-select>
                 <!-- Location -->
 
                 <!-- Price -->

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\AdImage;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Location;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
 use Mary\Traits\WithMediaSync;
@@ -21,6 +22,7 @@ class PostAd extends Component
     use WithFileUploads, WithMediaSync;
 
     public $categories;
+    public $locations;
     public $title;
     public $description;
     public $price;
@@ -98,6 +100,7 @@ class PostAd extends Component
     public function mount()
     {
         $this->categories = Category::all();
+        $this->locations = Location::all();
     }
     public function render()
     {

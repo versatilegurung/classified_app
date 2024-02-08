@@ -1,9 +1,9 @@
 <div>
     {{-- search bar for mobile view  --}}
-    @livewire('frontend.inc.search-bar')
+    @livewire('frontend.inc.search')
     {{-- search bar for mobile view  --}}
 
-
+    
 
     {{-- Hero section --}}
     <div class="bg-white">

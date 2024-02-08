@@ -17,7 +17,7 @@
                     </a>
                 </p>>
                 <p>
-                    <a href="{{ route('ads.by.category', $ad->category_id) }}"
+                    <a href="{{ route('ads.category', $ad->category->slug) }}"
                         class="hover:underline">{{ $ad->category->name }}</a>
                 </p> >
                 <p><a href="{{ route('ad.show', $ad->slug) }}"
@@ -47,33 +47,12 @@
                         </div>
                         <div>
                             {{-- some social share icons --}}
-                            <div class="flex gap-3">
-                                <a href="#" class="text-gray-500 hover:text-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16 8v8m-4-4 8-8-8 8-4-4v6h16V6" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="text-gray-500 hover:text-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16 8v8m-4-4 8-8-8 8-4-4v6h16V6" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="text-gray-500 hover:text-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16 8v8m-4-4 8-8-8 8-4-4v6h16V6" />
-                                    </svg>
-                                </a>
-                            </div>
+                            
 
                         </div>
                     </div>
-
+                </div>
+                    {{-- get photo gallery with ad id --}}
 
                     <div class="col-span-1 md:col-span-1 lg:col-span-5 py-5">
                         <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
@@ -81,7 +60,7 @@
                         <p class="text-secondary">{{ $ad->description }}</p>
                         <div class="flex justify-between items-center py-2 md:py-3 gap-5">
                             <p class="text-sm">
-                                <span class=" text-gray-500">Location: {{ $ad->location }} </span>
+                                <span class=" text-gray-500">Location: {{ $ad->location->name }} </span>
                             </p>
                             <p class="text-sm">
 

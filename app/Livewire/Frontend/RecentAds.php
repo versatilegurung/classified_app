@@ -12,7 +12,7 @@ class RecentAds extends Component
 
     public function mount()
     {
-        $this->ads = \App\Models\Ad::orderBy('id', 'desc')->where('published', true)->limit(10)->get();
+        $this->ads = \App\Models\Ad::orderBy('id', 'desc')->where('published', true)->limit(20)->get();
     }
     public function render()
     {

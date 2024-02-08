@@ -5,15 +5,16 @@
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('recent.ads') }}
             </h3>
-            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 ">
+            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 cursor-pointer">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
-                    <div class="flex gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">
+                    <div class="flex gap-3 md:gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">
                         @php
                             $adImages = App\Models\AdImage::where('ad_id', $item->id)
                                 ->limit(1)
                                 ->get();
                         @endphp
+                         <a href="{{ route('ad.show', $item->slug) }}">
                         @if ($adImages->isEmpty())
                             <div class="w-[180px]">
                                 <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
@@ -21,21 +22,22 @@
                             </div>
                         @else
                             @foreach ($adImages as $adImage)
-                                <div class="w-[180px]">
+                                <div class="md:w-[180px]">
                                     <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                        class="object-cover h-[150px] w-[180px] rounded-md">
+                                        class="object-cover h-[100px] w-[100px] md:h-[150px] md:w-[180px] rounded-md">
                                 </div>
                             @endforeach
                         @endif
+                            </a>
 
                         <div class="flex flex-col w-full">
                             <a href="{{ route('ad.show', $item->slug) }}">
-                                <h3 class="font-medium text-md text-black py-2 leading-tight">
-                                    {{ Str::limit($item->title, 30, '...') }}
+                                <h3 class="font-medium md:font-bold text-sm md:text-md text-black py-1 leading-tight">
+                                    {{ Str::limit($item->title, 50, '...') }}
                                 </h3>
                             </a>
-                            <p class="text-xs leading-tight text-gray-500">
-                                {{ Str::limit($item->description, 40) }}</p>
+                            {{-- <p class="text-xs leading-tight text-gray-500">
+                                {{ Str::limit($item->description, 60) }}</p> --}}
 
                             {{-- location  --}}
                             <div class="flex gap-2 py-2">
@@ -47,8 +49,8 @@
                                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                 </svg>
 
-                                <a href="{{ route('ad.show', $item->slug) }}">
-                                    <p class="text-xs text-gray-500 hover:underline">{{ $item->location }}
+                                <a href="{{ route('ads.location', $item->location->slug) }}">
+                                    <p class="text-xs text-gray-500 hover:underline">{{ $item->location->name }}
                                     </p>
                                 </a>
                             </div>
@@ -60,7 +62,9 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 </svg>
-                                <p class="text-xs text-gray-500 hover:underline">{{ $item->user->name }}</p>
+                                <a href="{{route('ads.user', $item->user->id)}}">
+                                    <p class="text-xs text-gray-500 hover:underline">{{ $item->user->name }}</p>
+                                </a>
 
                             </div>
 
@@ -74,9 +78,9 @@
                                 </span>
 
                                 @if ($item->condition == 'new')
-                                    <span class="text-green-600 text-xs">New</span>
+                                    <span class="text-black px-2 py-1 text-xs bg-green-500 w-fit rounded-lg">New</span>
                                 @else
-                                    <span class=" text-secondary text-xs">Used</span>
+                                    <span class=" bg-amber-700 text-white w-fit rounded-lg px-2 py-1 text-xs">Used</span>
                                 @endif
 
                                 <span class="text-gray-800 text-xs">

@@ -27,7 +27,7 @@ class Ad extends Model
         'description',
         'price',
         'category_id',
-        'location',
+        'location_id',
         'negotiable',
         'featured',
         'condition',
@@ -69,5 +69,10 @@ class Ad extends Model
     public function adImage()
     {
         return $this->hasMany(AdImage::class)->latest();
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }

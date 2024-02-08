@@ -1,7 +1,7 @@
 <div>
     {{-- register form --}}
-    <div class="container mx-auto py-0 md:py-10">
-        <div class="w-full shadow-lg md:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">
+    <div class="container mx-auto py-0 md:py-16">
+        <div class="w-full shadow-lg md:w-3/5 lg:w-2/5 mx-auto bg-white px-10 py-5 mt-16 md:mt-16 rounded-xl">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mt-5 mb-3">{{ __('register') }}</h3>
     
 

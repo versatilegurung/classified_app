@@ -8,6 +8,7 @@ use Livewire\Attributes\Layout;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Auth\Events\Registered;
 
 #[Layout('layouts.app')]
 class Register extends Component
@@ -35,9 +36,10 @@ class Register extends Component
 
         $this->reset(); // reset form fields
 
-        event(new \App\Events\UserRegistered($user));
-
         $this->registrationSuccess = true;
+        
+        event(new Registered($user));
+
         
         session()->flash('message', Lang::get('register_success'));
 
