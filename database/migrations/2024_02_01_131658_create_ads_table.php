@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('negotiable')->default(false);
             $table->boolean('featured')->default(false);
             $table->string('condition');
-            $table->text('images')->nullable();
+            $table->boolean('is_sold')->default(false);
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamp('expires_at')->nullable();
