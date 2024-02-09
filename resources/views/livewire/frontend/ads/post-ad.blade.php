@@ -31,7 +31,7 @@
                 <!-- Location -->
                 <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>    
                     <x-select :options="$locations" placeholder="{{ __('enter-ad-location') }}" placeholder-value="0"
-                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location" class=" text-primary">
+                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location_id" class=" text-primary">
                     @foreach ($locations as $location)
                         <option value="{{ $location->id }}">{{ $location->name }}</option>
                     @endforeach
@@ -71,7 +71,7 @@
                 </x-slot:actions>
             </x-form>
 
-            <p class="p-3 text-gray-400 font-normal">field * are required.</p>
+            <p class="py-3 text-secondary text-lg font-normal">field * are required.</p>
         </div>
         <div>
         </div>

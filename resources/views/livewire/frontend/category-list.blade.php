@@ -10,7 +10,7 @@
                 @foreach ($categories as $item)
                     <a href="{{ route('ads.category', $item->slug) }}">
                         <div
-                            class="bg-secondary hover:bg-primary cursor-pointer px-2 py-1 rounded-md flex gap-3 justify-between">
+                            class="bg-secondary hover:bg-primary cursor-pointer px-2 py-1 rounded-md flex gap-3 justify-between transition-all">
                             {{-- <div class="flex gap-3 items-center align-self-center text-white"> --}}
                             <div class="grid grid-cols-2 lg:grid-cols-8 items-center text-white">
                                 {{-- category icon  --}}

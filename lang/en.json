@@ -7,6 +7,8 @@
     "header.myprofile": "My Profile",
     "header.language": "Language",
     "search": "Search",
+    "please_login": "Please login to continue",
+    "cancel": "Cancel",
     "login": "Login",
     "logout": "Logout",
     "register": "Register",
@@ -46,7 +48,7 @@
     "ad.currency": "NPR",
     "enter-ad-price": "Enter Ad Price",
     "location": "Location",
-    "ad.location": "Ad's by Location",
+    "ad.location": "Ads by Location",
     "enter-ad-location": "Enter Location",
     "ad.contact": "Ad Contact",
     "enter-ad-contact": "Enter Ad Contact",
@@ -59,5 +61,29 @@
     "condition": "Condition",
     "hint.condition": "Select the condition of your item",
     "submit.ad": "Submit Ad",
-    "posted.at": "Posted at"
+    "posted.at": "Posted at",
+
+    "ad.contact_seller": "Contact Seller",
+    "ads-by-location": "Ads by Location",
+
+    "send-message": "Send Message",
+    "no-ads-found": "No Ads Found",
+    "similar-ads": "Similar Ads",
+
+    "namaste": "Namaste",
+    "welcome-to-dashboard": "Welcome to your dashboard.",
+    "my-ads": "My Ads",
+    "settings": "Settings",
+    "listed-ads": "Listed Ads",
+    "message": "Message",
+
+    "total-ads": "Total Ads",
+    "total-users": "Total Users",
+    "total-categories": "Total Categories",
+    "total-location": "Total Locations",
+    "total-views": "Total Views"
+
+
+
+    
 }

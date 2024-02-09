@@ -29,7 +29,7 @@ class PostAd extends Component
     public $category_id;
     public $negotiable;
     public $selectedCondition;
-    public $location;
+    public $location_id;
     public $images = [];
 
 
@@ -43,7 +43,7 @@ class PostAd extends Component
         'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
         'negotiable' => 'required',
         'selectedCondition' => 'required',
-        'location' => 'min:3|max:120'
+        'location_id' => 'required'
     ];
 
     public function postAd()
@@ -75,7 +75,7 @@ class PostAd extends Component
                 'category_id' => $this->category_id,
                 'negotiable' => $this->negotiable,
                 'condition' => $this->selectedCondition,
-                'location' => $this->location,
+                'location_id' => $this->location_id,
                 'user_id' => auth()->id(),
             ]);
 
@@ -89,6 +89,8 @@ class PostAd extends Component
                 $ad_image->image = $image->store('ad_images', 'public');
 
                 $ad_image->save();
+
+                $this->reset(['title', 'description', 'price', 'category_id', 'negotiable', 'selectedCondition', 'location_id', 'images']);
             }
 
             // $uniqueID = Carbon::now()->timestamp. uniqid();

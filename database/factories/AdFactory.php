@@ -30,7 +30,7 @@ class AdFactory extends Factory
             'category_id' => $this->faker->numberBetween(1,39),
             // 'category_id' => Category::factory(),
             // 'location' => Location::factory(),
-            'location_id' => $this->faker->numberBetween(1, 3),
+            'location_id' => $this->faker->numberBetween(10, 20),
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,

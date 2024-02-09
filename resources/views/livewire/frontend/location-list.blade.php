@@ -6,11 +6,11 @@
                 {{ __('ad.location') }}
             </h3>
             <div class="flex flex-wrap gap-5 mb-5">
-
                 @foreach ($locations as $item)
-                    <div class="cursor-pointer bg-gray-200 px-2 py-1 rounded-md hover:bg-secondary hover:text-white">
-                        {{ $item->name }} <span class="text-sm">({{ $item->ads_count }})</span>
-                    </div>
+                <a href="{{ route('ads.location', $item->slug)}}">
+                    <div class="cursor-pointer bg-gray-200 px-2 py-1 rounded-md hover:bg-secondary hover:text-white transition-all">
+                        {{ $item->name }}<span class="text-sm">({{ $item->ads_count }})</span>
+                    </div></a> 
                 @endforeach
             </div>
         </div>

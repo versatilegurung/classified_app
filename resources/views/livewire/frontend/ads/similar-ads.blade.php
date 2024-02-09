@@ -1,10 +1,16 @@
 <div>
     {{-- similar ads  --}}
-
+    <div class="mb-4">
+        <h3 class="px-2 text-primary underline">{{__('similar-ads')}}</h3>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5">
-        <h3 class="px-2 text-primary underline">Similar Ads</h3>
 
-        @foreach ($similarPosts as $item)
+        @if ($similarPosts->isEmpty())
+            <div class="col-span-1 mb-4 md:mb-0">
+                <p class="px-2">{{__('no-ads-found')}}</p>
+            </div>
+        @endif
+        @foreach ($similarPosts as $item)        
             <div class="flex gap-3 p-2 items-center hover:bg-gray-50 rounded-xl">
                 @php
                     $adImages = App\Models\AdImage::where('ad_id', $item->id)
@@ -32,15 +38,17 @@
                         </h3>
                     </a>
 
+                    {{-- price  --}}
+                    <p class="text-sm">{{__('ad.currency')}}. {{$item->price}}</p>
+                    {{-- price  --}}
+
                     {{-- location  --}}
-                    <div class="flex gap-2 py-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
-                            stroke="currentColor" class="w-4 h-4 text-green-900">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142 7.5 11.25 7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                        </svg>
+                    <div class="flex gap-1 py-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                          </svg>
+                          
                         <p class="text-sm text-secondary font-thin">{{ $item->location->name }}</p>
                     </div>
                 </div>

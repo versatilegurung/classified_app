@@ -26,28 +26,49 @@
             {{-- breadcrumb --}}
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-5 px-5 lg:px-10">
-
-
                 <div class="col-span-1 md:col-span-1 lg:col-span-2 items">
                     {{-- get photo gallery with ad id --}}
                     @livewire('frontend.ad.photo-gallery', ['ad_id' => $ad->id])
                     <div class="py-2">
                         <hr class="mb-3">
-                        <span class="text-sm text-gray-500">{{ __('posted.at') }}
-                            {{ $ad->created_at->diffForHumans() }}</span>
+                        <div class="flex  gap-1 items-center justify-between">
+                            <div class="flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.2" stroke="currentColor" class="w-4 h-4 text-green-900">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                                <p class="text-xs text-gray-500 hover:underline"><a
+                                    href="{{ route('ads.location', $ad->location->slug) }}">{{ $ad->location->name }}
+                                </a></p>
+                            </div>
+                            <div class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                              </svg> 
+                            <span class="text-sm text-gray-500">
+                                   {{ $ad->created_at->diffForHumans() }}</span></div>
+                        </div>
                         <div class="flex justify-between py-5">
                             <div>
-                                <p>
+                                <p class="text-sm text-primary">
                                     {{ $ad->user->name }}
                                 </p>
                             </div>
                             <div>
-                                <p class="font-bold text-lg">{{ __('ad.currency') }}. {{ $ad->price }}</p>
+                                <p class="font-bold text-md">{{ __('ad.currency') }}. {{ $ad->price }}
+                                    <span class="text-[0.7rem] font-normal text-secondary">{{$ad->negotiable ? 'Negotiable' : ''}}</span></p>
+                                
                             </div>
                         </div>
                         <div>
-                            {{-- some social share icons --}}
 
+                            <div class="flex">
+                               <a wire:click="$toggle('composeBox')" class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center">
+                                {{__('ad.contact_seller')}}    
+                            </a>
+                            </div>
 
                         </div>
                     </div>
@@ -58,13 +79,7 @@
                     <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
                             class="font-normal text-sm text-gray-400">({{ $ad->category->name }})</span> </h3>
                     <p class="text-secondary">{{ $ad->description }}</p>
-                    <div class="flex justify-between items-center py-2 md:py-3 gap-5">
-                        <p class="text-sm">
-                            <span class=" text-gray-500">Location: {{ $ad->location->name }} </span>
-                        </p>
-                        <p class="text-sm">
-
-                    </div>
+                    
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
@@ -73,4 +88,21 @@
             </div>
         </div>
     </div>
+
+    {{-- contact seller --}}
+    {{-- Notice `wire:model`, no `id="xxx"` --}}
+<x-modal wire:model="composeBox" title="Send Message" subtitle="To Seller" separator>
+    <div>
+        <x-form>
+            <x-input wire:model="name" type="text" label="{{__('name')}}" />
+            <x-input wire:model="email" type="email" label="{{__('email')}}" />
+            <x-textarea wire:model="message" label="{{__('message')}}" />
+        </x-form>
+    </div>
+    <x-slot:actions>
+        <x-button label="{{__('cancel')}}" @click="$wire.composeBox = false" />
+        <x-button label="{{__('send-message')}}" class="btn-primary" />
+    </x-slot:actions>
+</x-modal>
+    {{-- contact seller --}}
 </div>

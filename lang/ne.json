@@ -8,6 +8,8 @@
     "myprofile": "मेरी प्रोफाइल",
     "language": "भाषा",
     "search": "खोज",
+    "please_login": "कृपया लॉग इन गर्नुहोस्",
+    "cancel": "रद्द गर्नुहोस्",
     "login": "लॉग इन",
     "register": "रजिस्टर",
     "email": "ईमेल",
@@ -61,5 +63,19 @@
     "hint.uploadimages": "तपाईं ५ वटा तस्वीर अपलोड गर्न सक्नुहुन्छ",
     "submit.ad": "विज्ञापन पेश गर्नुहोस्",
     "posted.at": "पोस्ट गरिएको",
-    "contact.information": "सम्पर्क जानकारी"
+    "contact.information": "सम्पर्क जानकारी",
+    "ad.contact_seller": "विज्ञापन विवरण र सम्पर्क जानकारी",
+    "ads-by-location": "स्थान अनुसार विज्ञापन",
+
+    "send-message": "सन्देश पठाउनुहोस्",
+    "no-ads-found": "कुनै विज्ञापन फेला परेन",
+    "similar-ads": "समान विज्ञापन",
+
+    
+    "namaste": "नमस्ते",
+    "welcome-to-dashboard": "डैशबोर्डमा स्वागत छ",
+    "my-ads": "मेराे विज्ञापन",
+    "settings": "सेटिंग्स",
+    "listed-ads": "विज्ञापनहरू सूचीबद्ध",
+    "message": "सन्देश"
 }

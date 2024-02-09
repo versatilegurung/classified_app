@@ -1,14 +1,21 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
-    <div class="container mx-auto py-0 md:py-10">
-        <div class="w-full bg-white px-4 py-5 md:mt-16">
+    <div class="container mx-auto py-0 md:py-5">
+        <div class="w-full bg-white px-4 py-5">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('recent.ads') }}
             </h3>
-            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-3 gap-5 cursor-pointer">
+            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 cursor-pointer">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
-                    <div class="flex gap-3 md:gap-5 p-3 items-center hover:bg-gray-50 rounded-xl">
+                    
+                    @if ($ads->isEmpty())
+                        <div class="col-span-1">
+                            <p>{{__('no-ads-found')}}</p>
+                        </div>
+                    @endif
+
+                    <div class="flex gap-3 md:gap-5 p-3 items-center hover:bg-gray-50 transition-all rounded-xl">
                         @php
                             $adImages = App\Models\AdImage::where('ad_id', $item->id)
                                 ->limit(1)

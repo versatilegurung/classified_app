@@ -17,12 +17,13 @@
     {{-- search bar --}}
 
     {{-- search result --}}
-    <div class="absolute bg-primary/70 transition-opacity w-[40vw]">
+    <div class="hidden md:flex md:flex-col absolute bg-primary/70 transition-opacity w-[40vw]">
         @if (sizeof($results) > 0)
             @foreach ($results as $item)
                 <div
-                    class="text-white text-medium flex hover:bg-primary justify-start items-center cursor-pointer py-2 px-3 w-full">
-                    @php
+                    class="text-white text-medium hover:bg-primary cursor-pointer py-2 px-3 w-full">
+                    <div class="flex  items-center ">
+                        @php
                         $adImages = App\Models\AdImage::where('ad_id', $item->id)
                             ->limit(1)
                             ->get();
@@ -35,15 +36,16 @@
                             </div>
                         @else
                             @foreach ($adImages as $adImage)
-                                <div class="w-[150px] md:w-[180px]">
+                                <div class="mr-3 w-12">
                                     <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                        class="object-cover h-8 w-8 rounded-md">
+                                        class="object-cover h-12 w-12 rounded-md">
                                 </div>
                             @endforeach
                         @endif
-                        <p><a href="{{ route('ad.show', $item->slug) }}">
-                                {{ $item->title }}</a></p>
-                        <p class="text-sm mx-5 text-gray-500"> {{ $item->created_at->diffForHumans() }}</p>
+                        <a href="{{ route('ad.show', $item->slug) }}"><p class="text-xs font-thin">
+                                {{ $item->title }}</p></a>
+                        <p class="text-xs mx-5 text-gray-400"> {{ $item->created_at->diffForHumans() }}</p>
+                    </div>
 
                 </div>
             @endforeach

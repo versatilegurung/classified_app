@@ -8,8 +8,9 @@ use Butschster\Head\Facades\Meta;
 class View extends Component
 {
     public $ad;
-
     public $images;
+    public bool $composeBox = false;
+
 
     public function mount($slug)
     {

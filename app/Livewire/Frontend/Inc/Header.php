@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Inc;
 
+use App\Models\Ad;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,9 +10,13 @@ class Header extends Component
 {
     public $isOpen = false;
 
-    public bool $myModal = false;
+    public bool $loginModal = false;
 
     public $showSearchForm = false;
+
+    public $searchTerm='';
+
+    public $adImages = [];
 
 
     public function toggleDropdown()
@@ -42,6 +47,14 @@ class Header extends Component
 
     public function render()
     {
-        return view('livewire.frontend.inc.header');
+        $results = [];
+
+        if (strlen($this->searchTerm) >= 1) {
+            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')->limit(4)->get();
+        }
+        return view('livewire.frontend.inc.header',
+            [
+                'results' => $results
+            ]);
     }
 }

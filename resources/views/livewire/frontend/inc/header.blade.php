@@ -1,5 +1,5 @@
 <div>
-    {{-- main nav  --}}
+    {{-- main nav --}}
     <div class="fixed top-0 left-0 w-full bg-primary text-white p-4 flex justify-between items-center py-5 gap-5 z-[10]">
         <div class="flex items-center gap-3 px-3">
             <label for="my-drawer" class="cursor-pointer">
@@ -16,53 +16,94 @@
         </div>
 
 
-        {{-- search toggle button for mobile --}}
-        <button class="flex md:hidden" wire:click="toggleSearchForm">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-            </svg>
 
-        </button>
-        @if ($showSearchForm)
-            <div
-                class="absolute top-20 bg-secondary left-0 w-full justify-center text-center py-4 px-3 flex gap-4 items-center">
-                <input wire:model.live="searchTerm" type="text"
-                    class="px-3 py-3 border border-secondary rounded-md bg-primary placeholder-white focus:outline-none text-white"
-                    placeholder="{{ __('search') }}">
-                <button wire:click="closeSearchForm">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-primary">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-
-                </button>
-            </div>
-        @endif
-
-
-        {{-- search bar --}}
+        {{-- search bar larger screen --}}
         @livewire('frontend.inc.search')
-        {{-- search bar --}}
+        {{-- search bar larger screen--}}
 
         <div class="flex items-center">
+
+            {{-- search toggle button for mobile --}}
+            <button class="flex mr-2 md:hidden" wire:click="toggleSearchForm">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </button>           
+            {{-- search toggle button for mobile --}}
+            @if ($showSearchForm)
+                <div
+                    class="absolute flex md:hidden top-16 bg-secondary left-0 w-screen justify-center text-center py-4 px-3 gap-4 items-center">
+                    <input wire:model.live="searchTerm" type="text"
+                        class="px-2 py-3 border border-secondary rounded-md bg-primary placeholder-white focus:outline-none font-thin text-white"
+                        placeholder="{{ __('search') }}">
+                    <button wire:click="closeSearchForm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6 text-primary">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            @endif
             <div>
 
+                {{-- search result --}}
+                <div class="absolute flex flex-col md:hidden left-0 top-36 bg-primary/90 transition-opacity">
+                    @if (sizeof($results) > 0)
+                        @foreach ($results as $item)
+                            <div
+                                class="text-white text-medium hover:bg-primary items-center cursor-pointer py-2 px-3 w-full">
+                                <div class="flex items-center">
+                                    @php
+                                        $adImages = App\Models\AdImage::where('ad_id', $item->id)
+                                            ->limit(1)
+                                            ->get();
+                                    @endphp
+                                    <a href="{{ route('ad.show', $item->slug) }}">
+                                        @if ($adImages->isEmpty())
+                                            <div class="w-[150px] md:w-[180px]">
+                                                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                                                    alt="{{ $item->title }}" class="object-cover w-8 h-8 rounded-md">
+                                            </div>
+                                        @else
+                                            @foreach ($adImages as $adImage)
+                                                <div class="w-12 mr-3">
+                                                    <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                                        class="object-cover h-12 w-12 rounded-md">
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        <p class="text-sm font-thin">
+                                            <a href="{{ route('ad.show', $item->slug) }}"> {{ $item->title }}</a>
+                                        </p>
+                                        <p class="text-sm mx-5 text-gray-500"> {{ $item->created_at->diffForHumans() }}
+                                        </p>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+
+                {{-- check auth and show post ad button --}}
                 @if (Auth::check())
                     <a href="{{ route('post.ad') }}"
                         class="bg-secondary py-3 px-3 rounded-md text-white font-normal hover:bg-white hover:text-primary mr-3">
                         {{ __('postad') }}
                     </a>
                 @else
-                    <x-button label="{{ __('postad') }}" class="btn-secondary mr-3" wire:click="$toggle('myModal')" />
+                    <x-button label="{{ __('postad') }}" class="btn-secondary  text-white"
+                        wire:click="$toggle('loginModal')" />
                 @endif
+                {{-- check auth and show post ad button --}}
 
 
             </div>
 
             <div>
-                {{-- if logged in show account icon else show login register  --}}
+                {{-- if logged in show account icon else show login register --}}
                 @if (Auth::check())
                     <div class="mr-4">
                         <svg class="h-8 w-8  cursor-pointer" viewBox="0 0 24 24" fill="none"
@@ -74,13 +115,13 @@
                     </div>
 
                     @if ($isOpen)
-                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-10">
+                        <div class="absolute mt-6 w-40 right-6 bg-white rounded-md shadow-lg overflow-hidden z-10">
                             <ul class="w-full block bg-white px-5 py-5">
                                 <li class="text-primary hover:underline">
-                                    <a href="#">Account</a>
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="text-primary hover:underline">
-                                    <a href="#">Logout</a>
+                                    <a href="{{ route('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,28 +135,31 @@
             </div>
         </div>
 
-        {{-- language toggle  --}}
+        {{-- language toggle --}}
         {{-- @livewire('frontend.language-toggle') --}}
-        {{-- language toggle  --}}
+        {{-- language toggle --}}
 
 
     </div>
-    {{-- main nav  --}}
+    {{-- main nav --}}
 
     {{-- slide sheet menu drawer --}}
     @livewire('frontend.inc.category-drawer')
     {{-- slide sheet menu drawer --}}
 
-    {{-- main nav  --}}
+    {{-- main nav --}}
 
     {{-- Notice `wire:model`, no `id="xxx"` --}}
-    <x-modal wire:model="myModal">
-        Please login
+    <x-modal wire:model="loginModal">
+        {{ __('please_login') }}
         <x-slot:actions>
-            <x-button label="Cancel" @click="$wire.myModal = false" />
+            <x-button label="{{ __('cancel') }}" @click="$wire.loginModal = false" />
             <x-button class="btn-primary text-white">
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}">{{ __('login') }}</a>
             </x-button>
         </x-slot:actions>
     </x-modal>
+
+
+    
 </div>

@@ -17,9 +17,14 @@
     </div>
     {{-- recent ads  --}}
 
-
+    {{-- category list  --}}
     <div class="bg-cream">
         @livewire('frontend.category-list')
     </div>
+    {{-- category list  --}}
+
+    {{-- milestone --}}
+    @livewire('frontend.inc.milestone')
+    {{-- milestone --}}
 
 </div>
