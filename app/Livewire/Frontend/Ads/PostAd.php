@@ -45,19 +45,6 @@ class PostAd extends Component
         'selectedCondition' => 'required',
         'location_id' => 'required'
     ];
-
-    public function postAd()
-    {
-        //show modal if user is not logged in
-        if (!auth()->check()) {
-            $this->emit('showLoginModal');
-        } else {
-            $this->validate();
-            $this->save();
-        }
-    }
-
-
     public function save()
     {
 
@@ -89,13 +76,10 @@ class PostAd extends Component
                 $ad_image->image = $image->store('ad_images', 'public');
 
                 $ad_image->save();
-
-                $this->reset(['title', 'description', 'price', 'category_id', 'negotiable', 'selectedCondition', 'location_id', 'images']);
             }
+            $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
 
-            // $uniqueID = Carbon::now()->timestamp. uniqid();
-
-
+            return session()->flash('success', 'Ad created succesfully and is pending approval.');;
         }
     }
 

@@ -2,7 +2,7 @@
     {{-- search bar --}}
     <div class="hidden md:flex items-center gap-2">
         <input wire:model.live="searchTerm" type="text"
-            class="px-3 py-3 border border-secondary rounded-md bg-secondary w-[40vw] placeholder-white focus:outline-none text-white"
+            class="px-5 py-3 border border-secondary rounded-md bg-secondary w-[40vw] placeholder-white focus:outline-none text-white"
             placeholder="{{ __('search') }}">
 
         {{-- <x-button type="submit" class="text-gray-200 border-none focus:outline-none bg-gray-900 rounded-md">
@@ -20,31 +20,32 @@
     <div class="hidden md:flex md:flex-col absolute bg-primary/70 transition-opacity w-[40vw]">
         @if (sizeof($results) > 0)
             @foreach ($results as $item)
-                <div
-                    class="text-white text-medium hover:bg-primary cursor-pointer py-2 px-3 w-full">
+                <div class="text-white text-medium hover:bg-primary cursor-pointer py-2 px-3 w-full">
                     <div class="flex  items-center ">
                         @php
-                        $adImages = App\Models\AdImage::where('ad_id', $item->id)
-                            ->limit(1)
-                            ->get();
-                    @endphp
-                    <a href="{{ route('ad.show', $item->slug) }}">
-                        @if ($adImages->isEmpty())
-                            <div class="w-[150px] md:w-[180px]">
-                                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
-                                    alt="{{ $item->title }}" class="object-cover w-8 h-8 rounded-md">
-                            </div>
-                        @else
-                            @foreach ($adImages as $adImage)
-                                <div class="mr-3 w-12">
-                                    <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
-                                        class="object-cover h-12 w-12 rounded-md">
+                            $adImages = App\Models\AdImage::where('ad_id', $item->id)
+                                ->limit(1)
+                                ->get();
+                        @endphp
+                        <a href="{{ route('ad.show', $item->slug) }}">
+                            @if ($adImages->isEmpty())
+                                <div class="w-[150px] md:w-[180px]">
+                                    <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                                        alt="{{ $item->title }}" class="object-cover w-8 h-8 rounded-md">
                                 </div>
-                            @endforeach
-                        @endif
-                        <a href="{{ route('ad.show', $item->slug) }}"><p class="text-xs font-thin">
-                                {{ $item->title }}</p></a>
-                        <p class="text-xs mx-5 text-gray-400"> {{ $item->created_at->diffForHumans() }}</p>
+                            @else
+                                @foreach ($adImages as $adImage)
+                                    <div class="mr-3 w-12">
+                                        <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"
+                                            class="object-cover h-12 w-12 rounded-md">
+                                    </div>
+                                @endforeach
+                            @endif
+                            <a href="{{ route('ad.show', $item->slug) }}">
+                                <p class="text-sm font-thin">
+                                    {{ $item->title }}</p>
+                            </a>
+                            <p class="text-xs mx-5 text-gray-400"> {{ $item->created_at->diffForHumans() }}</p>
                     </div>
 
                 </div>

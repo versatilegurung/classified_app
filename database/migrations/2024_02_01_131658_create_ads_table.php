@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->string('condition');
             $table->boolean('is_sold')->default(false);
+            $table->unsignedInteger('views')->default(0);
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamp('expires_at')->nullable();

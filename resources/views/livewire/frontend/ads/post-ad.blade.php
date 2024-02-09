@@ -6,7 +6,7 @@
 
             <x-form wire:submit.prevent="save">
                 <!-- Category ID -->
-              
+
                 <label for="category" class="text-secondary text-sm">{{ __('category') }}*</label>
                 <x-select :options="$categories" placeholder="{{ __('select.category') }}" placeholder-value="0"
                     {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('select.one') }}" wire:model="category_id" class=" text-primary">
@@ -29,9 +29,10 @@
                 <!-- Description -->
 
                 <!-- Location -->
-                <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>    
-                    <x-select :options="$locations" placeholder="{{ __('enter-ad-location') }}" placeholder-value="0"
-                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location_id" class=" text-primary">
+                <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>
+                <x-select :options="$locations" placeholder="{{ __('enter-ad-location') }}" placeholder-value="0"
+                    {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location_id"
+                    class=" text-primary">
                     @foreach ($locations as $location)
                         <option value="{{ $location->id }}">{{ $location->name }}</option>
                     @endforeach
@@ -65,9 +66,13 @@
                     hint="{{ __('hint.condition') }}" />
                 <!-- Condition -->
 
-                <x-slot:actions>                  
-                    <x-button type="submit" label="{{ __('submit.ad') }}" class="bg-primary text-white" />
+                {{-- if session message show here  --}}
+                @if (session()->has('message'))
+                    <div class="text-green">{{ session('message') }}</div>
+                @endif
 
+                <x-slot:actions>
+                    <x-button type="submit" label="{{ __('submit.ad') }}" class="bg-primary text-white" />
                 </x-slot:actions>
             </x-form>
 

@@ -18,7 +18,8 @@ class Search extends Component
         $results = [];
 
         if (strlen($this->searchTerm) >= 1) {
-            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')->limit(4)->get();
+            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')
+                ->where('published', true)->limit(4)->get();
         }
 
         return view('livewire.frontend.inc.search', [

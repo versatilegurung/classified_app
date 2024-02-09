@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Milestone extends Component
 {
-    
+
     public function render()
     {
         //get count of total ads and users and categories
@@ -15,14 +15,21 @@ class Milestone extends Component
         $totalCategories = \App\Models\Category::count();
         $totalLocations = \App\Models\Location::count();
 
+        $totalSold = \App\Models\Ad::where('is_sold', true)->count();
+        $totalPublished = \App\Models\Ad::where('published', true)->count();
 
 
-        return view('livewire.frontend.inc.milestone',
+
+        return view(
+            'livewire.frontend.inc.milestone',
             [
                 'totalAds' => $totalAds,
                 'totalUsers' => $totalUsers,
                 'totalCategories' => $totalCategories,
-                'totalLocations' => $totalLocations
-            ]);
+                'totalLocations' => $totalLocations,
+                'totalSold' => $totalSold,
+                'totalPublished' => $totalPublished,
+            ]
+        );
     }
 }

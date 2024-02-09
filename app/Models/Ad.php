@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ad extends Model
 {
-    use HasFactory;
+    use HasFactory, WithPagination;
 
     protected $table = 'ads';
 
@@ -52,6 +53,11 @@ class Ad extends Model
         static::creating(function ($ad) {
             // ...creating slug
             $ad->slug = Str::slug($ad->title);
+        });
+
+        static::creating(function (ad $ad) {
+            //set expiry date to 60 days
+            $ad->expires_at = now()->addDays(60);
         });
     }
 

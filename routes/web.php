@@ -36,7 +36,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 // Route::prefix('{locale}')
 //     ->middleware(Localization::class)
 //     ->group(function () {
-        
+
 //     });
 //logviewer
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
@@ -77,6 +77,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::middleware(['auth'])->group(function () {
     //user account route
     Route::get('/account/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/account/my-ads', \App\Livewire\Frontend\Account\MyAds::class)->name('my.ads');
     Route::get('/post-ad', PostAd::class)->name('post.ad');
 
     //log out route

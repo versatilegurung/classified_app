@@ -15,19 +15,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-
         // Role::create([
         //     'name' => 'User',
         // ]);
         // \App\Models\User::factory(1)->create();
-        
-            // \App\Models\Ad::factory(10)->create();
 
-        \App\Models\AdImage::factory(5)->create();
+        // \App\Models\Ad::factory(10)->create();
 
-        // category seeder 
-        
+        //default seeder
+        // $this->call([
+        //     DefaultSeeder::class,
+        // ]);
 
-
+        //ad seeder
+        \App\Models\AdImage::factory(10)->create();
     }
 }

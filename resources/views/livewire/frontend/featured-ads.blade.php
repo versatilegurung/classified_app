@@ -15,13 +15,12 @@
             <div class="flex">
                 <div class="owl-carousel owl-theme">
                     @foreach ($ads as $item)
+                        @if ($ads->isEmpty())
+                            <div class="col-span-1">
+                                <p>{{ __('no-ads-found') }}</p>
+                            </div>
+                        @endif
 
-                    @if ($ads->isEmpty())
-                        <div class="col-span-1">
-                            <p>{{__('no-ads-found')}}</p>
-                        </div>
-                    @endif
-                    
                         <div class="item hover:bg-gray-50 transition-all rounded-xl p-3">
                             <a href="{{ route('ad.show', $item->slug) }}">
 
@@ -90,11 +89,14 @@
                                     </p>
                                 </div>
                             </div>
-                            <p class="flex justify-center items-center gap-3 text-xs text-gray-800 bg-gray-100 py-1 w-full text-center">       
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                  </svg>                      
-                                  {{ $item->created_at->diffForHumans() }} |
+                            <p
+                                class="flex justify-center items-center gap-3 text-xs text-gray-800 bg-gray-100 py-1 w-full text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                {{ $item->created_at->diffForHumans() }} |
                                 @if ($item->condition == 'new')
                                     <span class="text-green px-2 py-1 rounded-md">New</span>
                                 @else

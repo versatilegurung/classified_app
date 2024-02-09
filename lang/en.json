@@ -77,15 +77,16 @@
     "listed-ads": "Listed Ads",
     "message": "Message",
 
-    "your-ads" : "Your Ads",
+    "your-ads": "Your Ads",
+    "total-sold": "Total Sold",
+    "total-published": "Total Published",
+    "published": "Published",
+    "unpublished": "Unpublished",
+    "sold": "Sold",
 
     "total-ads": "Total Ads",
     "total-users": "Total Users",
     "total-categories": "Total Categories",
     "total-location": "Total Locations",
     "total-views": "Total Views"
-
-
-
-    
 }

@@ -14,7 +14,7 @@ class Header extends Component
 
     public $showSearchForm = false;
 
-    public $searchTerm='';
+    public $searchTerm = '';
 
     public $adImages = [];
 
@@ -50,11 +50,15 @@ class Header extends Component
         $results = [];
 
         if (strlen($this->searchTerm) >= 1) {
-            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')->limit(4)->get();
+            $results = Ad::where('title', 'like', '%' . $this->searchTerm . '%')
+                ->where('published', true)
+                ->limit(4)->get();
         }
-        return view('livewire.frontend.inc.header',
+        return view(
+            'livewire.frontend.inc.header',
             [
                 'results' => $results
-            ]);
+            ]
+        );
     }
 }

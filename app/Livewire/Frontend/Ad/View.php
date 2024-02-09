@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Ad;
 
+use App\Models\Ad;
 use Livewire\Component;
 use Butschster\Head\Facades\Meta;
 
@@ -10,6 +11,13 @@ class View extends Component
     public $ad;
     public $images;
     public bool $composeBox = false;
+    public $message = '';
+    public $sendMessage;
+
+    public function sendMessage()
+    {
+        dd('send message');
+    }
 
 
     public function mount($slug)
@@ -22,6 +30,9 @@ class View extends Component
         Meta::prependTitle($this->ad->title)
             ->setDescription($this->ad->description)
             ->setKeywords($this->ad->title);
+
+        $this->ad->views++;
+        $this->ad->save();
         return view('livewire.frontend.ad.view');
     }
 }

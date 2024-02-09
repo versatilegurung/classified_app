@@ -5,13 +5,12 @@
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('recent.ads') }}
             </h3>
-            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 gap-5 cursor-pointer">
+            <div id="recent-ads" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 cursor-pointer">
                 {{-- recent ads list  --}}
                 @foreach ($ads as $item)
-                    
                     @if ($ads->isEmpty())
                         <div class="col-span-1">
-                            <p>{{__('no-ads-found')}}</p>
+                            <p>{{ __('no-ads-found') }}</p>
                         </div>
                     @endif
 

@@ -11,13 +11,15 @@
                     <h2 class="text-lgd">{{ __('total-users') }}</h2>
                     <p class="text-4xl font-bold">{{ $totalUsers }}</p>
                 </div>
+
                 <div class="text-center">
-                    <h2 class="text-lgd">{{ __('total-location') }}</h2>
-                    <p class="text-4xl font-bold">{{ $totalLocations }}</p>
+                    <h2 class="text-lg">{{ __('total-published') }}</h2>
+                    <p class="text-4xl font-bold">{{ $totalPublished }}</p>
                 </div>
+
                 <div class="text-center">
-                    <h2 class="text-lg">{{ __('total-categories') }}</h2>
-                    <p class="text-4xl font-bold">{{ $totalCategories }}</p>
+                    <h2 class="text-lg">{{ __('total-sold') }}</h2>
+                    <p class="text-4xl font-bold">{{ $totalSold }}</p>
                 </div>
             </div>
         </div>
