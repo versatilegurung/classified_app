@@ -6,10 +6,9 @@
 
 
             @if ($registrationSuccess)
-
                 {{-- //message  --}}
                 @if (session()->has('message'))
-                    <div class="text-primary text-md py-10">
+                    <div class="text-primary text-md py-10 rounded-xl">
                         {{ session('message') }}
                     </div>
                 @endif
@@ -28,8 +27,6 @@
 
                     <x-input type="password" label="{{ __('confirm-password') }}" wire:model="passwordConfirmation"
                         placeholder="{{ __('confirm-password') }}" />
-
-
 
                     <x-slot:actions>
                         <x-button label="{{ __('register') }}" class="btn-primary text-white w-full" type="submit" />

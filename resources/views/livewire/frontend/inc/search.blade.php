@@ -1,7 +1,7 @@
 <div>
     {{-- search bar --}}
     <div class="hidden md:flex items-center gap-2">
-        <input wire:model.live="searchTerm" type="text"
+        <input wire:model.live="searchTerm" type="text" id="SearchTerm"
             class="px-5 py-3 border border-secondary rounded-md bg-secondary w-[40vw] placeholder-white focus:outline-none text-white"
             placeholder="{{ __('search') }}">
 
@@ -17,10 +17,11 @@
     {{-- search bar --}}
 
     {{-- search result --}}
-    <div class="hidden md:flex md:flex-col absolute bg-primary/70 transition-opacity w-[40vw]">
+    <div class="hidden md:flex md:flex-col absolute bg-white transition-opacity w-[40vw]">
+
         @if (sizeof($results) > 0)
             @foreach ($results as $item)
-                <div class="text-white text-medium hover:bg-primary cursor-pointer py-2 px-3 w-full">
+                <div class="text-primary text-medium hover:bg-primary hover:text-white cursor-pointer py-2 px-3 w-full">
                     <div class="flex  items-center ">
                         @php
                             $adImages = App\Models\AdImage::where('ad_id', $item->id)
@@ -47,10 +48,14 @@
                             </a>
                             <p class="text-xs mx-5 text-gray-400"> {{ $item->created_at->diffForHumans() }}</p>
                     </div>
-
                 </div>
             @endforeach
+        @elseif (strlen($searchTerm) > 2)
+            <div class="text-primary hover:text-white text-medium hover:bg-primary cursor-pointer py-5 px-3 w-full">
+                <p>No Result Found.</p>
+            </div>
         @endif
+
     </div>
 
 

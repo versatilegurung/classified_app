@@ -11,7 +11,7 @@ class MyAds extends Component
 
     public function mount()
     {
-        $this->myads = Ad::where('user_id', auth()->user()->id)->get();
+        $this->myads = Ad::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         //paginate the ads
         // $this->myads = Ad::where('user_id', auth()->user()->id)->paginate(5);
     }

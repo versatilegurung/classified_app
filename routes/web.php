@@ -15,6 +15,7 @@ use App\Livewire\Frontend\Account\Profile;
 use App\Livewire\Frontend\Ads\LocationMap;
 use App\Livewire\Frontend\Account\Dashboard;
 use App\Livewire\Frontend\Auth\ForgotPassword;
+use App\Livewire\Frontend\Auth\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -45,20 +46,23 @@ Route::get('/location', LocationMap::class);
 
 Route::get('/', Home::class)->name('home');
 Route::get('/register', Register::class)->name('register');
+
+// if user is authenicated then redirect to dashboard from register route
+
+
 Route::get('/login', Login::class)->name('login');
+
 Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 
 //laravel verify email
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})
+Route::get('/email/verify', VerifyEmail::class)
     ->middleware('auth')
     ->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/home');
+    return redirect('/account/dashboard');
 })
     ->middleware(['auth', 'signed'])
     ->name('verification.verify');
@@ -73,12 +77,17 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 //laravel verify email
 
+// Auth::routes(['verify' => true]);
+
+
 // only authenticated user can get into this route**
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     //user account route
     Route::get('/account/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/account/my-ads', \App\Livewire\Frontend\Account\MyAds::class)->name('my.ads');
     Route::get('/post-ad', PostAd::class)->name('post.ad');
+    Route::get('/account/messages', \App\Livewire\Frontend\Account\Message::class)->name('account.message');
+    Route::get('/account/sent-message', \App\Livewire\Frontend\Account\SentMessage::class)->name('account.sent-message');
 
     //log out route
     Route::get('/logout', function () {
@@ -88,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //ads by category
+
 Route::get('/category/{slug}', \App\Livewire\Frontend\Ads\CategoryAds::class)->name('ads.category');
 
 //ads by location

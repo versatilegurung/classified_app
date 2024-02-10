@@ -8,17 +8,21 @@
 
     <div class="owl-carousel owl-theme">
 
+
         @if ($images->isEmpty())
             <div class="py-2">
                 <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
-                    alt="{{ __('chitwanbuyandsell') }}" class="h-[300px] w-full object-cover rounded-lg">
+                    title="{{ __('chitwanbuyandsell') }}" alt="{{ __('chitwanbuyandsell') }}"
+                    class="h-[300px] w-full object-cover rounded-lg">
             </div>
         @else
             @foreach ($images as $item)
                 <!-- Item 1 -->
-                <div class="mb-3">
-                    <img src="../storage/{{ $item->image }}" alt="{{ __('chitwanbuyandsell') }}"
-                        class="h-[300px] w-full object-cover rounded-lg">
+                <div class="mb-2">
+                    <a href="../storage/{{ $item->image }}" target="_blank" title="{{ __('chitwanbuyandsell') }}">
+                        <img src="../storage/{{ $item->image }}" alt="{{ __('chitwanbuyandsell') }}"
+                            class="h-[300px] w-full object-cover rounded-lg cursor-pointer">
+                    </a>
                 </div>
             @endforeach
         @endif

@@ -24,6 +24,14 @@ class Register extends Component
         'password' => 'required|string|min:8|same:passwordConfirmation',
     ];
 
+    public function mount()
+    {
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
+    }
+
+
     public function register()
     {
         $this->validate();
@@ -35,7 +43,9 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        // event(new Registered($user));
+        $user->assignRole('user');
+
+        event(new Registered($user));
 
         $this->reset(); // reset form fields
 

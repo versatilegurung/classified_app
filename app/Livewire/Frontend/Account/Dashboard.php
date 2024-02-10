@@ -22,8 +22,6 @@ class Dashboard extends Component
 
     public function render()
     {
-        //get total count of ads by for this user
-
 
         return view(
             'livewire.frontend.account.dashboard',

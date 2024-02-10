@@ -9,6 +9,12 @@
 
     {!! Meta::toHtml() !!}
 
+    {{-- favicon  --}}
+    <link rel="icon" href="{{ asset('storage/page_images/favicon.png') }}" type="image/png" sizes="16x16">
+    {{-- favicon  --}}
+
+    {{-- vite --}}
+
     @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
     @stack('styles')
 

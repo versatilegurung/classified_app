@@ -18,6 +18,12 @@ class Header extends Component
 
     public $adImages = [];
 
+    public bool $showDrawer = false;
+
+    public function closeDrawer()
+    {
+        $this->showDrawer = !$this->showDrawer;
+    }
 
     public function toggleDropdown()
     {
@@ -27,6 +33,7 @@ class Header extends Component
     public function toggleSearchForm()
     {
         $this->showSearchForm = !$this->showSearchForm;
+        $this->searchTerm = '';
     }
 
     public function closeSearchForm()
@@ -38,7 +45,7 @@ class Header extends Component
     {
         if (Auth::check()) {
             // User is logged in, redirect to the account page
-            return redirect()->route('account.profile');
+            return redirect()->route('account.dashboard');
         } else {
             // User is not logged in, redirect to the login page
             return redirect()->route('login');

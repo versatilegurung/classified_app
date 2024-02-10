@@ -9,7 +9,8 @@
                     </path>
                 </svg>
             </label>
-            <a href="{{ route('home') }}" class="text-lg md:text-2xl font-bold text-white tracking-tight">
+            <a href="{{ route('home') }}" class="text-lg md:text-2xl font-bold text-white tracking-tight"
+                title="{{ __('chitwanbuyandsell') }}">
                 {{ env('APP_NAME') }}
                 {{-- {{ __('chitwanbuyandsell') }} --}}
             </a>
@@ -35,13 +36,13 @@
 
             @if ($showSearchForm)
                 <div
-                    class="absolute flex md:hidden top-16 bg-secondary left-0 w-screen justify-center text-center py-4 px-3 gap-4 items-center">
+                    class="absolute flex md:hidden top-20 bg-secondary w-screen left-0 justify-center text-center py-4 px-3 gap-4">
                     <input wire:model.live="searchTerm" type="text"
-                        class="px-2 py-3 border border-secondary rounded-md bg-primary placeholder-white focus:outline-none font-thin text-white"
+                        class="px-4 py-3 border border-none w-full rounded-md bg-primary placeholder-white focus:outline-none font-thin text-white"
                         placeholder="{{ __('search') }}">
-                    <button wire:click="closeSearchForm">
+                    <button wire:click="toggleSearchForm">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 text-primary">
+                            stroke="currentColor" class="w-6 h-6 text-white hover:text-warning cursor-pointer">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -50,11 +51,11 @@
             <div>
 
                 {{-- search result --}}
-                <div class="absolute flex flex-col md:hidden left-0 top-36 bg-white transition-opacity">
+                <div class="absolute flex flex-col w-screen md:hidden left-0 top-36 bg-white transition-opacity ">
                     @if (sizeof($results) > 0)
                         @foreach ($results as $item)
                             <div
-                                class="text-primary text-medium hover:bg-primary items-center cursor-pointer py-2 px-3 w-full">
+                                class="text-primary text-medium hover:bg-gray-100 items-center cursor-pointer py-4 px-5 w-full backdrop-blur-2xl z-20">
                                 <div class="flex items-center">
                                     @php
                                         $adImages = App\Models\AdImage::where('ad_id', $item->id)
@@ -75,8 +76,10 @@
                                                 </div>
                                             @endforeach
                                         @endif
-                                        <p class="text-md text-primary">
-                                            <a href="{{ route('ad.show', $item->slug) }}"> {{ $item->title }}</a>
+                                        <p class="text-md">
+                                            <a href="{{ route('ad.show', $item->slug) }}">
+                                                {{ Str::limit($item->title, 30) }}
+                                            </a>
                                         </p>
                                         <p class="text-sm mx-5 text-gray-500"> {{ $item->created_at->diffForHumans() }}
                                         </p>
@@ -84,6 +87,10 @@
 
                             </div>
                         @endforeach
+                    @elseif (strlen($searchTerm) > 2)
+                        <div class="text-primary text-medium cursor-pointer py-5 px-3 w-screen">
+                            No Result Found.
+                        </div>
                     @endif
                 </div>
                 {{-- search result --}}
@@ -107,26 +114,15 @@
                 {{-- if logged in show account icon else show login register --}}
                 @if (Auth::check())
                     <div class="mr-0">
-                        <svg class="h-6 w-6  cursor-pointer" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" wire:click="toggleDropdown" @click="open = !open">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9ZM12 20.5C13.784 20.5 15.4397 19.9504 16.8069 19.0112C17.4108 18.5964 17.6688 17.8062 17.3178 17.1632C16.59 15.8303 15.0902 15 11.9999 15C8.90969 15 7.40997 15.8302 6.68214 17.1632C6.33105 17.8062 6.5891 18.5963 7.19296 19.0111C8.56018 19.9503 10.2159 20.5 12 20.5Z"
-                                fill="#fff" />
-                        </svg>
-                    </div>
 
-                    @if ($isOpen)
-                        <div class="absolute mt-6 w-40 right-6 bg-white rounded-md shadow-lg overflow-hidden z-10">
-                            <ul class="w-full block bg-white px-5 py-5">
-                                <li class="text-primary hover:underline mb-4">
-                                    <a href="{{ route('dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="text-primary hover:underline">
-                                    <a href="{{ route('logout') }}">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                    @endif
+                    </div>
+                    <label for="accountDrawer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.0"
+                            stroke="currentColor" class="w-10 h-10 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </label>
                 @else
                     <div class="hidden xl:flex gap-4 text-white text-sm px-3 py-3">
                         <a href="{{ route('login') }}" class="hover:underline">{{ __('login') }}</a>
@@ -150,7 +146,7 @@
 
     {{-- main nav --}}
 
-    {{-- Notice `wire:model`, no `id="xxx"` --}}
+    {{-- check if user is logged in to post ad or not --}}
     <x-modal wire:model="loginModal">
         {{ __('please_login') }}
         <x-slot:actions>
@@ -160,6 +156,13 @@
             </x-button>
         </x-slot:actions>
     </x-modal>
+
+    {{-- account drawer when user is logged in --}}
+    @if (Auth::check())
+        <x-drawer id="accountDrawer" separator right class="w-full lg:w-1/4">
+            @include('livewire.frontend.account.account-nav')
+        </x-drawer>
+    @endif
 
 
 

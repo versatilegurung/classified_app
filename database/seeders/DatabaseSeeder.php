@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Ad::factory(10)->create();
 
         //default seeder
-        // $this->call([
-        //     DefaultSeeder::class,
-        // ]);
+        $this->call([
+            DefaultSeeder::class,
+        ]);
 
         //ad seeder
         \App\Models\AdImage::factory(10)->create();

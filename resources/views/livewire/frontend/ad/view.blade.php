@@ -1,3 +1,8 @@
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css"
+        integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endpush
 <div>
 
     <div class="container mx-auto py-0 md:py-10 mt-16">
@@ -71,10 +76,12 @@
                             <div class="flex">
                                 @if (Auth::check())
                                     <button wire:click="$toggle('composeBox')"
-                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center">{{ __('ad.contact_seller') }}</button>
+                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center"
+                                        title="{{ __('chitwanbuyandsell') }}">{{ __('ad.contact_seller') }}</button>
                                 @else
                                     <a href="{{ route('login') }}"
-                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center">{{ __('ad.contact_seller') }}</a>
+                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center"
+                                        title="{{ __('chitwanbuyandsell') }}">{{ __('ad.contact_seller') }}</a>
                                 @endif
 
 
@@ -84,6 +91,7 @@
                     </div>
                 </div>
                 {{-- get photo gallery with ad id --}}
+
 
                 <div class="col-span-1 md:col-span-1 lg:col-span-5 py-5">
                     <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
