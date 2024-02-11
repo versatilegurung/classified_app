@@ -8,12 +8,20 @@ use App\Models\Message as ModelsMessage;
 class Message extends Component
 {
 
-    public $messages;
+    public function mount()
+    {
+        $user_id = auth()->user()->id;
+        $this->messages = ModelsMessage::where('recipient_id', $user_id)->orderBy('id', 'desc')->paginate(10);
+    }
 
+    public function deleteMessage()
+    {
+        $message = ModelsMessage::find($messageId);
+        $message->delete();
+        session()->flash('message', 'Message deleted successfully.');
+    }
     public function render()
     {
-        $this->messages = ModelsMessage::where('recipient_id', auth()->user()->id)->get();
-        // dd($this->messages);
         return view(
             'livewire.frontend.account.message',
             ['messages' => $this->messages]

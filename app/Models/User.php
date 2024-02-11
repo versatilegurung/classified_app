@@ -7,13 +7,17 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
 {
-use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasPanelShield;
+
 
     /**
      * The attributes that are mass assignable.
@@ -46,11 +50,12 @@ use HasApiTokens, HasFactory, Notifiable, HasRoles;
         'password' => 'hashed',
     ];
 
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return $this->isSuperAdmin() && $this->hasVerifiedEmail();
-    // }
-
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        //only superadmin can access the panel
+        return $this->hasRole('super_admin') && $this->hasVerifiedEmail();
+    }
     public function ads()
     {
         return $this->hasMany(Ad::class);

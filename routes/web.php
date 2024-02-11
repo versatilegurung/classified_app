@@ -56,29 +56,30 @@ Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 
 //laravel verify email
 
-Route::get('/email/verify', VerifyEmail::class)
-    ->middleware('auth')
-    ->name('verification.notice');
+// The Email Verification Notice
+Route::get('/email/verify', VerifyEmail::class)->middleware('auth')->name('verification.notice');
 
+
+// The Email Verification Handler
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
+
     return redirect('/account/dashboard');
-})
-    ->middleware(['auth', 'signed'])
-    ->name('verification.verify');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// Resending the Verification Email
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
 
     return back()->with('message', 'Verification link sent!');
-})
-    ->middleware(['auth', 'throttle:6,1'])
-    ->name('verification.send');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
+
 
 //laravel verify email
-
-// Auth::routes(['verify' => true]);
-
 
 // only authenticated user can get into this route**
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -88,10 +89,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/post-ad', PostAd::class)->name('post.ad');
     Route::get('/account/messages', \App\Livewire\Frontend\Account\Message::class)->name('account.message');
     Route::get('/account/sent-message', \App\Livewire\Frontend\Account\SentMessage::class)->name('account.sent-message');
+    Route::get('/account/view/{id}', \App\Livewire\Frontend\Account\ViewMessage::class)->name('account.view-message');
 
     //log out route
     Route::get('/logout', function () {
-        Session::flush();
+        auth()->logout();
+        session()->flush();
         return redirect(route('home'));
     })->name('logout');
 });
@@ -108,6 +111,3 @@ Route::get('/user/{userId}', \App\Livewire\Frontend\Ads\UserAds::class)->name('a
 
 //ads route
 Route::get('/ad/{slug}', View::class)->name('ad.show');
-
-//post ad
-Route::get('/post-ad', PostAd::class)->name('post.ad');

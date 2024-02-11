@@ -36,14 +36,11 @@ class Register extends Component
     {
         $this->validate();
 
-
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
-
-        $user->assignRole('user');
 
         event(new Registered($user));
 

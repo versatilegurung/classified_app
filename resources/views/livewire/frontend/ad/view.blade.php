@@ -1,8 +1,3 @@
-@push('styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css"
-        integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endpush
 <div>
 
     <div class="container mx-auto py-0 md:py-10 mt-16">
@@ -28,6 +23,16 @@
                         class="text-gray-500 font-thin hover:underline">{{ $ad->title }}</a></p>
             </div>
             {{-- breadcrumb --}}
+
+
+            {{-- if session has message  --}}
+            @if (session()->has('message'))
+                <div class="text-green-800 text-md text-center py-5">
+                    {{ session('message') }}
+                </div>
+            @endif
+            {{-- if session has message  --}}
+
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-5 px-5 lg:px-10">
                 <div class="col-span-1 md:col-span-1 lg:col-span-2 items">
@@ -73,19 +78,9 @@
                         </div>
                         <div>
 
-                            <div class="flex">
-                                @if (Auth::check())
-                                    <button wire:click="$toggle('composeBox')"
-                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center"
-                                        title="{{ __('chitwanbuyandsell') }}">{{ __('ad.contact_seller') }}</button>
-                                @else
-                                    <a href="{{ route('login') }}"
-                                        class="text-sm cursor-pointer bg-secondary px-3 py-2 text-white rounded-md hover:bg-black hover:text-white w-full text-center"
-                                        title="{{ __('chitwanbuyandsell') }}">{{ __('ad.contact_seller') }}</a>
-                                @endif
-
-
-                            </div>
+                            {{-- contact seller --}}
+                            @livewire('frontend.account.compose-message', ['adId' => $ad->id])
+                            {{-- contact seller --}}
 
                         </div>
                     </div>
@@ -108,22 +103,4 @@
         </div>
     </div>
 
-    {{-- contact seller --}}
-    <x-modal wire:model="composeBox" title="Send Message" subtitle="To Seller" separator>
-        <div>
-            <x-form wire.submit="sendMessage">
-                <x-input wire:model="name" type="text" label="{{ __('name') }}" value="{{ $ad->user->name }}"
-                    disabled />
-                <x-input wire:model="email" type="email" label="{{ __('email') }}" value="{{ $ad->user->email }}"
-                    disabled />
-                <x-textarea wire:model="message" label="{{ __('message') }}" />
-                <x-slot:actions>
-                    <x-button label="{{ __('cancel') }}" @click="$wire.composeBox = false" />
-                    <x-button label="{{ __('send-message') }}" class="btn-primary" type="submit" />
-                </x-slot:actions>
-            </x-form>
-        </div>
-
-    </x-modal>
-    {{-- contact seller --}}
 </div>

@@ -81,4 +81,9 @@ class Ad extends Model
     {
         return $this->belongsTo(Location::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

@@ -57,6 +57,19 @@
                 </svg>
 
                 <a href="{{ route('account.message') }}">{{ __('inbox') }}</a>
+                {{-- //get unread message count for the user --}}
+
+                <span class="bg-red-500 text-white rounded-full px-1 py-1 text-xs">
+                    {{-- @livewire('frontend.account.unread-messages', ['user' => auth()->user()]) --}}
+
+                    @php
+                        $unreadMessages = App\Models\Message::where('recipient_id', auth()->user()->id)
+                            ->where('read_at', null)
+                            ->count();
+                    @endphp
+                    {{ $unreadMessages }}
+                </span>
+
             </div>
             <div class="flex gap-3 px-2 py-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

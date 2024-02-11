@@ -32,7 +32,7 @@
     "reset-link-sent-message": "We have sent you an email with a link to reset your password.",
     "back-to-login": "Back to Login",
     "register_success": "You have successfully registered. Please check your email to verify your account.",
-    "please-verify-your-email": "Please check your email to verify your account.",
+    "please-verify-your-email": "Please verify your Email.",
     "featured.ads": "Featured Ads",
     "categories": "Categories",
     "recent.ads": "Recent Ads",
@@ -66,10 +66,16 @@
     "submit.ad": "Submit Ad",
     "posted.at": "Posted at",
 
+    "email-verification": "Email verification",
+    "verify-your-email": "Click the link sent on your email, to verify your email.",
+    "email-verification-sent": "Email verification link has been sent to your email.",
+
     "ad.contact_seller": "Contact Seller",
     "ads-by-location": "Ads by Location",
+    "seller-name": "Seller Name",
 
     "send-message": "Send Message",
+    "close": "Close",
     "no-ads-found": "No Ads Found",
     "similar-ads": "Similar Ads",
 
@@ -78,26 +84,44 @@
     "my-ads": "My Ads",
     "settings": "Settings",
     "listed-ads": "Listed Ads",
-    "messages": "Messages",
+    "message": "Message",
     "inbox": "Inbox",
     "message-inbox": "Message Inbox",
     "sent-message": "Sent Message",
+    "view-message": "View Message",
+    "view": "View",
+    "delete": "Delete",
+    "ad": "Ad",
+    "sent": "Sent",
 
     "from": "From",
     "to": "To",
     "ad-title": "Ad Title",
     "date": "Date",
+    "date-time": "Date & Time",
     "action": "Action",
     "your-ads": "Your Ads",
+    "under-review": "Under Review",
     "total-sold": "Total Sold",
     "total-published": "Total Published",
     "published": "Published",
     "unpublished": "Unpublished",
     "sold": "Sold",
 
+    "back-to-inbox": "Back to Inbox",
+
     "total-ads": "Total Ads",
     "total-users": "Total Users",
     "total-categories": "Total Categories",
     "total-location": "Total Locations",
-    "total-views": "Total Views"
+    "total-views": "Total Views",
+
+    "400-error": "Bad Request",
+    "401-error": "Unauthorised",
+    "403-error": "You are not authorised to view this page.",
+    "404-error": "Something you looking for is not found",
+    "500-error": "Internal Server Error",
+    "502-error": "Bad Gateway",
+    "503-error": "Service Unavailable",
+    "504-error": "Gateway Timeout"
 }

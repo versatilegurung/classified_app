@@ -175,6 +175,9 @@ return [
 
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
+        //sql query to ads table.
+        // App\Providers\AdsServiceProvider::class,
+
 
     ])->toArray(),
 

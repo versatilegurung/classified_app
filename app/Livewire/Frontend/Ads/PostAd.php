@@ -9,6 +9,7 @@ use App\Models\AdImage;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Location;
+use App\Events\NewAdPosted;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
 use Mary\Traits\WithMediaSync;
@@ -31,6 +32,9 @@ class PostAd extends Component
     public $selectedCondition;
     public $location_id;
     public $images = [];
+
+    public $adFormSubmitted = false;
+
 
 
 
@@ -77,9 +81,13 @@ class PostAd extends Component
 
                 $ad_image->save();
             }
-            $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
 
-            return session()->flash('success', 'Ad created succesfully and is pending approval.');;
+            event(new NewAdPosted($ad));
+
+            $this->adFormSubmitted = true;
+
+            // $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
+            return session()->flash('message', 'Ad created succesfully and is pending approval.');;
         }
     }
 

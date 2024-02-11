@@ -19,6 +19,7 @@
     @stack('styles')
 
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
+    @livewireStyles
 
 </head>
 
@@ -33,6 +34,9 @@
     {{-- footer  --}}
     @livewire('frontend.inc.footer')
     {{-- footer  --}}
+
+
+
     @livewireScripts
 
     @stack('scripts')
