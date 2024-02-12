@@ -40,7 +40,8 @@
                                     @endphp
                                     @if ($adImages->isEmpty())
                                         <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
-                                            alt="{{ $item->title }}" class="object-cover h-[80px] w-full rounded-md">
+                                            alt="{{ $item->title }}"
+                                            class="object-cover h-[100px] w-[100px] rounded-md">
                                     @else
                                         @foreach ($adImages as $adImage)
                                             <img src="/storage/{{ $adImage->image }}" alt="{{ $item->title }}"

@@ -14,13 +14,9 @@
         <div>
 
             <form wire:submit="sendMessage" class="grid grid-cols-1 gap-4">
-                <label for="seller-name">{{ __('seller-name') }}</label>
+                <label for="seller-name">{{ __('seller') }}: {{ $ad->user->name }}</label>
                 <input id="seller-name" class="bg-gray-200 text-gray-400 py-3 px-3 rounded-lg w-full"
-                    value="{{ $ad->user->name }}" wire:readonly>
-
-
-
-
+                    value="{{ $ad->user->name }}" wire:readonly hidden>
 
                 {{-- session message  --}}
                 @if (session()->has('message'))

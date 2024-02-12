@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@tailwindcss/typography": "^0.5.10",
-        "photoswipe": "^5.4.3"
+        "photoswipe": "^5.4.3",
+        "select2": "^4.1.0-rc.0"
     }
 }

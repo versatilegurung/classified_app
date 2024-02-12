@@ -7,6 +7,7 @@ use App\Models\Message as ModelsMessage;
 
 class Message extends Component
 {
+    private $messages;
 
     public function mount()
     {
@@ -14,7 +15,7 @@ class Message extends Component
         $this->messages = ModelsMessage::where('recipient_id', $user_id)->orderBy('id', 'desc')->paginate(10);
     }
 
-    public function deleteMessage()
+    public function deleteMessage($messageId)
     {
         $message = ModelsMessage::find($messageId);
         $message->delete();

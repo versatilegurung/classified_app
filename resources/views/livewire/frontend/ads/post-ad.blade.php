@@ -4,19 +4,16 @@
         <div class="flex flex-col gap-2 bg-white py-16 px-8 lg:px-8 mt-8 lg:mt-20 rounded-xl lg:w-2/5 mx-auto">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ __('post.ad') }}</h3>
 
+
             {{-- if session as message  --}}
             @if (!session()->has('message'))
                 <x-form wire:submit.prevent="save">
-                    <!-- Category ID -->
 
+                    <!-- Category ID -->
                     <label for="category" class="text-secondary text-sm">{{ __('category') }}*</label>
-                    <x-select :options="$categories" placeholder="{{ __('select.category') }}" placeholder-value="0"
-                        {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('select.one') }}" wire:model="category_id"
-                        class=" text-primary">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </x-select>
+                    <x-choices-offline wire:model="category_id" :options="$categories" hint="{{ __('select.category') }}"
+                        single searchable />
+
                     <!-- Category ID -->
 
                     <!-- Title -->
@@ -33,13 +30,9 @@
 
                     <!-- Location -->
                     <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>
-                    <x-select :options="$locations" placeholder="{{ __('enter-ad-location') }}" placeholder-value="0"
-                        {{-- Set a value for placeholder. Default is `null` --}} hint="{{ __('ad.location') }}" wire:model="location_id"
-                        class=" text-primary">
-                        @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->name }}</option>
-                        @endforeach
-                    </x-select>
+                    <x-choices-offline wire:model="location_id" :options="$locations" hint="{{ __('ad.location') }}" single
+                        searchable />
+
                     <!-- Location -->
 
                     <!-- Price -->

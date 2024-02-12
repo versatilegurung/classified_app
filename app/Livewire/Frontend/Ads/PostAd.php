@@ -43,9 +43,8 @@ class PostAd extends Component
         'description' => 'required|min:5|max:500',
         'price' => 'required|numeric|min:1|max:1000000',
         'category_id' => 'required',
-        'images' => 'array|required|min:1|max:5',
+        'images' => 'array|max:5',
         'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
-        'negotiable' => 'required',
         'selectedCondition' => 'required',
         'location_id' => 'required'
     ];
