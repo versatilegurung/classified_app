@@ -11,6 +11,13 @@ class Login extends Component
 {
     public $email, $password;
 
+    public $showPassword = false;
+
+    public function toggleShowPassword()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
+
     protected $rules = [
         'email' => 'required|email',
         'password' => 'required',

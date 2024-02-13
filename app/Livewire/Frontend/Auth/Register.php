@@ -17,11 +17,19 @@ class Register extends Component
 
     public $registrationSuccess = false;
 
+    public $showPassword = false;
+
+    public function toggleShowPassword()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
+
+
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8|same:passwordConfirmation',
+        'password' => 'required|string|min:8',
     ];
 
     public function mount()
