@@ -14,19 +14,18 @@ class LocationAds extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
-        // dd($this->slug);
-        // find ads by location id
-        $this->location = \App\Models\Location::where('slug', $this->slug)->first();
+        $this->location = \App\Models\Location::where('slug', $this->slug)->where('published', true)->where('expires_at', '<', now())->first();
         $this->ads = \App\Models\Ad::where('location_id', $this->location->id)->get();
-        
     }
 
     public function render()
     {
 
-        return view('livewire.frontend.ads.location-ads',
+        return view(
+            'livewire.frontend.ads.location-ads',
             [
                 'ads' => $this->ads
-            ]);
+            ]
+        );
     }
 }

@@ -83,6 +83,11 @@
                             {{-- contact seller --}}
 
                         </div>
+                        <div class="text-center py-2">
+                            {{-- ad expires at  --}}
+                            <p class="text-xs text-gray-400">{{ __('ad-expires-at') }}: {{ $ad->expires_at }}</p>
+                            {{-- ad expires at  --}}
+                        </div>
                     </div>
                 </div>
                 {{-- get photo gallery with ad id --}}
@@ -90,7 +95,8 @@
 
                 <div class="col-span-1 md:col-span-1 lg:col-span-5 py-5">
                     <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ $ad->title }} <span
-                            class="font-normal text-sm text-gray-400">({{ $ad->category->name }})</span> </h3>
+                            class="font-normal text-sm text-gray-400">({{ $ad->category->name }})</span>
+                    </h3>
                     <p class="text-xs py-2">Views: {{ $ad->views }}</p>
                     <p class="text-secondary py-5">{{ $ad->description }}</p>
 

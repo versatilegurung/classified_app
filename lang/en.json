@@ -65,6 +65,7 @@
     "hint.condition": "Select the condition of your item",
     "submit.ad": "Submit Ad",
     "posted.at": "Posted at",
+    "ad-expires-at": "Ad Expires at",
 
     "email-verification": "Email verification",
     "verify-your-email": "Click the link sent on your email, to verify your email.",
