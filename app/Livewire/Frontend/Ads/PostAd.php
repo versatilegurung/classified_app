@@ -3,19 +3,18 @@
 namespace App\Livewire\Frontend\Ads;
 
 use App\Models\Ad;
-use Carbon\Carbon;
 
 use App\Models\AdImage;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Location;
 use App\Events\NewAdPosted;
-use Livewire\Attributes\Rule;
+
+use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Mary\Traits\WithMediaSync;
 use Butschster\Head\Facades\Meta;
-use Livewire\Attributes\Validate;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Lang;
 
 class PostAd extends Component
 {
@@ -48,7 +47,7 @@ class PostAd extends Component
         'selectedCondition' => 'required',
         'location_id' => 'required'
     ];
-    public function save()
+    public function save(Request $request)
     {
 
         $this->validate();        // put validated into a session
@@ -86,7 +85,7 @@ class PostAd extends Component
             $this->adFormSubmitted = true;
 
             // $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
-            return session()->flash('message', 'Ad created succesfully and is pending approval.');;
+            return session()->flash('message', Lang::get('ad-created-successfully'));;
         }
     }
 

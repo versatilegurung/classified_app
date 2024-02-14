@@ -24,9 +24,8 @@ class SendEmailToAdmin implements ShouldQueue
     {
 
         // Access the ad from the event
-        $ad = $event->adPosted;
-
+        $ad = $event->ad;
         // Customize the email sending logic
-        Mail::to(env('ADMIN_EMAIL'))->send(new \App\Mail\NewAdPostedMail($ad));
+        Mail::to('admin@admin.com')->send(new \App\Mail\NewAdPostedMail($ad));
     }
 }

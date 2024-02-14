@@ -1,7 +1,7 @@
 <div>
     {{-- dashboard nav  --}}
 
-    <div class="w-full bg-white rounded-xl px-8 py-5">
+    <div class="w-full md:hidden bg-white rounded-xl px-8 py-5">
 
         <div class="flex gap-5 items-center py-10">
 

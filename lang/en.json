@@ -82,6 +82,11 @@
     "no-ads-found": "No Ads Found",
     "similar-ads": "Similar Ads",
 
+    "verify-email-address": "Verify Email Address",
+    "click-the-button-below-to-verify-your-email-address":"Click the button below to verify your email address.",
+
+    "ad-created-successfully": "Ad created succesfully and is pending approval, please allow sometime to get this approved, we will send you an email once it is approved.",
+
     "namaste": "Namaste",
     "welcome-to-dashboard": "Welcome to your dashboard.",
     "my-ads": "My Ads",

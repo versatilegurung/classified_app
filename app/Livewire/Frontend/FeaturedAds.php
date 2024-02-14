@@ -12,8 +12,7 @@ class FeaturedAds extends Component
     public function mount()
     {
         //get ads or fail
-        $this->ads = \App\Models\Ad::where('featured', true)->where('published', true)->where('expires_at', '>', now())  // Add this line to check if the ad is not expired
-            ->orderBy('id', 'desc')->limit(8)->get();
+        $this->ads = \App\Models\Ad::where('featured', true)->where('published', true)->where('expires_at', '>', now())->orderBy('id', 'desc')->limit(8)->get();
     }
     public function render()
     {

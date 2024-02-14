@@ -2,27 +2,28 @@
 
 namespace App\Events;
 
+use App\Models\Ad;
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class NewAdPosted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $adPosted;
+    public $ad;
 
     /**
      * Create a new event instance.
      */
-    public function __construct($adPosted)
+    public function __construct(Ad $ad)
     {
         //
-        $this->adPosted = $adPosted;
+        $this->ad = $ad;
     }
 
     /**

@@ -18,7 +18,7 @@ class CategoryList extends Component
 
         //count the number of ads in each category
         foreach ($this->categories as $category) {
-            $category->ads_count = \App\Models\Ad::where('category_id', $category->id)->count();
+            $category->ads_count = \App\Models\Ad::where('category_id', $category->id)->where('published', true)->where('expires_at', '>', now())->count();
         }
     }
     public function render()

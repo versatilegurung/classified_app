@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\NewAdPosted;
 use App\Listeners\LogVerifiedUser;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
@@ -26,9 +27,14 @@ class EventServiceProvider extends ServiceProvider
         Verified::class => [
             LogVerifiedUser::class,
         ],
-
+        //this sends an email to recipent user when message is sent on Ad.
         MessageSent::class => [
             SendMessageNotification::class,
+        ],
+
+        // this send an admin when ad is posted.
+        NewAdPosted::class => [
+            \App\Listeners\SendEmailToAdmin::class,
         ],
     ];
 

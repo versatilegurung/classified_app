@@ -80,10 +80,16 @@
     "published": "प्रकाशित",
     "unpublished": "अप्रकाशित",
 
+    
+    "verify-email-address": "ईमेल ठेगाना भेरिफाइड गर्नुहोस्",
+    "click-the-button-below-to-verify-your-email-address": "तपाईंको ईमेल ठेगाना भेरिफाइड गर्नका लागि तलको बटनमा क्लिक गर्नुहोस्",
     "namaste": "नमस्ते",
     "welcome-to-dashboard": "डैशबोर्डमा स्वागत छ",
     "my-ads": "मेराे विज्ञापन",
     "settings": "सेटिंग्स",
     "listed-ads": "विज्ञापनहरू सूचीबद्ध",
     "message": "सन्देश"
+    
+
+    
 }

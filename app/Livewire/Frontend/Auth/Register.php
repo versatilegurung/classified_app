@@ -56,7 +56,6 @@ class Register extends Component
 
         $this->registrationSuccess = true;
 
-
         session()->flash('message', Lang::get('register_success'));
     }
 

@@ -2,12 +2,13 @@
 
 namespace App\Mail;
 
+use App\Models\Ad;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NewAdPostedMail extends Mailable
 {
@@ -16,9 +17,13 @@ class NewAdPostedMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+     public $ad;
+
+    public function __construct(Ad $ad)
     {
         //
+        $this->ad = $ad;
     }
 
     /**

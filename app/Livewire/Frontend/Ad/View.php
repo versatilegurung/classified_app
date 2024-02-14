@@ -12,7 +12,7 @@ class View extends Component
 
     public function mount($slug)
     {
-        $this->ad = \App\Models\Ad::where('slug', $slug)->firstOrFail();
+        $this->ad = \App\Models\Ad::where('slug', $slug)->where('published', true)->where('expires_at', '>', now())->firstOrFail();
     }
 
     public function render()

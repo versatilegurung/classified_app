@@ -18,7 +18,7 @@ class LocationList extends Component
 
         //count the number of ads in each category
         foreach ($this->locations as $location) {
-            $location->ads_count = \App\Models\Ad::where('location_id', $location->id)->count();
+            $location->ads_count = \App\Models\Ad::where('location_id', $location->id)->where('published', true)->where('expires_at', '>', now())->count();
         }
     }
 

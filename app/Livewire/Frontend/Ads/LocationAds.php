@@ -14,8 +14,8 @@ class LocationAds extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
-        $this->location = \App\Models\Location::where('slug', $this->slug)->where('published', true)->where('expires_at', '<', now())->first();
-        $this->ads = \App\Models\Ad::where('location_id', $this->location->id)->get();
+        $this->location = \App\Models\Location::where('slug', $this->slug)->first();
+        $this->ads = \App\Models\Ad::where('location_id', $this->location->id)->where('published', true)->where('expires_at', '>', now())->get();
     }
 
     public function render()

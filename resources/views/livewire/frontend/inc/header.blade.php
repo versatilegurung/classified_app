@@ -1,6 +1,6 @@
 <div>
     {{-- main nav --}}
-    <div class="fixed top-0 left-0 w-full bg-primary text-white p-4 flex justify-between items-center py-5 gap-2 z-[10]">
+    <div class="fixed top-0 left-0 w-full bg-primary text-white px-4 py-3 md:py-4 flex justify-between items-center gap-2 z-[10]">
         <div class="flex items-center gap-3 px-3">
             <label for="my-drawer" class="cursor-pointer">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -113,7 +113,7 @@
             <div>
                 {{-- if logged in show account icon else show login register --}}
                 @if (Auth::check())
-                    <div class="mr-0">
+                    <div class="mr-0" >
 
                     </div>
                     <label for="accountDrawer">
@@ -159,7 +159,12 @@
 
     {{-- account drawer when user is logged in --}}
     @if (Auth::check())
-        <x-drawer id="accountDrawer" separator right class="w-full lg:w-1/4">
+    <div id="sideDrawer" class="side-drawer">
+
+    {{-- @include('livewire.frontend.account.account-nav') --}}
+    </div>
+
+        <x-drawer id="accountDrawer" right class="w-full lg:w-1/4">
             @include('livewire.frontend.account.account-nav')
         </x-drawer>
     @endif
@@ -167,3 +172,4 @@
 
 
 </div>
+
