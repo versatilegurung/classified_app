@@ -10,35 +10,35 @@
                 <x-form wire:submit.prevent="save">
 
                     <!-- Category ID -->
-                    <label for="category" class="text-secondary text-sm">{{ __('category') }}*</label>
+                    <label for="category" class="text-secondary text-sm">{{ __('category') }}</label>
                     <x-choices-offline wire:model="category_id" :options="$categories" hint="{{ __('select.category') }}"
-                        single searchable />
+                        single searchable required />
 
                     <!-- Category ID -->
 
                     <!-- Title -->
                     <label for="title" class="text-secondary text-sm">{{ __('ad.title') }}</label>
                     <x-input wire:model="title" placeholder="{{ __('enter-ad-title') }}" hint="{{ __('ad.title') }}"
-                        class="text-primary" />
+                        class="text-primary" required />
                     <!-- Title -->
 
                     <!-- Description -->
                     <label for="description" class="text-sm mt-2 text-secondary">{{ __('ad.description') }}</label>
                     <x-textarea wire:model="description" placeholder="{{ __('enter-ad-description') }} ..."
-                        hint="{{ __('max-characters') }}" rows="5" inline />
+                        hint="{{ __('max-characters') }}" rows="5" inline required />
                     <!-- Description -->
 
                     <!-- Location -->
-                    <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}*</label>
+                    <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}</label>
                     <x-choices-offline wire:model="location_id" :options="$locations" hint="{{ __('ad.location') }}" single
-                        searchable />
+                        searchable required />
 
                     <!-- Location -->
 
                     <!-- Price -->
-                    <label for="price" class="text-sm mt-2 text-secondary">{{ __('price') }}*</label>
+                    <label for="price" class="text-sm mt-2 text-secondary">{{ __('price') }}</label>
                     <x-input prefix="{{ __('ad.currency') }}" wire:model="price" class="text-primary"
-                        hint="{{ __('ad.price') }}" />
+                        hint="{{ __('ad.price') }}" required/>
                     <!-- Price -->
 
                     <!-- Images -->
@@ -54,13 +54,13 @@
                     <!-- Negotiable -->
 
                     <!-- Condition -->
-                    <label for="condition" class="text-sm mt-2 text-secondary">{{ __('condition') }}*</label>
+                    <label for="condition" class="text-sm mt-2 text-secondary">{{ __('condition') }}</label>
                     @php
                         $conditions = [['custom_key' => 'new', 'other_name' => 'New'], ['custom_key' => 'used', 'other_name' => 'Used']];
                     @endphp
                     <x-select :options="$conditions" option-value="custom_key" option-label="other_name"
                         placeholder="{{ __('select.condition') }}" placeholder-value="0" wire:model="selectedCondition"
-                        hint="{{ __('hint.condition') }}" />
+                        hint="{{ __('hint.condition') }}" required />
                     <!-- Condition -->
 
                     {{-- if session message show here  --}}

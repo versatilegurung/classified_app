@@ -6,13 +6,13 @@
 
                 <x-form wire:submit.prevent="login">
                     {{-- email --}}
-                    <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" />
+                    <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" required />
 
                     {{-- email  --}}
 
                     <div class="mt-1 relative">
                         <x-input type="{{ $showPassword ? 'text' : 'password' }}" label="{{ __('password') }}"
-                            wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12" />
+                            wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12" required />
 
                         <div class="absolute inset-y-0 right-0 pr-3 pt-7 flex items-center hover:text-warning"
                             title="{{ __('show-password') }}">

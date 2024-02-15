@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Auth\Events\Registered;
 
@@ -19,6 +20,8 @@ class Register extends Component
 
     public $showPassword = false;
 
+    public $recaptcha;
+
     public function toggleShowPassword()
     {
         $this->showPassword = !$this->showPassword;
@@ -29,10 +32,17 @@ class Register extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8',
-        'recaptcha' => 'required|recaptcha',
+        'password' => 'required|string|min:8',        
 
     ];
+
+    public function messages()
+    {
+        return [
+            'recaptcha.required' => 'Please verify you are not a robot!',
+        ];
+    }
+
 
     public function mount()
     {
@@ -45,6 +55,16 @@ class Register extends Component
     public function register()
     {
         $this->validate();
+         // Verify reCAPTCHA on server-side
+         $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.google_secret_key'),
+            'response' => $this->recaptcha,
+        ]);
+
+        if (! $response->successful() || ! $response->json('success')) {
+            $this->addError('recaptcha', 'Invalid reCAPTCHA token.');
+            return;
+        }
 
         $user = User::create([
             'name' => $this->name,
@@ -59,6 +79,11 @@ class Register extends Component
         $this->registrationSuccess = true;
 
         session()->flash('message', Lang::get('register_success'));
+    }
+
+    public function updatedCaptcha($value)
+    {
+        $this->validateOnly('captcha');
     }
 
 
