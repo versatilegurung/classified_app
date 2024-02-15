@@ -19,7 +19,8 @@
             <p class="text-[7rem] text-warning font-bold leading-tight">403</p>
             <p class="font-bold text-gray-200">{{ __('403-error') }}</p>
             <x-button class="mt-4 btn btn-secondary text-white">
-                <a href="{{ route('home') }}">Go to Home</a>
+                <a href="{{ url()->previous() }}">Go Back</a>
+
             </x-button>
         </div>
 

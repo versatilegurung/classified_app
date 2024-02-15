@@ -19,7 +19,12 @@
             <p class="text-[7rem] text-warning font-bold leading-tight">404</p>
             <p class="font-bold text-gray-200">{{ __('404-error') }}</p>
             <x-button class="mt-4 btn btn-secondary text-white">
-                <a href="{{ route('home') }}">Go to Home</a>
+                {{-- return redirct to last page --}}
+                <a href="{{ url()->previous() }}">Go Back</a>
+                {{-- return to home page --}}
+                {{-- <a href="{{ url()->previous() }}">Go Back</a>
+ --}}
+
             </x-button>
         </div>
 

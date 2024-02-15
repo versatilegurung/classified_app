@@ -45,6 +45,12 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 Route::get('/location', LocationMap::class);
 
 Route::get('/', Home::class)->name('home');
+
+//this route gets user redirect to last page
+Route::get('/goback', function () {
+    return redirect()->back();
+})->name('goback');
+
 Route::get('/register', Register::class)->name('register');
 
 // if user is authenicated then redirect to dashboard from register route

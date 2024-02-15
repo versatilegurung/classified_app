@@ -20,7 +20,8 @@
             <p class="font-bold text-gray-200">{{ __('504-error') }}r</p>
 
             <x-button class="mt-4 btn btn-secondary text-white">
-                <a href="{{ route('home') }}">Go to Home</a>
+                <a href="{{ url()->previous() }}">Go Back</a>
+
             </x-button>
         </div>
 
