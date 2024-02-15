@@ -3,19 +3,16 @@
 use Illuminate\Http\Request;
 use App\Livewire\Frontend\Home;
 use App\Livewire\Frontend\Ad\View;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\Localization;
 use App\Livewire\Frontend\Ads\PostAd;
 use App\Livewire\Frontend\Auth\Login;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 use App\Livewire\Frontend\Auth\Register;
-use App\Livewire\Frontend\Account\Profile;
 use App\Livewire\Frontend\Ads\LocationMap;
 use App\Livewire\Frontend\Account\Dashboard;
 use App\Livewire\Frontend\Auth\ForgotPassword;
 use App\Livewire\Frontend\Auth\VerifyEmail;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -117,3 +114,6 @@ Route::get('/user/{userId}', \App\Livewire\Frontend\Ads\UserAds::class)->name('a
 
 //ads route
 Route::get('/ad/{slug}', View::class)->name('ad.show');
+
+
+

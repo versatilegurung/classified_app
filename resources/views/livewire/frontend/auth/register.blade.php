@@ -41,10 +41,8 @@
                             </a>
                         </div>
                     </div>
-                    {{-- <div class="g-recaptcha w-full" data-sitekey="{{ config('services.recaptcha.google_site_key') }}" data-action="REGISTER"></div> --}}
-                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.google_site_key') }}"></div>
-                    @error('recaptcha') <span class="error">{{ $message }}</span> @enderror
-              
+                 
+                    {!! NoCaptcha::renderJs() !!}
                     <x-slot:actions>                      
                         <x-button label="{{ __('register') }}" class="btn-primary text-white w-full" type="submit"/>                               
         

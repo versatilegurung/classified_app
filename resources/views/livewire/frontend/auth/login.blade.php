@@ -32,7 +32,7 @@
 
                     {{-- password --}}
 
-
+                    {!! NoCaptcha::renderJs() !!}
 
                     <x-slot:actions>
                         <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full"

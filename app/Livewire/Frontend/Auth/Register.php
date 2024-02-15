@@ -20,8 +20,6 @@ class Register extends Component
 
     public $showPassword = false;
 
-    public $recaptcha;
-
     public function toggleShowPassword()
     {
         $this->showPassword = !$this->showPassword;
@@ -36,14 +34,7 @@ class Register extends Component
 
     ];
 
-    public function messages()
-    {
-        return [
-            'recaptcha.required' => 'Please verify you are not a robot!',
-        ];
-    }
-
-
+   
     public function mount()
     {
         if (auth()->check()) {
@@ -55,16 +46,7 @@ class Register extends Component
     public function register()
     {
         $this->validate();
-         // Verify reCAPTCHA on server-side
-         $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.google_secret_key'),
-            'response' => $this->recaptcha,
-        ]);
-
-        if (! $response->successful() || ! $response->json('success')) {
-            $this->addError('recaptcha', 'Invalid reCAPTCHA token.');
-            return;
-        }
+        
 
         $user = User::create([
             'name' => $this->name,
@@ -81,12 +63,7 @@ class Register extends Component
         session()->flash('message', Lang::get('register_success'));
     }
 
-    public function updatedCaptcha($value)
-    {
-        $this->validateOnly('captcha');
-    }
-
-
+   
     public function render()
     {
 

@@ -106,8 +106,7 @@
                     <x-button label="{{ __('postad') }}" class="btn-secondary  text-white"
                         wire:click="$toggle('loginModal')" />
                 @endif
-                {{-- check auth and show post ad button --}}
-
+                {{-- check auth and show post ad button --}}             
 
             </div>
 
@@ -132,10 +131,6 @@
                 @endif
             </div>
         </div>
-
-        {{-- language toggle --}}
-        {{-- @livewire('frontend.language-toggle') --}}
-        {{-- language toggle --}}
 
 
     </div>
