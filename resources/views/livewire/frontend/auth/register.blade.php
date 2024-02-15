@@ -14,7 +14,7 @@
                 @endif
                 {{-- //message  --}}
             @else
-                <x-form wire:submit.prevent="register" class="py-5 flex gap-3">
+                <x-form wire:submit.prevent="register" class="py-5 flex gap-3" id="register-form" method="POST">
                     {{-- Full error bag --}}
                     <x-input label="{{ __('name') }}" type="name" wire:model="name"
                         placeholder="{{ __('enter-your-name') }}" />
@@ -41,9 +41,11 @@
                             </a>
                         </div>
                     </div>
+                    <div class="g-recaptcha w-full" data-sitekey="{{ config('services.recaptcha.google_site_key') }}" data-action="REGISTER"></div>
 
                     <x-slot:actions>
-                        <x-button label="{{ __('register') }}" class="btn-primary text-white w-full" type="submit" />
+                        <x-button label="{{ __('register') }}" class="g-recaptcha btn-primary text-white w-full" type="submit"/>                               
+        
                     </x-slot:actions>
                 </x-form>
             @endif
@@ -55,3 +57,12 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("register-form").submit();
+       }
+     </script>
+@endpush
