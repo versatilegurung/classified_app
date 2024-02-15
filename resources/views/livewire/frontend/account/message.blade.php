@@ -19,7 +19,7 @@
                         {{-- list all message on table  --}}
                         <div class="overflow-x-auto">
                             <table class="table-auto w-full">
-                                <thead class="bg-gray-700 text-white">
+                                <thead class="bg-gray-900 text-white">
                                     <tr>
                                         <th class="font-medium py-3 text-left px-4">{{ __('ad-title') }}</th>
                                         <th class="px-4 py-2 text-left font-normal">{{ __('from') }}</th>

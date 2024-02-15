@@ -18,7 +18,7 @@
                         {{-- sent messages on grid-cols  --}}
                         <div class="overflow-x-auto font-normal">
                             <table class="table-auto w-full">
-                                <thead class="bg-gray-500 text-white">
+                                <thead class="bg-gray-900 text-white">
                                     <tr>
                                         <th class="font-medium py-3 text-left px-4">{{ __('to') }}</th>
                                         <th class="font-medium py-3 text-left px-4">{{ __('ad-title') }}</th>

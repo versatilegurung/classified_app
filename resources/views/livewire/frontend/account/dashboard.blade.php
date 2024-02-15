@@ -19,8 +19,10 @@
                             {{-- widget with total ads, total messages, total views, etc. --}}
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
                                 <div class="bg-gray-100 rounded-xl p-5">
-                                    <p class="text-center text-2xl font-bold">{{ $totalAds }}</p>
-                                    <p class="text-center text-xs">{{ __('total-ads') }}</p>
+                                    <a href="{{ route('my.ads') }}">
+                                        <p class="text-center text-2xl font-bold">{{ $totalAds }}</p>
+                                        <p class="text-center text-xs">{{ __('total-ads') }}</p>
+                                    </a>
                                 </div>
                                 <div class="bg-gray-100 rounded-xl p-5">
                                     <p class="text-center text-2xl font-bold">{{ $totalMessages }}</p>
