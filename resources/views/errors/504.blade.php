@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>504 Gateway Timeout</title>
 
-    @vite(['resources/css/app.css', 'resources/css/custom-styles.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/custom.css', 'resources/js/app.js'])
 
 </head>
 
