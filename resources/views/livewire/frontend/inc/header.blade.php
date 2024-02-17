@@ -21,7 +21,6 @@
 
         {{-- search bar larger screen --}}
         @livewire('frontend.inc.search')
-        {{-- search bar larger screen --}}
 
         <div class="flex items-center">
 
@@ -33,7 +32,6 @@
                         d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
             </button>
-            {{-- search toggle button for mobile --}}
 
             @if ($showSearchForm)
                 <div
@@ -94,7 +92,6 @@
                         </div>
                     @endif
                 </div>
-                {{-- search result --}}
 
 
                 {{-- check auth and show post ad button --}}
@@ -106,7 +103,6 @@
                     <x-button label="{{ __('postad') }}" class="btn-secondary  text-white"
                         wire:click="$toggle('loginModal')" />
                 @endif
-                {{-- check auth and show post ad button --}}             
 
             </div>
 
@@ -134,13 +130,10 @@
 
 
     </div>
-    {{-- main nav --}}
 
     {{-- slide sheet menu drawer --}}
     @livewire('frontend.inc.category-drawer')
-    {{-- slide sheet menu drawer --}}
 
-    {{-- main nav --}}
 
     {{-- check if user is logged in to post ad or not --}}
     <x-modal wire:model="loginModal">
@@ -155,16 +148,9 @@
 
     {{-- account drawer when user is logged in --}}
     @if (Auth::check())
-        <div id="sideDrawer" class="side-drawer">
-
-            {{-- @include('livewire.frontend.account.account-nav') --}}
-        </div>
-
         <x-drawer id="accountDrawer" right class="w-full lg:w-1/4">
             @include('livewire.frontend.account.account-nav')
         </x-drawer>
     @endif
-
-
 
 </div>
