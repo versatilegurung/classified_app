@@ -40,6 +40,9 @@ class SendResetLink extends Mailable
     {
         return new Content(
             markdown: 'mail.send-reset-link',
+            with: [
+                'token' => $this->token,
+            ],
         );
     }
 

@@ -16,7 +16,7 @@
     <div class="flex justify-center items-center h-screen px-7">
         <div class="flex flex-col gap-5 text-center ">
             <span class="text-white text-2xl font-bold">{{ env('APP_NAME') }}</span>
-            <p class="text-[7rem] text-warning font-bold leading-tight">
+            <p class="text-[7rem] text-warning font-bold leading-tight tracking-tighter">
                 Coming Soon
             </p>
 

@@ -5,7 +5,7 @@ namespace App\Livewire\Frontend\Auth;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Mail\SendResetLink;
-
+use App\Models\User;
 use Illuminate\Support\Str;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Support\Facades\DB;
@@ -26,10 +26,10 @@ class ForgotPassword extends Component
         $this->validate();
 
         //check if user exists
-        $user = DB::table('users')->where('email', $this->email)->first();
+        $user = User::where('email', $this->email)->first();
 
         if (!$user) {
-            return redirect()->back()->with('erro', 'We can\'t find a user with that e-mail address.');
+            return redirect()->back()->with('message', 'We can\'t find a user with that e-mail address.');
         }
 
         $token = Str::random($length = 64);
@@ -44,6 +44,7 @@ class ForgotPassword extends Component
                 'created_at' => Carbon::now()
             ]);
         }
+
         //update token and email in  password_resets table
         DB::table('password_reset_tokens')->where('email', $this->email)->update([
             'token' => $token,
