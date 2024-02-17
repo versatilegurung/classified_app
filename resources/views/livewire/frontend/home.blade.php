@@ -5,11 +5,11 @@
     </div>
     {{-- Hero section --}}
 
-    {{-- locations list  --}}
-    <div class="">
-        @livewire('frontend.location-list')
+     {{-- districts list  --}}
+     <div class="">
+        @livewire('frontend.district-list')
     </div>
-    {{-- locations list  --}}
+    {{-- districts list  --}}
 
     {{-- recent ads  --}}
     <div class="bg-white">

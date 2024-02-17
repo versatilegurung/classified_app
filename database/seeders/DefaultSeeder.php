@@ -16,7 +16,10 @@ class DefaultSeeder extends Seeder
         // category seeder
         $this->call(CategoriesTableSeeder::class);
 
-        //location seeder
-        $this->call(LocationSeeder::class);
+        // //location seeder
+        // $this->call(LocationSeeder::class);
+
+        //district seeder
+        $this->call(DistrictSeeder::class);
     }
 }

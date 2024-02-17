@@ -3,7 +3,7 @@
     <div class="mt-16 md:py-10">
         <div class="container mx-auto bg-white py-10 rounded-xl px-10">
             <h2 class="mb-3 font-bold text-xl">{{ __('ads-by-location') }}: <span
-                    class="text-secondary">{{ $location->name }} </span> </h2>
+                    class="text-secondary">{{ $district->name }} </span> </h2>
             <hr>
             {{-- list ads  --}}
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-4">
@@ -52,7 +52,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                 </svg>
-                                <p class="text-xs">{{ $item->location->name }}</p>
+                                <p class="text-xs">{{ $item->district->name }}</p>
 
                                 <p class="text-[0.7rem] mx-5 text-gray-500"> {{ $item->created_at->diffForHumans() }}
                                 </p>

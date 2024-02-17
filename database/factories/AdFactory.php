@@ -24,13 +24,15 @@ class AdFactory extends Factory
 
 
         return [
-            'user_id' => User::factory(),
+            // 'user_id' => User::factory(),
+            'user_id' => $this->faker->numberBetween(10, 11),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'category_id' => $this->faker->numberBetween(1,39),
             // 'category_id' => Category::factory(),
             // 'location' => Location::factory(),
-            'location_id' => $this->faker->numberBetween(10, 20),
+            // 'location_id' => $this->faker->numberBetween(10, 20),
+            'district_id' => $this->faker->numberBetween(1, 75),
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,

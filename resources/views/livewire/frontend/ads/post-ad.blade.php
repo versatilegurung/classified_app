@@ -28,12 +28,20 @@
                         hint="{{ __('max-characters') }}" rows="5" inline required />
                     <!-- Description -->
 
-                    <!-- Location -->
-                    <label for="location" class="text-sm mt-2 text-secondary">{{ __('location') }}</label>
-                    <x-choices-offline wire:model="location_id" :options="$locations" hint="{{ __('ad.location') }}" single
+                    <!-- Address -->
+                    <label for="address" class="text-sm mt-2 text-secondary">{{ __('address') }}</label>
+                    <x-input wire:model="address" placeholder="{{ __('enter-address') }}" hint="{{ __('ad.address') }}"
+                        class="text-primary" required />
+
+                    <!-- Address -->
+                   
+
+                    <!-- District -->
+                    <label for="district" class="text-sm mt-2 text-secondary">{{ __('district') }}</label>
+                    <x-choices-offline wire:model="district_id" :options="$districts" hint="{{ __('ad.district') }}" single
                         searchable required />
 
-                    <!-- Location -->
+                    <!-- District -->
 
                     <!-- Price -->
                     <label for="price" class="text-sm mt-2 text-secondary">{{ __('price') }}</label>

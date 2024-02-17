@@ -9,13 +9,13 @@ class LocationAds extends Component
 
     public $slug;
     public $ads;
-    public $location;
+    public $district;
 
     public function mount($slug)
     {
         $this->slug = $slug;
-        $this->location = \App\Models\Location::where('slug', $this->slug)->first();
-        $this->ads = \App\Models\Ad::where('location_id', $this->location->id)->where('published', true)->where('expires_at', '>', now())->get();
+        $this->district = \App\Models\District::where('slug', $this->slug)->first();
+        $this->ads = \App\Models\Ad::where('district_id', $this->district->id)->where('published', true)->where('expires_at', '>', now())->get();
     }
 
     public function render()

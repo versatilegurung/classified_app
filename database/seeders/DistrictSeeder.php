@@ -2,20 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Location;
+use App\Models\District;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class LocationSeeder extends Seeder
+class DistrictSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $this->command->info('Seeding locations...');
+        //
+        $this->command->info('Seeding districts of Nepal...');
 
-        $cities = [
+        $districts = [
             'Achham',
             'Arghakhanchi',
             'Baglung',
@@ -95,8 +96,8 @@ class LocationSeeder extends Seeder
             'Western Rukum'         
         ];
 
-        foreach ($cities as $city) {
-            Location::create(['name' => $city]);
+        foreach ($districts as $district) {
+            District::create(['name' => $district]);
         }
     }
 }

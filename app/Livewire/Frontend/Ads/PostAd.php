@@ -9,7 +9,7 @@ use Livewire\Component;
 use App\Models\Category;
 use App\Models\Location;
 use App\Events\NewAdPosted;
-
+use App\Models\District;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Mary\Traits\WithMediaSync;
@@ -22,14 +22,16 @@ class PostAd extends Component
     use WithFileUploads, WithMediaSync;
 
     public $categories;
+    public $location_id;
     public $locations;
+    public $districts;
+    public $district_id;
     public $title;
     public $description;
     public $price;
     public $category_id;
     public $negotiable;
     public $selectedCondition;
-    public $location_id;
     public $images = [];
 
     public $adFormSubmitted = false;
@@ -45,12 +47,14 @@ class PostAd extends Component
         'images' => 'array|max:5',
         'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
         'selectedCondition' => 'required',
-        'location_id' => 'required'
+        'district_id' => 'required'
     ];
     public function save(Request $request)
     {
 
         $this->validate();        // put validated into a session
+
+        // dd($this->validate());
 
         //if user is not logged in save data to session and redirect to login page
         if (!auth()->check()) {
@@ -64,7 +68,7 @@ class PostAd extends Component
                 'category_id' => $this->category_id,
                 'negotiable' => $this->negotiable,
                 'condition' => $this->selectedCondition,
-                'location_id' => $this->location_id,
+                'district_id' => $this->district_id,
                 'user_id' => auth()->id(),
             ]);
 
@@ -92,7 +96,7 @@ class PostAd extends Component
     public function mount()
     {
         $this->categories = Category::all();
-        $this->locations = Location::all();
+        $this->districts = District::all();
     }
     public function render()
     {

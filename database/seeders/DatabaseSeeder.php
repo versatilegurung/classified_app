@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         //ad seeder
-        \App\Models\AdImage::factory(10)->create();
+        \App\Models\AdImage::factory(5)->create();
     }
 }

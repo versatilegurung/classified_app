@@ -60,7 +60,7 @@
 
 
                                         <p class="text-xs text-gray-500 hover:underline"><a
-                                                href="{{ route('ads.location', $item->location->slug) }}">{{ $item->location->name }}
+                                                href="{{ route('ads.location', $item->district->slug) }}">{{ $item->district->name }}
                                             </a></p>
 
                                     </div>

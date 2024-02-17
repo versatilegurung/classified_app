@@ -55,8 +55,8 @@
                                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                 </svg>
 
-                                <a href="{{ route('ads.location', $item->location->slug) }}">
-                                    <p class="text-xs text-gray-500 hover:underline">{{ $item->location->name }}
+                                <a href="{{ route('ads.location', $item->district->slug) }}">
+                                    <p class="text-xs text-gray-500 hover:underline">{{ $item->district->name }}
                                     </p>
                                 </a>
                             </div>

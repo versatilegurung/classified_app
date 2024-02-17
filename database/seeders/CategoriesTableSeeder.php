@@ -17,8 +17,8 @@ class CategoriesTableSeeder extends Seeder
         $categories = [
             'Electronics', 'Furniture', 'Clothing & Accessories', 'Home & Garden',
             'Appliances', 'Sports & Outdoors', 'Musical Instruments', 'Toys & Games',
-            'Cars', 'Motorcycles', 'Trucks & SUVs', 'Boats & Watercraft',
-            'RVs & Campers', 'Bicycles', 'House/Room/Flat For Sale',
+            'Cars', 'Bikes/Motorcycles', 'Trucks & SUVs', 'Boats & Watercraft',
+            'Bicycles', 'House/Room/Flat For Sale',
             'House/Room/Flat For Rent', 'Commercial Property', 'Land & Plots',
             'Jobs Full-time', 'Jobs Part-time', 'Temporary Jobs', 'Home Services',
             'Beauty & Spa', 'Cleaning', 'Health & Wellness', 'Event Services',
