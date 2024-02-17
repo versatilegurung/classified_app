@@ -4,11 +4,13 @@ namespace App\Livewire\Frontend\Auth;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Mail\WelcomeEmail;
 use Livewire\Attributes\Layout;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 
 #[Layout('layouts.app')]
@@ -17,7 +19,6 @@ class Register extends Component
     public $name, $email, $password, $passwordConfirmation;
 
     public $registrationSuccess = false;
-
     public $showPassword = false;
 
     public function toggleShowPassword()
@@ -25,16 +26,12 @@ class Register extends Component
         $this->showPassword = !$this->showPassword;
     }
 
-
-
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8',        
-
+        'password' => 'required|string|min:8',
     ];
 
-   
     public function mount()
     {
         if (auth()->check()) {
@@ -42,12 +39,9 @@ class Register extends Component
         }
     }
 
-
     public function register()
     {
         $this->validate();
-        
-
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -56,14 +50,18 @@ class Register extends Component
 
         event(new Registered($user));
 
+        //send welcome email to user
+        Mail::to($this->email)->send(new WelcomeEmail($user));
+
         $this->reset(); // reset form fields
+
 
         $this->registrationSuccess = true;
 
         session()->flash('message', Lang::get('register_success'));
     }
 
-   
+
     public function render()
     {
 

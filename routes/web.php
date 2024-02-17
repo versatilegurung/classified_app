@@ -50,11 +50,11 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 
 Route::get('/location', LocationMap::class);
 
-// Route::get('/', Home::class)->name('home');
+Route::get('/', Home::class)->name('home');
 
-// Route::get('/coming-soon', function () {
-//     return view('livewire.frontend.coming-soon');
-// })->name('coming.soon');
+Route::get('/coming-soon', function () {
+    return view('livewire.frontend.coming-soon');
+})->name('coming.soon');
 
 //this route gets user redirect to last page
 Route::get('/goback', function () {

@@ -2,29 +2,23 @@
 
 namespace App\Mail;
 
-use App\Models\Ad;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class NewAdPostedMail extends Mailable
+class PasswordResetSuccess extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-
-    public $ad;
-
-    public function __construct(Ad $ad)
+    public function __construct()
     {
         //
-        $this->ad = $ad;
     }
 
     /**
@@ -33,11 +27,7 @@ class NewAdPostedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-
-            replyTo: [
-                new Address($this->ad->user->email, $this->ad->user->name),
-            ],
-            subject: 'New Ad Posted Notification',
+            subject: 'Password Reset Success',
         );
     }
 
@@ -47,8 +37,7 @@ class NewAdPostedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.ad.posted-ad-email',
-            with: ['ad' => $this->ad],
+            markdown: 'mail.password-reset-success',
         );
     }
 

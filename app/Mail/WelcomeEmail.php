@@ -2,29 +2,24 @@
 
 namespace App\Mail;
 
-use App\Models\Ad;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class NewAdPostedMail extends Mailable
+class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
     /**
      * Create a new message instance.
      */
-
-    public $ad;
-
-    public function __construct(Ad $ad)
+    public function __construct($user)
     {
-        //
-        $this->ad = $ad;
+        $this->user = $user;
     }
 
     /**
@@ -33,11 +28,7 @@ class NewAdPostedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-
-            replyTo: [
-                new Address($this->ad->user->email, $this->ad->user->name),
-            ],
-            subject: 'New Ad Posted Notification',
+            subject: 'Welcome to Chitwan Buy & Sell',
         );
     }
 
@@ -47,8 +38,8 @@ class NewAdPostedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.ad.posted-ad-email',
-            with: ['ad' => $this->ad],
+            markdown: 'mail.welcome-email',
+            with: ['user' => $this->user],
         );
     }
 

@@ -85,7 +85,7 @@ class PostAd extends Component
             $this->adFormSubmitted = true;
 
             // $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
-            return session()->flash('message', Lang::get('ad-created-successfully'));;
+            return session()->flash('message', Lang::get('ad-created-successfully'));
         }
     }
 

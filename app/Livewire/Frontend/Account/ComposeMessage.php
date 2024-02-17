@@ -6,6 +6,7 @@ use App\Models\Message;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
 use Illuminate\Mail\Events\MessageSent;
+use App\Notifications\NewMessageNotification;
 
 class ComposeMessage extends Component
 {
@@ -49,11 +50,11 @@ class ComposeMessage extends Component
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
         $message->save();
 
-        // event(new MessageSent($message));
-
-        $this->message = '';
+        //send email notification to user who posted the ad
+        $this->ad->user->notify(new NewMessageNotification($message));
 
 
         return session()->flash('message', 'Message sent successfully');

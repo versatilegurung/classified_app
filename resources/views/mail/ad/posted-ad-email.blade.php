@@ -1,10 +1,17 @@
 <x-mail::message>
-# Introduction
+# New Ad posted
 
-The body of your message.
+Hi Admin,
+New Ad is posted, please review it.
 
-<x-mail::button :url="''">
-Button Text
+Title: {{ $ad->title }}<br>
+Description: {{ $ad->description }}<br>
+Price: {{__('ad-currency')}}.{{ $ad->price }}<br>
+Category: {{ $ad->category->name }}<br>
+User: {{ $ad->user->name }}<br>
+
+<x-mail::button :url="route('dashboard')">
+    Review Ad
 </x-mail::button>
 
 Thanks,<br>

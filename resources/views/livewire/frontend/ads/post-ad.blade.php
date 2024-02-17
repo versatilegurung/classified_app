@@ -38,7 +38,7 @@
                     <!-- Price -->
                     <label for="price" class="text-sm mt-2 text-secondary">{{ __('price') }}</label>
                     <x-input prefix="{{ __('ad.currency') }}" wire:model="price" class="text-primary"
-                        hint="{{ __('ad.price') }}" required/>
+                        hint="{{ __('ad.price') }}" required />
                     <!-- Price -->
 
                     <!-- Images -->

@@ -15,7 +15,7 @@ class ViewMessage extends Component
 
     public function render()
     {
-        $view_message = \App\Models\Message::find($this->message_id);
+        $view_message = \App\Models\Message::find($this->message_id)->where('recipient_id', auth()->user()->id)->firstOrFail();
 
         //update read at on message
         $view_message->read_at = now();
