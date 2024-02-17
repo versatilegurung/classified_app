@@ -3,54 +3,45 @@
             <div
                 class="w-full shadow-lg md:w-3/5 lg:w-2/5 mx-auto bg-white px-10 py-16 md:py-5 mt-16 md:mt-16 rounded-xl">
                 <h2 class="font-black text-primary text-2xl py-7 mb-5">{{ __('login') }}</h2>
+                <x-form wire:submit.prevent="login">
+                    {{-- email --}}
+                    <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" required />
 
-              
-                    @if (!session()->has('message'))
-                    <x-form wire:submit.prevent="login">
-                        {{-- email --}}
-                        <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" required />
-    
-                        {{-- email  --}}
-    
-                        <div class="mt-1 relative">
-                            <x-input type="{{ $showPassword ? 'text' : 'password' }}" label="{{ __('password') }}"
-                                wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12" required />
-    
-                            <div class="absolute inset-y-0 right-0 pr-3 pt-7 flex items-center hover:text-warning"
-                                title="{{ __('show-password') }}">
-                                <a wire:click="toggleShowPassword" wire:keydown.window.prevent.enter="toggleShowPassword"
-                                    x-data="{ pressing: false }" @mousedown="pressing = true" @mouseup="pressing = false"
-                                    @mouseleave="pressing = false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
-                                </a>
-                            </div>
+                    {{-- email  --}}
+
+                    <div class="mt-1 relative">
+                        <x-input type="{{ $showPassword ? 'text' : 'password' }}" label="{{ __('password') }}"
+                            wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12"
+                            required />
+
+                        <div class="absolute inset-y-0 right-0 pr-3 pt-7 flex items-center hover:text-warning"
+                            title="{{ __('show-password') }}">
+                            <a wire:click="toggleShowPassword" wire:keydown.window.prevent.enter="toggleShowPassword"
+                                x-data="{ pressing: false }" @mousedown="pressing = true" @mouseup="pressing = false"
+                                @mouseleave="pressing = false">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                </svg>
+                            </a>
                         </div>
-    
-                        {{-- password --}}
-    
-                        {!! NoCaptcha::renderJs() !!}
-    
-                        <x-slot:actions>
-                            <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full"
-                                type="submit" />
-                        </x-slot:actions>
-                    </x-form>
-                    @else 
-                    <div class="py-5 bg-gray-100 rounded-lg">
-                    <div class="text-green-500 text-center">
-                        {{ session('message') }}
                     </div>
-                </div>
-                    @endif
-                
 
-        
+                    {{-- password --}}
+
+                    {!! NoCaptcha::renderJs() !!}
+
+                    <x-slot:actions>
+                        <x-button label="{{ __('login') }}" class="btn btn-primary text-white w-full"
+                            type="submit" />
+                    </x-slot:actions>
+                </x-form>
+
+
+
                 {{-- social logins  --}}
                 {{-- <div id="social-logins">
                     <p class="text-center my-5">Or</p>

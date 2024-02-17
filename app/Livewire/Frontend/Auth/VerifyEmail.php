@@ -2,8 +2,9 @@
 
 namespace App\Livewire\Frontend\Auth;
 
-use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class VerifyEmail extends Component
 {
@@ -13,10 +14,18 @@ class VerifyEmail extends Component
 
     public function resendVerificationEmail()
     {
-        auth()->user()->sendEmailVerificationNotification();
-        session()->flash('resent', true);
+        $user = Auth::user();
 
-        session()->flash('message', Lang::get('email-verification.sent'));
+        if (!$user->hasVerifiedEmail()) {
+
+            $user->sendEmailVerificationNotification();
+            // dd('resendVerificationEmail');
+
+
+            return back()->with('message', 'Verification email has been resent!');
+        } else {
+            return redirect('/dashboard'); // Or any other redirect if the email is already verified
+        }
     }
 
     public function render()
