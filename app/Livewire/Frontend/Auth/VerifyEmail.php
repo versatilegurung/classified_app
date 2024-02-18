@@ -21,8 +21,7 @@ class VerifyEmail extends Component
             $user->sendEmailVerificationNotification();
             // dd('resendVerificationEmail');
 
-
-            return back()->with('message', 'Verification email has been resent!');
+            return back()->with('message', Lang::get('verification-email-resent'));
         } else {
             return redirect('/dashboard'); // Or any other redirect if the email is already verified
         }

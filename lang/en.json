@@ -146,5 +146,10 @@
     "500-error": "Internal Server Error",
     "502-error": "Bad Gateway",
     "503-error": "Service Unavailable",
-    "504-error": "Gateway Timeout"
+    "504-error": "Gateway Timeout",
+
+    "must-be-8-characters": "Must be minimum of 8 characters",
+
+    "resend-verification-link": "Resend Verification Email",
+    "verification-email-resent": "Verification email has been resent! Please check your Inbox or Junk folder."
 }

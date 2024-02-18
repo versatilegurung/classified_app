@@ -54,8 +54,8 @@
                                     placeholder="{{ __('password') }}" minlength="8"
                                     class="px-3 rounded-lg py-3 w-full border-gray-600 focus:border-transparent border focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-100 first-letter:invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 invalid:focus:bg-pink-100 peer"
                                     @visibility.window="$el.type = ($el.type == 'password') ? 'text' : 'password' ">
-                                <p class="text-xs m-1 text-pink-700 invisible peer-invalid:visible">require minimum 8
-                                    characters</p>
+                                <p class="text-xs m-1 text-pink-700 invisible peer-invalid:visible">
+                                    {{ __('must-be-8-characters') }}</p>
                             </label>
                         </div>
                     </div>
