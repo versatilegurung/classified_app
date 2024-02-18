@@ -32,7 +32,7 @@
                             class="bg-gray-300 p-4 rounded-lg hover:bg-gray-900 hover:text-white"
                             type="submit">{{ __('close') }}</button>
 
-                        <button wire:click="sendMessage"
+                        <button type="submit"
                             class="btn-primary bg-primary hover:bg-warning px-4 py-4 text-white hover:text-primary cursor-pointer rounded-lg">{{ __('send-message') }}</button>
 
                     </div>

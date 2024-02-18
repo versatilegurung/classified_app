@@ -22,9 +22,9 @@ class PostAd extends Component
     use WithFileUploads, WithMediaSync;
 
     public $categories;
-    public $category;
     public $category_id;
 
+    public $address;
     public $districts;
     public $district_id;
 
@@ -45,8 +45,9 @@ class PostAd extends Component
         'category_id' => 'required',
         'images' => 'array|max:5',
         'images.*' => 'image|max:2048|mimes:jpg,jpeg,png',
+        'address' => 'required',
         'selectedCondition' => 'required',
-        'district_id' => 'required'
+        'district_id' => 'required|exists:districts,id'
     ];
     public function save(Request $request)
     {
@@ -84,17 +85,15 @@ class PostAd extends Component
             }
 
             event(new NewAdPosted($ad));
-
             $this->adFormSubmitted = true;
-
-            // $this->reset(['title', 'description', 'price', 'category_id', 'images', 'negotiable', 'selectedCondition', 'location_id', 'images']);
+            $this->reset();
             return session()->flash('message', Lang::get('ad-created-successfully'));
         }
     }
 
     public function mount()
     {
-        $this->categories = Category::with('customFields')->get();
+        $this->categories = Category::all();
         $this->districts = District::all();
     }
 

@@ -15,10 +15,10 @@ class NewMessageNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct($message)
+    public function __construct($sendMessage)
     {
         //
-        $this->message = $message;
+        $this->message = $sendMessage;
     }
 
     /**
@@ -37,7 +37,7 @@ class NewMessageNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('Your ad has a new message')
+            ->line('Your ad', $this->message->ad->title, 'has a new message')
             ->action('View Message', route('account.view-message', $this->message->id))
             ->line('Thank you for using Chitwan Buy & Sell!');
     }

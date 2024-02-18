@@ -5,22 +5,18 @@ namespace App\Livewire\Frontend\Account;
 use App\Models\Message;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
-use Illuminate\Mail\Events\MessageSent;
 use App\Notifications\NewMessageNotification;
 
 class ComposeMessage extends Component
 {
 
+    public $composeBox = false;
     public $adId;
     public $ad;
-    public bool $composeBox = false;
-
-
     public $message = '';
-    public $name;
-    public $email;
 
-    // if user is not logged in do not show the form 
+
+    // if user is not logged in do not show the form
     public function showComposeBox()
     {
         if (auth()->check()) {
@@ -30,20 +26,19 @@ class ComposeMessage extends Component
         }
     }
 
+    protected $rules = [
+        'message' => 'required|min:4|max:4000'
+    ];
+
     public function sendMessage()
     {
+        $this->validate();
 
-        $sender_id = auth()->check() ? auth()->user()->id : null;
+        // dd($this->validate());
 
-        $this->validate([
-            'message' => 'required|min:4|max:4000'
-        ]);
-
-        $message = $this->message;
-
-        $message = new Message([
-            'message' => $message,
-            'sender_id' =>  $sender_id,
+        $sendMessage = new Message([
+            'message' => $this->message,
+            'sender_id' =>  auth()->user()->id,
             'recipient_id' => $this->ad->user->id,
             'ad_id' => $this->ad->id,
             'read_at' => null,
@@ -51,15 +46,16 @@ class ComposeMessage extends Component
             'updated_at' => Carbon::now(),
         ]);
 
-        $message->save();
+        $sendMessage->save();
 
         //send email notification to user who posted the ad
-        $this->ad->user->notify(new NewMessageNotification($message));
+        $this->ad->user->notify(new NewMessageNotification($sendMessage));
+
+        $this->reset('message');
+
+        $this->composeBox = false;
 
         return session()->flash('message', 'Message sent successfully');
-        //wait for 2 seconnd close the compose box
-        sleep(1);
-        $this->composeBox = false;
     }
 
 

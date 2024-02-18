@@ -4,7 +4,6 @@
         <div class="flex flex-col gap-2 bg-white py-16 px-8 lg:px-8 mt-8 lg:mt-20 rounded-xl lg:w-2/5 mx-auto">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5">{{ __('post.ad') }}</h3>
 
-
             {{-- if session as message  --}}
             @if (!session()->has('message'))
                 <x-form wire:submit.prevent="save">

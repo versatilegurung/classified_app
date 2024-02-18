@@ -24,8 +24,8 @@ class AdFactory extends Factory
 
 
         return [
-            // 'user_id' => User::factory(),
-            'user_id' => $this->faker->numberBetween(1, 12),
+            'user_id' => User::factory(),
+            // 'user_id' => $this->faker->numberBetween(1, 12),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'category_id' => $this->faker->numberBetween(2, 9),

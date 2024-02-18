@@ -68,10 +68,9 @@
                                                     Sold</button>
                                             @endif
                                         </p>
-
-                                        {{-- is_sold --}}
                                         <div>
-                                            {{-- @livewire('frontend.account.mark-as-sold', ['adId' => $item->id]) --}}
+                                            <p class="text-xs text-gray-400">{{ $item->created_at->diffForHumans() }}
+                                            </p>
                                         </div>
 
                                     </div>

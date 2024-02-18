@@ -28,7 +28,7 @@ class Ad extends Model
         'description',
         'price',
         'category_id',
-        'location_id',
+        'district_id',
         'negotiable',
         'featured',
         'condition',
