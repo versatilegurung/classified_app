@@ -5,7 +5,8 @@
                 <h2 class="font-black text-primary text-2xl py-7 mb-5">{{ __('login') }}</h2>
                 <x-form wire:submit.prevent="login">
                     {{-- email --}}
-                    <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" required />
+                    <x-input label="{{ __('email') }}" wire:model="email" placeholder="{{ __('email') }}" required
+                        class=" focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-100" />
 
                     {{-- email  --}}
 

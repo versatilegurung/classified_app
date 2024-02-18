@@ -18,8 +18,8 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 class AdResource extends Resource
 {
     protected static ?string $model = Ad::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Ads Management';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form
     {
@@ -41,6 +41,7 @@ class AdResource extends Resource
                 Forms\Components\Select::make('category_id')
                     ->label('Category')
                     ->options(Category::all()->pluck('name', 'id'))
+                    ->searchable()
                     ->required(),
 
                 Forms\Components\TextInput::make('sub_category_id')
@@ -61,8 +62,9 @@ class AdResource extends Resource
                     ])
                     ->required(),
 
-                Forms\Components\Select::make('location_id')
-                    ->relationship('location', 'name')
+                Forms\Components\Select::make('district_id')
+                    ->relationship('district', 'name')
+                    ->searchable()
                     ->required(),
 
                 //get user list

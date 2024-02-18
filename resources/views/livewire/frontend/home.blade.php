@@ -1,3 +1,6 @@
+@push('styles')
+    <meta name="og:image" content="{{ asset('storage/page_images/logo.png') }}">
+@endpush
 <div>
     {{-- featured section --}}
     <div class="bg-white">
