@@ -25,10 +25,10 @@ class AdFactory extends Factory
 
         return [
             // 'user_id' => User::factory(),
-            'user_id' => $this->faker->numberBetween(10, 11),
+            'user_id' => $this->faker->numberBetween(1, 12),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'category_id' => $this->faker->numberBetween(1,39),
+            'category_id' => $this->faker->numberBetween(2, 9),
             // 'category_id' => Category::factory(),
             // 'location' => Location::factory(),
             // 'location_id' => $this->faker->numberBetween(10, 20),
@@ -36,8 +36,9 @@ class AdFactory extends Factory
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'negotiable' => $this->faker->boolean,
             'featured' => $this->faker->boolean,
+            'is_sold' => $this->faker->boolean,
             'condition' => $this->faker->randomElement(['new', 'used']),
-            'published' => $this->faker->boolean
+            'published' => true,
         ];
     }
 }

@@ -8,7 +8,6 @@
 
     <div class="owl-carousel owl-theme">
 
-
         @if ($images->isEmpty())
             <div class="py-2">
                 <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
@@ -19,9 +18,10 @@
             @foreach ($images as $item)
                 <!-- Item 1 -->
                 <div class="mb-2">
-                    <a href="../storage/{{ $item->image }}" target="_blank" title="{{ __('chitwanbuyandsell') }}">
+                    <a href="../storage/{{ $item->image }}" title="{{ __('chitwanbuyandsell') }}"
+                        class="baguetteBoxThree gallery cursor-pointer">
                         <img src="../storage/{{ $item->image }}" alt="{{ __('chitwanbuyandsell') }}"
-                            class="h-[300px] w-full object-cover rounded-lg cursor-pointer">
+                            class="h-[300px] w-full object-cover rounded-lg">
                     </a>
                 </div>
             @endforeach
@@ -42,5 +42,13 @@
             autoplay: false,
             items: 1,
         })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/baguettebox.js@3.0.8/dist/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.baguetteBoxThree', {
+            animation: 'fadeIn',
+            noScrollbars: true
+        });
     </script>
 @endpush

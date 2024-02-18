@@ -17,14 +17,15 @@
                 <h2 class="text-2xl font-bold mb-4">Navigation</h2>
                 <nav>
                     <ul class="text-md">
-                        <li class="mb-3"><a href="{{ route('home') }}" class="text-gray-400 hover:text-white">Home</a>
+                        <li class="mb-3"><a href="{{ route('home') }}"
+                                class="text-gray-400 hover:text-white">{{ __('home') }}</a>
                         </li>
+                        <li class="mb-3"><a href="{{ route('categories') }}"
+                                class="text-gray-400 hover:text-white">{{ __('categories') }}</a></li>
+                        <li class="mb-3"><a href="{{ route('ads.by.location') }}"
+                                class="text-gray-400 hover:text-white">{{ __('location') }}</a></li>
                         <li class="mb-3"><a href="{{ route('post.ad') }}"
-                                class="text-gray-400 hover:text-white">Categories</a></li>
-                        <li class="mb-3"><a href="{{ route('post.ad') }}"
-                                class="text-gray-400 hover:text-white">Locations</a></li>
-                        <li class="mb-3"><a href="{{ route('post.ad') }}" class="text-gray-400 hover:text-white">Post
-                                Ad</a></li>
+                                class="text-gray-400 hover:text-white">{{ __('postad') }}</a></li>
 
                     </ul>
                 </nav>
@@ -36,12 +37,16 @@
                 <nav>
                     <ul class="text-md">
 
-                        <li class="mb-3"><a href="#" class="text-gray-400 hover:text-white">About us</a>
+                        <li class="mb-3"><a href="#"
+                                class="text-gray-400 hover:text-white">{{ __('about-us') }}</a>
                         </li>
-                        <li class="mb-3"><a href="#" class="text-gray-400 hover:text-white">Our Services</a>
+                        <li class="mb-3"><a href="#"
+                                class="text-gray-400 hover:text-white">{{ __('our-services') }}</a>
                         </li>
-                        <li class="mb-3"><a href="#" class="text-gray-400 hover:text-white">Disclaimer</a></li>
-                        <li class="mb-3"><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li class="mb-3"><a href="#"
+                                class="text-gray-400 hover:text-white">{{ __('disclaimer') }}</a></li>
+                        <li class="mb-3"><a href="#"
+                                class="text-gray-400 hover:text-white">{{ __('contact') }}</a></li>
                     </ul>
                 </nav>
             </div>

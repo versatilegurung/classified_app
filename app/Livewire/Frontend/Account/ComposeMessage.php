@@ -56,17 +56,18 @@ class ComposeMessage extends Component
         //send email notification to user who posted the ad
         $this->ad->user->notify(new NewMessageNotification($message));
 
-
         return session()->flash('message', 'Message sent successfully');
         //wait for 2 seconnd close the compose box
-        sleep(2);
+        sleep(1);
         $this->composeBox = false;
     }
 
 
     public function mount($adId)
     {
-        $this->ad = \App\Models\Ad::where('id', $adId)->firstOrFail();
+        $this->ad = \App\Models\Ad::where('id', $adId)
+            ->where('published', true)
+            ->firstOrFail();
         // dd($this->ad);
     }
 

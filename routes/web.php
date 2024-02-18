@@ -5,9 +5,11 @@ use App\Livewire\Frontend\Home;
 use App\Livewire\Frontend\Ad\View;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Frontend\Ads\Categories;
 use App\Livewire\Frontend\Ads\LocationMap;
-use App\Livewire\Frontend\Auth\VerifyEmail;
 
+use App\Livewire\Frontend\Auth\VerifyEmail;
+use App\Livewire\Frontend\Ads\AdsByLocation;
 use App\Livewire\Frontend\Auth\ForgotPassword;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -48,6 +50,9 @@ if (app()->environment('production')) {
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth')->name('logviewer');
 
 Route::get('/location', LocationMap::class);
+
+Route::get('/ads-by-location', AdsByLocation::class)->name('ads.by.location');
+Route::get('/categories', Categories::class)->name('categories');
 
 Route::get('/', Home::class)->name('home');
 

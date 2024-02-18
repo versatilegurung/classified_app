@@ -3,6 +3,8 @@
     "welcome": "Welcome",
     "home": "Home",
     "homepage": "Home Page",
+    "about-us": "About Us",
+    "our-services": "Our Services",
     "dashboard": "Dashboard",
     "postad": "Post Ad",
     "header.myads": "My Ads",
@@ -17,7 +19,7 @@
     "email": "Email",
     "password": "Password",
     "forgot-password": "Forgot Password",
-    "your-new-password": "Your New Password",
+    "new-password": "New Password",
     "name": "Name",
     "enter-your-name": "Enter your name",
     "enter-your-email": "Enter your email",
@@ -75,6 +77,10 @@
     "verify-your-email": "Click the link sent on your email, to verify your email.",
     "email-verification-sent": "Email verification link has been sent to your email.",
     "show-password": "Show Password",
+    "more.location": "More Location",
+
+    "disclaimer": "Disclaimer",
+    "contact": "Contact",
 
     "ad.contact_seller": "Contact Seller",
     "ads-by-location": "Ads by Location",

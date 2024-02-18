@@ -10,7 +10,7 @@ class DistrictList extends Component
 
     public function mount()
     {
-    
+
         $this->districts = \App\Models\District::limit(30)->get();
 
         //get random categories
@@ -24,9 +24,11 @@ class DistrictList extends Component
     }
     public function render()
     {
-        return view('livewire.frontend.district-list',
-        [
-            'districts' => $this->districts
-        ]);
+        return view(
+            'livewire.frontend.district-list',
+            [
+                'districts' => $this->districts
+            ]
+        );
     }
 }

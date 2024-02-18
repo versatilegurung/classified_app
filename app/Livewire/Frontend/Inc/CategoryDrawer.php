@@ -14,7 +14,10 @@ class CategoryDrawer extends Component
         $this->categories = Category::all();
 
         foreach ($this->categories as $category) {
-            $category->ads_count = \App\Models\Ad::where('category_id', $category->id)->count();
+            $category->ads_count = \App\Models\Ad::where('category_id', $category->id)
+                ->where('published', true)
+                ->where('expires_at', '>', now())
+                ->count();
         }
     }
     public function render()

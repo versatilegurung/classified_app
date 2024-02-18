@@ -1,12 +1,12 @@
 <div>
-    {{-- Hero section --}}
+    {{-- featured section --}}
     <div class="bg-white">
         @livewire('frontend.featured-ads')
     </div>
-    {{-- Hero section --}}
+    {{-- featured section --}}
 
-     {{-- districts list  --}}
-     <div class="">
+    {{-- districts list  --}}
+    <div class="">
         @livewire('frontend.district-list')
     </div>
     {{-- districts list  --}}

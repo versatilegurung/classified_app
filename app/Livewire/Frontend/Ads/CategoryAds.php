@@ -17,6 +17,8 @@ class CategoryAds extends Component
     public function render()
     {
         $ads = Ad::where('category_id', $this->category->id)
+            ->where('published', true)
+            ->where('expires_at', '>', now())
             ->get();
         return view(
             'livewire.frontend.ads.category-ads',

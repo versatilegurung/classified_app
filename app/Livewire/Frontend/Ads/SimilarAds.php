@@ -18,6 +18,8 @@ class SimilarAds extends Component
     {
         $similarPosts = Ad::where('category_id', $this->ad->category_id)
             ->where('id', '<>', $this->ad->id)
+            ->where('published', true)
+            ->where('expires_at', '>', now())
             ->inRandomOrder()
             ->take(5) // Adjust the number of similar posts you want to display
             ->get();

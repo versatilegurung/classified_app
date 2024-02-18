@@ -7,15 +7,18 @@
             </h3>
             <div class="flex flex-wrap gap-5 mb-5">
                 @foreach ($districts as $item)
-                <a href="{{ route('ads.location', $item->slug)}}">
-                    <div class="cursor-pointer bg-gray-200 px-2 py-1 rounded-md hover:bg-secondary hover:text-white transition-all">
-                        {{ $item->name }}<span class="text-sm">({{ $item->ads_count }})</span>
-                    </div></a> 
+                    <a href="{{ route('ads.location', $item->slug) }}">
+                        <div
+                            class="cursor-pointer bg-gray-200 px-2 py-1 rounded-md hover:bg-secondary hover:text-white transition-all">
+                            {{ $item->name }}<span class="text-sm">({{ $item->ads_count }})</span>
+                        </div>
+                    </a>
                 @endforeach
-                <a href="" class="underline">More Districts</a>
+                <a href="{{ route('ads.by.location') }}"
+                    class="bg-white  rounded-lg  px-3 hover:underline text-sm py-2 text-secondary">{{ __('more.location') }}</a>
             </div>
-            
+
         </div>
-        
+
     </div>
 </div>

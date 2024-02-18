@@ -22,21 +22,20 @@ class PostAd extends Component
     use WithFileUploads, WithMediaSync;
 
     public $categories;
-    public $location_id;
-    public $locations;
+    public $category;
+    public $category_id;
+
     public $districts;
     public $district_id;
+
     public $title;
     public $description;
     public $price;
-    public $category_id;
     public $negotiable;
     public $selectedCondition;
     public $images = [];
 
     public $adFormSubmitted = false;
-
-
 
 
     protected $rules = [
@@ -95,9 +94,10 @@ class PostAd extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
+        $this->categories = Category::with('customFields')->get();
         $this->districts = District::all();
     }
+
     public function render()
     {
         Meta::prependTitle('Post Ad');

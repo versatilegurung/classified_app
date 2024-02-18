@@ -14,7 +14,7 @@
                 @endif
                 {{-- //message  --}}
             @else
-                <x-form wire:submit.prevent="register" class="py-5 flex gap-3" id="register-form" method="POST">
+                <x-form wire:submit.prevent="register" class="py-5 flex gap-3" id="register-form">
                     {{-- Full error bag --}}
                     <x-input label="{{ __('name') }}" type="name" wire:model="name"
                         placeholder="{{ __('enter-your-name') }}" required />
@@ -22,23 +22,43 @@
                     <x-input label="{{ __('email') }}" type="email" wire:model="email"
                         placeholder="{{ __('enter-your-email') }}" required />
 
-                    <div class="mt-1 relative">
-                        <x-input type="{{ $showPassword ? 'text' : 'password' }}" label="{{ __('password') }}"
-                            wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12"
-                            required />
-
+                    <div class="relative">
+                        <div class="relative" x-data="{ isVisible: false }">
+                            <div class="absolute flex right-4 mt-1.5 items-center ml-2 h-full">
+                                <button class="px-1 block focus:outline-none"
+                                    @click="$dispatch('visibility'); isVisible = !isVisible;">
+                                    <div x-show="isVisible">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div x-show="!isVisible">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                            <label for="password" class="block">
+                                <span
+                                    class="block font-bold text-md m-2 text-gray-700 after:content-['*'] after:ml-0.5 after:text-red-500">Password</span>
+                                <input type="password" id="password" wire:model="password"
+                                    placeholder="{{ __('password') }}" minlength="8"
+                                    class="px-3 rounded-lg py-3 w-full border-gray-600 focus:border-transparent border focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-100 first-letter:invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 invalid:focus:bg-pink-100 peer"
+                                    @visibility.window="$el.type = ($el.type == 'password') ? 'text' : 'password' ">
+                                <p class="text-xs m-1 text-pink-700 invisible peer-invalid:visible">require minimum 8
+                                    characters</p>
+                            </label>
+                        </div>
                     </div>
-                    {{-- show hide password  --}}
-                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                        <button type="button" wire:click="toggleShowPassword" class="text-gray-900 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
-                            </svg>
-                        </button>
-                    </div>
-                    {{-- show hide password  --}}
 
                     {!! NoCaptcha::renderJs() !!}
                     <x-slot:actions>
@@ -54,9 +74,5 @@
             </div>
         </div>
     </div>
-</div>
 
-@push('styles')
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.google_site_key') }}">
-    </script>
-@endpush
+</div>

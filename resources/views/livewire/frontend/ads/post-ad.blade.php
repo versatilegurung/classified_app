@@ -30,11 +30,11 @@
 
                     <!-- Address -->
                     <label for="address" class="text-sm mt-2 text-secondary">{{ __('address') }}</label>
-                    <x-input wire:model="address" placeholder="{{ __('enter-address') }}" hint="{{ __('ad.address') }}"
-                        class="text-primary" required />
+                    <x-input wire:model="address" placeholder="{{ __('enter-address') }}"
+                        hint="{{ __('ad.address') }}" class="text-primary" required />
 
                     <!-- Address -->
-                   
+
 
                     <!-- District -->
                     <label for="district" class="text-sm mt-2 text-secondary">{{ __('district') }}</label>
@@ -89,7 +89,7 @@
             @endif
 
 
-            <p class="py-3 text-secondary text-lg font-normal">field * are required.</p>
+            <p class="py-3 text-gray-400 text-sm font-thin">field * are required.</p>
         </div>
         <div>
         </div>

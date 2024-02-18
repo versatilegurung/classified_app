@@ -23,7 +23,7 @@ class CategoriesTableSeeder extends Seeder
             'Jobs Full-time', 'Jobs Part-time', 'Temporary Jobs', 'Home Services',
             'Beauty & Spa', 'Cleaning', 'Health & Wellness', 'Event Services',
             'Tutoring & Lessons', 'Garage Sales', 'Dogs', 'Cats', 'Pet Services',
-            'Pet Accessories', 'Mobile Phones', 'Computers & Laptops',
+            'Pet Accessories', 'Mobile Phones/Tablets', 'Computers & Laptops',
             'Cameras & Photography', 'Audio & Video Equipment',
             'Antiques & Collectibles', 'Arts & Crafts',
         ];
@@ -31,6 +31,5 @@ class CategoriesTableSeeder extends Seeder
         foreach ($categories as $category) {
             Category::create(['name' => $category]);
         }
-
     }
 }

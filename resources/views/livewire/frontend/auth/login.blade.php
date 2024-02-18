@@ -10,23 +10,40 @@
                     {{-- email  --}}
 
                     <div class="mt-1 relative">
-                        <x-input type="{{ $showPassword ? 'text' : 'password' }}" label="{{ __('password') }}"
-                            wire:model="password" placeholder="{{ __('password') }}" class="block w-ful pr-12"
-                            required />
-
-                        <div class="absolute inset-y-0 right-0 pr-3 pt-7 flex items-center hover:text-warning"
-                            title="{{ __('show-password') }}">
-                            <a wire:click="toggleShowPassword" wire:keydown.window.prevent.enter="toggleShowPassword"
-                                x-data="{ pressing: false }" @mousedown="pressing = true" @mouseup="pressing = false"
-                                @mouseleave="pressing = false">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                </svg>
-                            </a>
+                        <div class="relative" x-data="{ isVisible: false }">
+                            <div class="absolute flex right-4 mt-1.5 items-center ml-2 h-full">
+                                <button class="px-1 block focus:outline-none"
+                                    @click="$dispatch('visibility'); isVisible = !isVisible;">
+                                    <div x-show="isVisible">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div x-show="!isVisible">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                            <label for="password" class="block">
+                                <span
+                                    class="block font-bold text-md m-2 text-gray-700 after:content-['*'] after:ml-0.5 after:text-red-500">Password</span>
+                                <input type="password" id="password" wire:model="password"
+                                    placeholder="{{ __('password') }}" minlength="8"
+                                    class="px-3 rounded-lg py-3 w-full border-gray-600 focus:border-transparent border focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-blue-100 first-letter:invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 invalid:focus:bg-pink-100 peer"
+                                    @visibility.window="$el.type = ($el.type == 'password') ? 'text' : 'password' ">
+                                <p class="text-xs m-1 text-pink-700 invisible peer-invalid:visible">Must be minimum of 8
+                                    characters</p>
+                            </label>
                         </div>
                     </div>
 
@@ -39,20 +56,6 @@
                             type="submit" />
                     </x-slot:actions>
                 </x-form>
-
-
-
-                {{-- social logins  --}}
-                {{-- <div id="social-logins">
-                    <p class="text-center my-5">Or</p>
-                    <div class="flex justify-center items-center gap-5">
-                        <a href="#"
-                            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Google</a>
-                        <a href="#"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Facebook</a>
-                    </div>
-                </div> --}}
-                {{-- social logins  --}}
 
                 <div class="flex flex-col gap-2 items-center py-10">
                     <p class="text-center">{{ __('dont-have-account') }} | <a href="{{ route('register') }}"

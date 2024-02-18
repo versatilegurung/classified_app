@@ -13,7 +13,7 @@ class ResetPassword extends Component
 {
     public $token;
     public $password;
-
+    public $showPassword = false;
 
     public function resetPassword()
     {
