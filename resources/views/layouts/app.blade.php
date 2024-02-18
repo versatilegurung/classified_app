@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.0/dist/smooth-scroll.polyfills.min.js"></script>
     @livewireStyles
 
-    {{-- @include('layouts.google-analytics') --}}
+    @include('layouts.google-analytics')
 
 </head>
 

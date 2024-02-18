@@ -24,9 +24,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 //localization
 // Route::prefix('{locale}')
@@ -38,13 +35,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 // make a route if production user /comingsoon and in dev /
 
-if (app()->environment('production')) {
-    Route::get('/', function () {
-        return view('livewire.frontend.coming-soon');
-    });
-} else {
-    Route::get('/', Home::class)->name('home');
-}
 
 //logviewer
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth')->name('logviewer');
