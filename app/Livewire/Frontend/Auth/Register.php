@@ -16,7 +16,7 @@ use Illuminate\Auth\Events\Registered;
 #[Layout('layouts.app')]
 class Register extends Component
 {
-    public $name, $email, $password, $passwordConfirmation;
+    public $name, $email, $password;
 
     public $registrationSuccess = false;
     public $showPassword = false;
@@ -27,7 +27,7 @@ class Register extends Component
     }
 
     protected $rules = [
-        'name' => 'required|string|max:255',
+        'name' => 'required|string|min:3|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:8',
     ];
@@ -52,6 +52,13 @@ class Register extends Component
 
         //send welcome email to user
         Mail::to($this->email)->send(new WelcomeEmail($user));
+
+        //subscribe user to mailer.subash.co.uk
+        Http::post('https://mailer.subash.co.uk/api/subscriber/chitwanbuyandsell/store', [
+            'email' => $this->email,
+            'api_key' => 'b694535e3c74d319e3205afd1b243039c849ae50f6656337a9bb925fecfb75ce', //required
+            'first_name' => $this->name, //optional
+        ]);
 
         $this->reset(); // reset form fields
 

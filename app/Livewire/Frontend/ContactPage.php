@@ -5,6 +5,7 @@ namespace App\Livewire\Frontend;
 use App\Models\Contact;
 use Livewire\Component;
 use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class ContactPage extends Component
@@ -36,6 +37,14 @@ class ContactPage extends Component
 
         // Send email
         Mail::to($admin_email)->send(new ContactMail($this->name, $this->email, $this->message));
+
+        //subscribe user to mailer.subash.co.uk
+        Http::post('https://mailer.subash.co.uk/api/subscriber/chitwanbuyandsell/store', [
+            'email' => $this->email,
+            'api_key' => 'b694535e3c74d319e3205afd1b243039c849ae50f6656337a9bb925fecfb75ce', //required
+            'first_name' => $this->name, //optional
+        ]);
+
 
         $this->reset();
         // Show success message

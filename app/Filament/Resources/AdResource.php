@@ -74,6 +74,9 @@ class AdResource extends Resource
                     ->required(),
 
                 Forms\Components\Toggle::make('published'),
+
+                //is featured
+                Forms\Components\Toggle::make('featured'),
             ]);
     }
 
