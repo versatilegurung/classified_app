@@ -23,13 +23,13 @@
                         <a href="{{ route('ad.show', $item->slug) }}">
                             @if ($adImages->isEmpty())
                                 <div class="w-[150px] md:w-[180px]">
-                                    <img src="{{ url('/storage', 'page_images/no-image-placeholder.png') }}"
+                                    <img src="{{ asset('page_images/no-image-placeholder.png') }}"
                                         alt="{{ $item->title }}" class="object-cover h-[150px] w-[180px] rounded-md">
                                 </div>
                             @else
                                 @foreach ($adImages as $adImage)
                                     <div class="w-[150px] md:w-[180px]">
-                                        <img src="{{ url('/storage', $adImage->image) }}" alt="{{ $item->title }}"
+                                        <img src="{{ asset($adImage->image) }}" alt="{{ $item->title }}"
                                             class="object-cover h-[150px] w-[150px] md:h-[180px] md:w-[180px] rounded-md">
                                     </div>
                                 @endforeach
