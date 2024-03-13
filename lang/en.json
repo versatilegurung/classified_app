@@ -5,6 +5,7 @@
     "homepage": "Home Page",
     "about-us": "About Us",
     "our-services": "Our Services",
+    "contact-us": "Contact Us",
     "dashboard": "Dashboard",
     "postad": "Post Ad",
     "header.myads": "My Ads",
@@ -78,6 +79,7 @@
     "email-verification-sent": "Email verification link has been sent to your email.",
     "show-password": "Show Password",
     "more.location": "More Location",
+    "your-name": "Your Name",
 
     "disclaimer": "Disclaimer",
     "contact": "Contact",

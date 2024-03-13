@@ -11,6 +11,7 @@ use App\Livewire\Frontend\Ads\LocationMap;
 use App\Livewire\Frontend\Auth\VerifyEmail;
 use App\Livewire\Frontend\Ads\AdsByLocation;
 use App\Livewire\Frontend\Auth\ForgotPassword;
+use App\Livewire\Frontend\ContactPage;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -45,6 +46,8 @@ Route::get('/ads-by-location', AdsByLocation::class)->name('ads.by.location');
 Route::get('/categories', Categories::class)->name('categories');
 
 Route::get('/', Home::class)->name('home');
+
+Route::get('/contact', ContactPage::class)->name('contact');
 
 Route::get('/coming-soon', function () {
     return view('livewire.frontend.coming-soon');
