@@ -23,9 +23,6 @@ class ContactPage extends Component
             'message' => 'required',
         ]);
 
-        //adminEmail
-        $admin_email = 'market.chitwan@gmail.com';
-
         // Save to database
         Contact::create([
             'name' => $this->name,
@@ -33,10 +30,8 @@ class ContactPage extends Component
             'message' => $this->message,
         ]);
 
-        //clear input fields
-
         // Send email
-        Mail::to($admin_email)->send(new ContactMail($this->name, $this->email, $this->message));
+        Mail::to(env('ADMIN_EMAIL'))->send(new ContactMail($this->name, $this->email, $this->message));
 
         //subscribe user to mailer.subash.co.uk
         Http::post('https://mailer.subash.co.uk/api/subscriber/chitwanbuyandsell/store', [
@@ -45,8 +40,8 @@ class ContactPage extends Component
             'first_name' => $this->name, //optional
         ]);
 
-
         $this->reset();
+
         // Show success message
         session()->flash('message', 'Your message has been sent successfully!');
     }
