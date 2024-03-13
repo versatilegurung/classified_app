@@ -83,8 +83,7 @@ class PostAd extends Component
 
                 $ad_image->save();
             }
-
-            event(new NewAdPosted($ad));
+            //event(new NewAdPosted($ad));
             $this->adFormSubmitted = true;
             $this->reset();
             return session()->flash('message', Lang::get('ad-created-successfully'));
