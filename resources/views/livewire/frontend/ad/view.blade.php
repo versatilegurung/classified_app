@@ -108,5 +108,11 @@
             </div>
         </div>
     </div>
+    {{-- sponsored ads --}}
+    <div class="">
+        @livewire('frontend.sponsored-ads')
+    </div>
+    {{-- sponsored ads --}}
+
 
 </div>

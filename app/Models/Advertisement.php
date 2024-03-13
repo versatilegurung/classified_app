@@ -13,6 +13,7 @@ class Advertisement extends Model
         'title',
         'image',
         'url',
+        'position', // top, bottom, left, right
         'start_date',
         'end_date',
         'status',

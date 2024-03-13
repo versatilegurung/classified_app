@@ -2,6 +2,13 @@
     <meta name="og:image" content="{{ asset('storage/page_images/logo.png') }}">
 @endpush
 <div>
+
+    {{-- sponsored ads --}}
+    {{-- <div class="">
+        @livewire('frontend.sponsored-ads')
+    </div> --}}
+    {{-- sponsored ads --}}
+
     {{-- featured section --}}
     <div class="bg-white">
         @livewire('frontend.featured-ads')
