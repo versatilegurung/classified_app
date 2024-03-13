@@ -55,7 +55,7 @@ return [
     */
 
     // 'assets_path' => storage,
-    'assets_path' => 'storage',
+    'assets_path' => null,
 
 
     /*

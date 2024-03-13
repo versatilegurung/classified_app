@@ -156,5 +156,7 @@
     "verification-email-resent": "Verification email has been resent! Please check your Inbox or Junk folder.",
 
     "safety-tips": "Safety Tips",
-    "contact-us-desc": "If you have any questions, please feel free to contact us."
+    "contact-us-desc": "If you have any questions, please feel free to contact us.",
+
+    "total-messages": "Total Messages"
 }
