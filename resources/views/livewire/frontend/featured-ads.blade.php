@@ -31,13 +31,13 @@
                                 @endphp
                                 @if ($adImages->isEmpty())
                                     <div class="py-2">
-                                        <img src="{{ asset('page_images/no-image-placeholder.png') }}"
+                                        <img src="{{ url('/storage', 'page_images/no-image-placeholder.png') }}"
                                             alt="{{ $item->title }}" class="object-cover h-[200px] w-full rounded-md">
                                     </div>
                                 @else
                                     @foreach ($adImages as $adImage)
                                         <div class="py-2">
-                                            <img src="{{ asset($adImage->image) }}" alt="{{ $item->title }}"
+                                            <img src="{{ url('/storage', $adImage->image) }}" alt="{{ $item->title }}"
                                                 class="object-cover h-[200px] w-full rounded-md">
                                         </div>
                                     @endforeach

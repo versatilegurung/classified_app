@@ -24,14 +24,14 @@
 
                             @if ($adImages->isEmpty())
                                 <div class="md:w-[180] h-[180px]">
-                                    <img src="{{ asset('page_images/no-image-placeholder.png') }}"
+                                    <img src="{{ url('/storage', 'page_images/no-image-placeholder.png') }}"
                                         alt="{{ $item->title }}" class="object-cover h-[150px] w-[180px] rounded-md">
                                 </div>
                             @else
                                 @foreach ($adImages as $adImage)
                                     <div class="w-[180px]">
 
-                                        <img src="{{ asset($adImage->image) }}" alt="{{ $item->title }}"
+                                        <img src="{{ url('/storage', $adImage->image) }}" alt="{{ $item->title }}"
                                             class="object-cover h-[150px] w-[180px] rounded-md">
 
                                     </div>

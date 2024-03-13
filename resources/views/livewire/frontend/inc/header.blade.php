@@ -64,7 +64,7 @@
                                     <a href="{{ route('ad.show', $item->slug) }}">
                                         @if ($adImages->isEmpty())
                                             <div class="w-[150px] md:w-[180px]">
-                                                <img src="{{ asset('storage/page_images/no-image-placeholder.png') }}"
+                                                <img src="{{ url('/storage', 'storage/page_images/no-image-placeholder.png') }}"
                                                     alt="{{ $item->title }}" class="object-cover w-8 h-8 rounded-md">
                                             </div>
                                         @else

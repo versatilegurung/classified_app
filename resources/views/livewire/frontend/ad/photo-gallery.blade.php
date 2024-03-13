@@ -10,8 +10,9 @@
 
         @if ($images->isEmpty())
             <div class="py-2">
-                <img src="{{ asset('page_images/no-image-placeholder.png') }}" title="{{ __('chitwanbuyandsell') }}"
-                    alt="{{ __('chitwanbuyandsell') }}" class="h-[300px] w-full object-cover rounded-lg">
+                <img src="{{ url('/storage', 'page_images/no-image-placeholder.png') }}"
+                    title="{{ __('chitwanbuyandsell') }}" alt="{{ __('chitwanbuyandsell') }}"
+                    class="h-[300px] w-full object-cover rounded-lg">
             </div>
         @else
             @foreach ($images as $item)
@@ -19,7 +20,7 @@
                 <div class="mb-2">
                     <a href="{{ asset($item->image) }}" title="{{ __('chitwanbuyandsell') }}"
                         class="baguetteBoxThree gallery cursor-pointer">
-                        <img src="{{ asset($item->image) }}" alt="{{ __('chitwanbuyandsell') }}"
+                        <img src="{{ url('/storage', $item->image) }}" alt="{{ __('chitwanbuyandsell') }}"
                             class="h-[300px] w-full object-cover rounded-lg">
                     </a>
                 </div>

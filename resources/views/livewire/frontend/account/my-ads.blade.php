@@ -39,12 +39,12 @@
                                             ->get();
                                     @endphp
                                     @if ($adImages->isEmpty())
-                                        <img src="{{ asset('page_images/no-image-placeholder.png') }}"
+                                        <img src="{{ url('/storage', 'page_images/no-image-placeholder.png') }}"
                                             alt="{{ $item->title }}"
                                             class="object-cover h-[100px] w-[100px] rounded-md">
                                     @else
                                         @foreach ($adImages as $adImage)
-                                            <img src="{{ asset($adImage->image) }}" alt="{{ $item->title }}"
+                                            <img src="{{ url('/storage', $adImage->image) }}" alt="{{ $item->title }}"
                                                 class="object-cover h-[100px] w-[100px] rounded-md">
                                         @endforeach
                                     @endif
