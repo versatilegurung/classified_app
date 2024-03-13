@@ -15,6 +15,8 @@
                 {{-- //message  --}}
             @else
                 <x-form wire:submit.prevent="register" class="py-5 flex gap-3" id="register-form">
+                    <x-honeypot />
+                    <x-input name="myField" type="hidden" />
                     {{-- Full error bag --}}
                     <x-input label="{{ __('name') }}" type="name" wire:model="name"
                         placeholder="{{ __('enter-your-name') }}" required />

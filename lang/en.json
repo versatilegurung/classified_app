@@ -153,5 +153,7 @@
     "must-be-8-characters": "Must be minimum of 8 characters",
 
     "resend-verification-link": "Resend Verification Email",
-    "verification-email-resent": "Verification email has been resent! Please check your Inbox or Junk folder."
+    "verification-email-resent": "Verification email has been resent! Please check your Inbox or Junk folder.",
+
+    "safety-tips": "Safety Tips"
 }

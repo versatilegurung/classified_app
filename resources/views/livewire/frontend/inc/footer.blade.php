@@ -44,8 +44,8 @@
                                 class="text-gray-400 hover:text-white">{{ __('our-services') }}</a>
                         </li>
                         <li class="mb-3"><a href="#"
-                                class="text-gray-400 hover:text-white">{{ __('disclaimer') }}</a></li>
-                        <li class="mb-3"><a href="#"
+                                class="text-gray-400 hover:text-white">{{ __('safety-tips') }}</a></li>
+                        <li class="mb-3"><a href="{{ route('contact') }}"
                                 class="text-gray-400 hover:text-white">{{ __('contact') }}</a></li>
                     </ul>
                 </nav>

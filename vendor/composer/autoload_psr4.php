@@ -46,6 +46,7 @@ return array(
     'Spatie\\LaravelIgnition\\' => array($vendorDir . '/spatie/laravel-ignition/src'),
     'Spatie\\Invade\\' => array($vendorDir . '/spatie/invade/src'),
     'Spatie\\Ignition\\' => array($vendorDir . '/spatie/ignition/src'),
+    'Spatie\\Honeypot\\' => array($vendorDir . '/spatie/laravel-honeypot/src'),
     'Spatie\\FlareClient\\' => array($vendorDir . '/spatie/flare-client-php/src'),
     'Spatie\\Color\\' => array($vendorDir . '/spatie/color/src'),
     'Spatie\\Backtrace\\' => array($vendorDir . '/spatie/backtrace/src'),

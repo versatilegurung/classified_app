@@ -1,37 +1,35 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
-    <div class="bg-neutral">
-        <div class="container mx-auto px-4 py-16 lg:py-24">
+    <div class="container mx-auto py-0 md:py-16">
+        <div class="w-full shadow-lg md:w-4/5 lg:w-3/5 mx-auto bg-white px-10 py-16 md:py-5 mt-16 md:mt-16 rounded-xl">
             <h3 class="font-bold text-2xl md:text-3xl text-primary py-5 mb-5">
                 {{ __('contact-us') }}
             </h3>
-            <div class="flex flex-wrap gap-3 mb-5">
+            @if (!($message = Session::get('message')))
+                <x-form wire:submit="sendMessage" class="w-full flex gap-5">
+                    <x-honeypot />
 
-                {{-- contact form  --}}
-                <div class="w-full md:w-1/2">
-                    <form wire:submit.prevent="submitForm">
-                        @csrf
-                        <div class="flex flex-wrap gap-5">
-                            <div class="w-full md:w-1/2">
-                                <input wire:model="name" type="text" label="{{ __('name') }}" class="w-full py-2 px-3 rounded-md" placeholder="{{__('your-name')}}" />
-                            </div>
-                            <div class="w-full md:w-1/2">
-                                <input wire:model="email" type="email" label="{{ __('email') }}"  class="w-full py-2 px-3 rounded-md" placeholder="{{__('email')}}" />
-                            </div>
-                            <div class="w-full">
-                                <input wire:model="subject" type="text" label="{{ __('subject') }}" class="w-full py-2 px-3 rounded-md" placeholder="{{__('subject')}}"  />
-                            </div>
-                            <div class="w-full">
-                                <textarea wire:model="message" label="{{ __('message') }}"  class="w-full py-2 px-3 rounded-md" cols="5" ></textarea>
-                            </div>
-                            <div class="w-full">
-                                <button>{{ __('send') }}</button>
-                            </div>
-                        </div>
-                    </form>
-                {{-- contact form  --}}
-             
-            </div>
+                    <x-errors title="Oops!" description="Please, fix them." icon="o-face-frown" />
+
+                    <x-input name="myField" type="hidden" />
+                    <x-input label="{{ __('name') }}" wire:model="name" placeholder="{{ __('your-name') }}" />
+                    <x-input label="E-mail" wire:model="email" placeholder="{{ __('email') }}" />
+                    <span class="font-bold text-[11pt] tracking-wide mb-[-10px] ">Message</span>
+                    <x-textarea wire:model="message" placeholder="Message ..." hint="Max 1000 chars" rows="5"
+                        inline />
+                    <x-slot:actions>
+                        <x-button label="{{ __('send-message') }}" class="btn-primary" type="submit" spinner="save2" />
+                    </x-slot:actions>
+                </x-form>
+            @else
+                <div class="rounded-md text-green-600">
+                    {{ $message }}
+                </div>
+                <div class="py-5">
+                    <a href="{{ route('home') }}" class="underline">Back to Homepage</a>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
