@@ -1,6 +1,6 @@
 <div>
 
-    <div class="container mx-auto py-0 md:py-10 mt-16">
+    <div class="container mx-auto py-0 md:pt-10 mt-16">
         <div class="w-full bg-white rounded-xl pb-10">
             {{-- breadcrumb --}}
             <div class="flex gap-3 px-6 md:px-12 py-14 md:py-10 font-normal text-xs items-center">
@@ -108,10 +108,9 @@
             </div>
         </div>
     </div>
+
     {{-- sponsored ads --}}
-    <div class="">
-        @livewire('frontend.sponsored-ads')
-    </div>
+    @include('livewire.frontend.advertisements.bottom')    
     {{-- sponsored ads --}}
 
 

@@ -6,8 +6,8 @@
 @endpush
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
-    <div class="container mx-auto mt-16 md:mt-10 py-4">
-        <div class="w-full bg-white px-4 md:mt-16">
+    <div class="container mx-auto mt-10 md:mt-10 py-2">
+        <div class="w-full bg-white px-4 md:mt-10">
             <h3 class="font-bold text-2xl md:text-3xl text-primary mb-5 py-5">
                 {{ __('featured.ads') }}
             </h3>

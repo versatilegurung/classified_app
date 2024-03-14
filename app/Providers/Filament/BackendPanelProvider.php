@@ -29,6 +29,8 @@ class BackendPanelProvider extends PanelProvider
             ->id('backend')
             ->path('backend')
             ->login()
+            ->passwordReset()
+
             ->colors([
                 'primary' => Color::Purple,
             ])
