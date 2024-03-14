@@ -1,10 +1,10 @@
 {{-- sponsored ads --}}
 <?php
     $location = 'bottom';
-    $ads = \App\Models\Advertisement::where('position', $location)->whereDate('start_date', '<=', now())->whereDate('end_date', '>=', now())->limit(1)->get();
+    $ads = \App\Models\Advertisement::where('status', true)->where('position', $location)->whereDate('start_date', '<=', now())->whereDate('end_date', '>=', now())->limit(1)->get();
     ?>
 @if ($ads->count() > 0)
-    <div class="p-5">
+    <div class="p-10">
         @foreach ($ads as $item)
             <div class="container mx-auto max-w-[900px] px-5">
                 <a href="{{ $item->url }}" target="_blank">

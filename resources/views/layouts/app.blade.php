@@ -25,7 +25,9 @@
         @livewire('frontend.inc.header')
     </div>
 
-    {{ $slot }}
+    <div class="mt-16">
+        {{ $slot }}
+    </div>
 
     {{-- footer  --}}
     @livewire('frontend.inc.footer')
