@@ -30,11 +30,24 @@ class AdvertisementResource extends Resource
                     ->image()
                     ->required(),
                 Forms\Components\TextInput::make('url')
+                    ->label('Advertisement URL')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('position')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('top'),
+                // Forms\Components\TextInput::make('position')
+                //     ->required()
+                //     ->maxLength(255)
+                //     ->default('top'),
+
+                //get enum values on select
+                Forms\Components\Select::make('position')
+                    ->options([
+                        'top' => 'Top',
+                        'bottom' => 'Bottom',
+                        'left' => 'Left',
+                        'right' => 'Right',
+                    ])
+                    ->default('top')
+                    ->required(),
+
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')

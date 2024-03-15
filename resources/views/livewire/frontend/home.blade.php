@@ -4,9 +4,7 @@
 <div>
 
     {{-- sponsored ads --}}
-    {{-- <div class="">
-        @livewire('frontend.sponsored-ads')
-    </div> --}}
+    @include('livewire.frontend.advertisements.top')    
     {{-- sponsored ads --}}
 
     {{-- featured section --}}
@@ -36,5 +34,10 @@
     {{-- milestone --}}
     @livewire('frontend.inc.milestone')
     {{-- milestone --}}
+
+    {{-- sponsored ads --}}
+    @include('livewire.frontend.advertisements.bottom')    
+    {{-- sponsored ads --}}
+
 
 </div>
