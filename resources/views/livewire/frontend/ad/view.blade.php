@@ -109,7 +109,7 @@
         </div>
     </div>
     {{-- sponsored ads --}}
-    <div class="">
+    <div class="flex item-center justify-center">
         @livewire('frontend.sponsored-ads')
     </div>
     {{-- sponsored ads --}}
