@@ -77,8 +77,7 @@
 
                 <div class="hidden md:block md:col-span-3 lg:col-span-2">
                     <div class="">
-                        <img src="{{ asset('page_images/no-image-placeholder.png') }}" alt="Advertisement here">
-                        here
+                        @include('livewire.frontend.advertisements.view-page-sidebar')
                     </div>
 
                 </div>
