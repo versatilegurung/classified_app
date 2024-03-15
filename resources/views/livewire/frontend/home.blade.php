@@ -4,7 +4,7 @@
 <div>
 
     {{-- sponsored ads --}}
-    @include('livewire.frontend.advertisements.top')    
+    @include('livewire.frontend.advertisements.top')
     {{-- sponsored ads --}}
 
     {{-- featured section --}}
@@ -36,7 +36,7 @@
     {{-- milestone --}}
 
     {{-- sponsored ads --}}
-    @include('livewire.frontend.advertisements.bottom')    
+    @include('livewire.frontend.advertisements.bottom')
     {{-- sponsored ads --}}
 
 
