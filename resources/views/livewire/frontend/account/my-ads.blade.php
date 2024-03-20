@@ -54,7 +54,7 @@
                                             class="hover:underline text-sm tracking-tight">
                                             {{ Str::limit($item->title, 30) }}
                                         </a>
-                                        <p class="text-green-700 text-sm font-bold py-2">{{ __('ad.currency') }}
+                                        <p class="text-green-700 text-sm font-bold">{{ __('ad.currency') }}
                                             {{ $item->price }}
                                         </p>
                                         <p>
@@ -68,7 +68,11 @@
                                                     Sold</button>
                                             @endif
                                         </p>
-                                        <div>
+                                        
+                                        <div class="flex gap-2 py-1">
+                                            <p class="text-xs text-gray-500 underline hover:no-underline cursor-pointer">
+                                                <a href="{{route('edit.ad', $item->id)}}">Edit Ad</a>
+                                            </p> 
                                             <p class="text-xs text-gray-400">{{ $item->created_at->diffForHumans() }}
                                             </p>
                                         </div>
@@ -83,3 +87,4 @@
             </div>
         </div>
     </div>
+</div>

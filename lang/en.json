@@ -126,12 +126,14 @@
     "date-time": "Date & Time",
     "action": "Action",
     "your-ads": "Your Ads",
+    "edit-ad": "Edit Ad",  
     "under-review": "Under Review",
     "total-sold": "Total Sold",
     "total-published": "Total Published",
     "published": "Published",
     "unpublished": "Unpublished",
     "sold": "Sold",
+    "ad.category": "Ad Category",
 
     "back-to-inbox": "Back to Inbox",
 

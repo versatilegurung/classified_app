@@ -101,6 +101,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //user account route
     Route::get('/account/dashboard', \App\Livewire\Frontend\Account\Dashboard::class)->name('dashboard');
     Route::get('/account/my-ads', \App\Livewire\Frontend\Account\MyAds::class)->name('my.ads');
+    Route::get('/account/edit-ad/{id}', \App\Livewire\Frontend\Account\EditAd::class)->name('edit.ad');
     Route::get('/post-ad', \App\Livewire\Frontend\Ads\PostAd::class)->name('post.ad');
     Route::get('/account/messages', \App\Livewire\Frontend\Account\Message::class)->name('account.message');
     Route::get('/account/profile', \App\Livewire\Frontend\Account\Profile::class)->name('account.profile');
