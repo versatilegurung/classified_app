@@ -1,22 +1,34 @@
-📌 Classified App
+<h1>📌 Classified App</h1>
 
-A powerful Laravel-based Classified Ads platform that allows users to post, browse, and manage listings effortlessly. Built with Livewire 3, Filament, and Laravel 10, this app offers advanced search, role-based access, spam protection, SEO optimization, and an intuitive admin panel for seamless management.
+<p>A powerful Laravel-based <strong>Classified Ads</strong> platform that allows users to post, browse, and manage listings effortlessly. Built with <strong>Livewire 3, Filament, and Laravel 10</strong>, this app offers <strong>advanced search, role-based access, spam protection, SEO optimization, and an intuitive admin panel</strong> for seamless management.</p>
 
-✨ Features:
-✅ User authentication & role-based access control (Filament Shield, Spatie Permissions)
-✅ Advanced search & category-based filtering
-✅ Google reCAPTCHA & Honeypot spam protection
-✅ SEO-friendly meta tags & social sharing
-✅ Secure email notifications with Symfony Mailer
-✅ Admin panel for managing users & listings (Filament-powered)
+<h2>✨ Features:</h2>
+<ul>
+    <li>✅ User authentication & role-based access control (Filament Shield, Spatie Permissions)</li>
+    <li>✅ Advanced search & category-based filtering</li>
+    <li>✅ Google reCAPTCHA & Honeypot spam protection</li>
+    <li>✅ SEO-friendly meta tags & social sharing</li>
+    <li>✅ Secure email notifications with Symfony Mailer</li>
+    <li>✅ Admin panel for managing users & listings (Filament-powered)</li>
+</ul>
 
-🚀 Tech Stack:
-Backend: Laravel 10, Livewire 3
-Database: MySQL
-Security: Laravel Sanctum, NoCaptcha
-Admin Panel: Filament
-🔗 Get Started: Clone, install dependencies, configure .env, run migrations, and start your classified marketplace today!
+<h2>🚀 Tech Stack:</h2>
+<ul>
+    <li><strong>Backend:</strong> Laravel 10, Livewire 3</li>
+    <li><strong>Database:</strong> MySQL</li>
+    <li><strong>Security:</strong> Laravel Sanctum, NoCaptcha</li>
+    <li><strong>Admin Panel:</strong> Filament</li>
+</ul>
 
-📢 Future Enhancements: In-app messaging, premium listings, payment gateway integration, and mobile support.
+<h2>🔗 Get Started:</h2>
+<p>Clone, install dependencies, configure <code>.env</code>, run migrations, and start your classified marketplace today!</p>
 
-⭐ Star this repo if you find it useful! 🚀
+<h2>📢 Future Enhancements:</h2>
+<ul>
+    <li>In-app messaging</li>
+    <li>Premium listings</li>
+    <li>Payment gateway integration</li>
+    <li>Mobile support</li>
+</ul>
+
+<p>⭐ <strong>Star this repo if you find it useful!</strong> 🚀</p>
